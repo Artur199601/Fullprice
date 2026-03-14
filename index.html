@@ -12,379 +12,310 @@
             --gold: #d4af37; 
             --gold-light: #f9f1d8; 
             --bg-color: #f4f6f5; 
-            --text-main: #1a2521;
+            --text-main: #1a2521; 
         }
 
         body {
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: var(--bg-color);
+            background-attachment: fixed;
             color: var(--text-main);
             margin: 0;
-            padding: 0;
+            padding: 15px;
             padding-bottom: 250px;
             -webkit-tap-highlight-color: transparent;
-            overflow-x: hidden;
         }
 
-        /* ФИКСИРОВАННАЯ ШАПКА — ТЕПЕРЬ ПО ЦЕНТРУ */
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 58, 42, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 15px 0 10px 0;
+        /* ШАПКА В СТИЛЕ ДЕМО */
+        .header-card {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald-light) 100%);
+            border-radius: 24px;
+            padding: 25px 15px;
+            text-align: center;
             margin-bottom: 15px;
-            border-bottom: 2px solid var(--gold);
-            box-shadow: 0 5px 20px rgba(10, 58, 42, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Центрируем всё */
+            box-shadow: 0 10px 30px rgba(10, 58, 42, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--gold);
         }
 
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Центрируем логотип */
-            margin-bottom: 10px;
-        }
-
-        .header-logo {
-            width: 120px; /* Крупный логотип */
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); /* Золотое свечение */
-            margin-bottom: 15px;
+        .logo {
+            width: 100px; height: 100px; border-radius: 50%;
+            object-fit: cover; border: 3px solid var(--gold);
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
         
         #user-greeting {
             font-size: 14px; color: var(--gold); font-weight: 700; 
             margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;
-            display: none; /* Скроем пока не настроим Gemini */
         }
 
-        .header-title-block {
-            text-align: center; /* Центрируем текст */
+        .header-card h1 { font-size: 26px; font-weight: 900; margin: 0; color: #fff; letter-spacing: 1px; }
+        .header-card h1 span { color: var(--gold); }
+        .header-card p { font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 8px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;}
+
+        /* БЛОКИ ДОВЕРИЯ */
+        .trust-badges {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #fff; border-radius: 12px; padding: 12px;
+            margin-bottom: 25px; border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .trust-item { text-align: center; font-size: 10px; font-weight: 800; color: var(--emerald-dark); flex: 1; border-right: 1px solid #eee;}
+        .trust-item:last-child { border-right: none; }
+
+        /* КАТЕГОРИИ */
+        .category {
+            font-size: 18px; font-weight: 900; margin-top: 35px; margin-bottom: 15px;
+            color: var(--emerald-dark); border-left: 5px solid var(--gold); padding-left: 12px;
+            text-transform: uppercase; letter-spacing: 0.5px;
         }
 
-        .header-title {
-            color: #fff;
-            font-size: 24px; /* Крупный жирный шрифт */
-            font-weight: 900;
-            margin: 0;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        .header-title span { color: var(--gold); }
-        .header-subtitle { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 6px; text-transform: uppercase; letter-spacing: 2px;}
-
-        /* УМНАЯ НАВИГАЦИЯ */
-        .nav-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 10px;
-            padding: 10px 15px;
-            width: 100%;
-            box-sizing: border-box;
-            scrollbar-width: none;
-        }
-        .nav-scroll::-webkit-scrollbar { display: none; }
-
-        .nav-item {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 10px;
-            white-space: nowrap;
-            font-size: 11px;
-            font-weight: 800;
-            text-decoration: none;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            text-transform: uppercase;
-        }
-
-        /* КОНТЕНТ */
-        .container { padding: 15px; }
-
-        .category-title {
-            font-size: 18px;
-            font-weight: 900;
-            color: var(--emerald-dark);
-            border-left: 5px solid var(--gold);
-            padding-left: 12px;
-            margin: 35px 0 15px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
+        /* КАРТОЧКА ТОВАРА */
         .item-card {
-            background: #fff;
-            border-radius: 18px;
-            padding: 18px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            background: #fff; border-radius: 18px; padding: 18px; margin-bottom: 12px;
+            display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid rgba(212, 175, 55, 0.1); box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: 0.2s;
         }
+        .item-card:active { transform: scale(0.98); background: #f9f9f9; }
 
-        .item-info { flex: 1; }
-        .item-name { font-size: 16px; font-weight: 800; color: #1a1a1a; margin-bottom: 3px; }
-        .item-desc { font-size: 12px; color: #7f8c8d; font-weight: 500; }
-        .item-opt { font-size: 11px; color: #27ae60; font-weight: 800; margin-top: 6px; }
+        .item-name { font-size: 16px; font-weight: 800; color: var(--emerald-dark); }
+        .item-desc { font-size: 12px; color: #7f8c8d; margin-top: 2px; font-weight: 500; }
+        .item-opt { font-size: 11px; color: #27ae60; font-weight: 800; margin-top: 6px; text-transform: uppercase; }
         
         .item-price {
-            background: var(--emerald-dark);
-            color: var(--gold);
-            padding: 9px 14px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 900;
-            white-space: nowrap;
-            margin-left: 15px;
-            box-shadow: 0 4px 8px rgba(10, 58, 42, 0.15);
+            font-size: 16px; font-weight: 900; color: var(--gold);
+            background: var(--emerald-dark); padding: 8px 14px; border-radius: 12px;
+            white-space: nowrap; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        /* КНОПКИ CTA */
-        .footer-cta {
-            position: fixed;
-            bottom: 20px;
-            left: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, var(--gold) 0%, #e5c158 100%);
-            color: var(--emerald-dark);
-            height: 55px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            text-transform: uppercase;
+        /* НАВИГАЦИЯ */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);
+            padding: 15px; padding-bottom: calc(15px + env(safe-area-inset-bottom));
+            display: flex; flex-direction: column; gap: 10px; z-index: 100;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .btn {
+            height: 52px; border: none; border-radius: 16px;
+            font-size: 14px; font-weight: 900; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-transform: uppercase; letter-spacing: 0.5px; transition: 0.2s;
             text-decoration: none;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-            z-index: 1000;
-            letter-spacing: 0.5px;
         }
 
-        html { scroll-behavior: smooth; }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .btn-promo { background: var(--emerald-dark); color: var(--gold); animation: pulse-gold 2s infinite; border: 1px solid var(--gold); }
+        .btn-manager { background: linear-gradient(135deg, #d4af37 0%, #e5c158 100%); color: var(--emerald-dark); }
+
+        /* МОДАЛКА АКЦИЙ */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 58, 42, 0.85); backdrop-filter: blur(8px);
+            z-index: 200; opacity: 0; visibility: hidden; transition: 0.3s;
+            display: flex; align-items: flex-end;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            background: #fff; width: 100%; border-radius: 30px 30px 0 0;
+            padding: 35px 20px; padding-bottom: 50px;
+            transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            max-height: 85vh; overflow-y: auto;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        
+        .modal-close {
+            position: absolute; top: 20px; right: 20px;
+            background: var(--gold-light); border: none; width: 35px; height: 35px;
+            border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark);
+        }
+
+        .promo-card {
+            background: var(--gold-light); border: 1px solid var(--gold); border-left: 8px solid var(--gold);
+            border-radius: 15px; padding: 20px; margin-bottom: 15px;
+        }
+        .promo-buy { font-size: 16px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 8px; }
+        .promo-gift { font-size: 16px; font-weight: 900; color: #27ae60; }
+
     </style>
 </head>
 <body>
 
-    <div class="sticky-header">
-        <div class="header-content">
-            <img src="IMG_0797.png" alt="Logo" class="header-logo">
-            <div class="header-title-block">
-                <div class="header-title">
-                    FILLER'S <span>BEAUTY</span>
-                </div>
-                <div class="header-subtitle">ВСЕГДА БУДЬ КРАСИВОЙ!</div>
+    <div class="header-card">
+        <div id="user-greeting">ЛИЧНЫЙ ДОСТУП</div>
+        <img src="IMG_0797.jpeg" alt="Logo" class="logo">
+        <h1>FILLER'S <span>BEAUTY</span></h1>
+        <p>ПРЯМЫЕ ПОСТАВКИ С КОРЕИ И ЕВРОПЫ</p>
+    </div>
+
+    <div class="trust-badges">
+        <div class="trust-item">❄️ Термоконтроль</div>
+        <div class="trust-item">🛡 100% Оригинал</div>
+        <div class="trust-item">🚚 Отгрузка 24ч</div>
+    </div>
+
+    <div class="category">🧊 Ботулотоксины</div>
+    <div class="item-card">
+        <div><div class="item-name">Botulax 100u / 200u</div><div class="item-desc">Корея (Premium)</div><div class="item-opt">От 5 шт: 2600₽ / 3800₽</div></div>
+        <div class="item-price">2700₽ / 4000₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Refinex (Япония / Корея)</div><div class="item-desc">100u (Оригинал)</div><div class="item-opt">От 10 шт: 2900₽ / 1600₽</div></div>
+        <div class="item-price">3000₽ / 1700₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">RenTox 100u / 200u</div><div class="item-desc">Корея</div><div class="item-opt">От 5 шт: 3300₽ / 4800₽</div></div>
+        <div class="item-price">3500₽ / 5000₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">DehanTox 100u / 200u</div><div class="item-desc">Корея</div><div class="item-opt">От 5 шт: 2600₽ / 3800₽</div></div>
+        <div class="item-price">2800₽ / 4000₽</div>
+    </div>
+
+    <div class="category">🧬 Биоревитализация</div>
+    <div class="item-card">
+        <div><div class="item-name">Novacutan SBio / YBio</div><div class="item-desc">2.0 мл (Европа)</div></div>
+        <div class="item-price">4 500 ₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Aquashine BR / Soft / PTX</div><div class="item-desc">2.0 мл × 1 шпр</div><div class="item-opt">От 10 шт: 1550₽ / 1750₽</div></div>
+        <div class="item-price">1650₽ / 1850₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Revi Eye / Style / Silk</div><div class="item-desc">1.0 мл / 2.0 мл</div></div>
+        <div class="item-price">4500₽ / 6500₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">MesoEye C71 / Wharton P199</div><div class="item-desc">1.5 мл × 1 шпр</div><div class="item-opt">От 5 шт: 3 650 ₽</div></div>
+        <div class="item-price">3 800 ₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Profhilo (Профайло)</div><div class="item-desc">2.0 мл (Европа)</div><div class="item-opt">От 5 шт: 5 800 ₽</div></div>
+        <div class="item-price">6 000 ₽</div>
+    </div>
+
+    <div class="category">💎 Филлеры (Европа)</div>
+    <div class="item-card">
+        <div><div class="item-name">Stylage M / L (Bi-Soft)</div><div class="item-desc">2 × 1.0 мл (Франция)</div></div>
+        <div class="item-price">9500₽ / 10000₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Stylage XL / Lips Plus</div><div class="item-desc">Волюмайзер / Для губ</div></div>
+        <div class="item-price">12500₽ / 6500₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Neauvia Intense Lips</div><div class="item-desc">Premium (Органик)</div><div class="item-opt">От 5 шт: 4 600 ₽</div></div>
+        <div class="item-price">4 800 ₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Juvederm Ultra 3 / 4</div><div class="item-desc">2 × 1.0 мл (Оригинал)</div></div>
+        <div class="item-price">13900₽ / 14500₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Radiesse 1.5 мл</div><div class="item-desc">Волюмайзер (Европа)</div></div>
+        <div class="item-price">11 500 ₽</div>
+    </div>
+
+    <div class="category">💎 Филлеры (Корея)</div>
+    <div class="item-card">
+        <div><div class="item-name">Sardenya Deep / Shape / Fine</div><div class="item-desc">1.1 мл (Стандарт)</div><div class="item-opt">От 10 шт: 1 500 ₽</div></div>
+        <div class="item-price">1 550 ₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Tesoro Deep / Sub-Q</div><div class="item-desc">1.0 мл × 1 шпр</div><div class="item-opt">От 10 шт: 1 450 ₽</div></div>
+        <div class="item-price">1 500 ₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Rejeunesse Deep / Sparkle</div><div class="item-desc">1.1 мл × 1 шпр</div><div class="item-opt">От 10 шт: 1600₽ / 5200₽</div></div>
+        <div class="item-price">1700₽ / 5500₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Elasty F / G Plus</div><div class="item-desc">2 × 1.0 мл</div><div class="item-opt">От 10 шт: 2 050 ₽</div></div>
+        <div class="item-price">2 200 ₽</div>
+    </div>
+
+    <div class="category">💧 Тело & Липолитики</div>
+    <div class="item-card">
+        <div><div class="item-name">Light Fit (Официальный)</div><div class="item-desc">1 фл × 10 мл</div><div class="item-opt">От 5 шт: 11 200 ₽</div></div>
+        <div class="item-price">11 500 ₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">LipoLab V-Line / Face</div><div class="item-desc">1 фл × 10 мл</div><div class="item-opt">От 5 шт: 4 300 ₽</div></div>
+        <div class="item-price">4 500 ₽</div>
+    </div>
+    <div class="item-card">
+        <div><div class="item-name">Tesoro Body Max (100ml)</div><div class="item-desc">Для контуринга тела</div></div>
+        <div class="item-price">13 800 ₽</div>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0; font-weight: 800; color: var(--emerald-light); text-transform: uppercase; font-size: 12px;">
+        В прайсе более 300 позиций 👇
+    </div>
+
+    <div class="bottom-nav">
+        <button class="btn btn-promo" onclick="openModal()">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
+        <a href="https://t.me/Fillers_Beauty" class="btn btn-manager">👨‍⚕️ СВЯЗАТЬСЯ С МЕНЕДЖЕРОМ</a>
+    </div>
+
+    <div class="modal-overlay" id="promoModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="forceClose()">✕</button>
+            <div style="font-size: 24px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 10px;">🎁 АКЦИИ НЕДЕЛИ</div>
+            <div style="font-size: 12px; color: var(--gold); font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">Только до воскресенья!</div>
+
+            <div class="promo-card">
+                <div class="promo-buy">🛍 При заказе 10 шт Sardenya</div>
+                <div class="promo-gift">🎁 ПОДАРОК: 1 шт Hyaron или LipoLab</div>
+            </div>
+            
+            <div class="promo-card">
+                <div class="promo-buy">🛍 При заказе 5 шт Stylage (любой плотности)</div>
+                <div class="promo-gift">🎁 ПОДАРОК: Бесплатная доставка СДЭК</div>
+            </div>
+
+            <div class="promo-card">
+                <div class="promo-buy">🛍 При заказе 3 шт Novacutan</div>
+                <div class="promo-gift">🎁 ПОДАРОК: 1 шт Refinex (Корея)</div>
+            </div>
+            
+            <div style="font-size: 11px; color: #7f8c8d; text-align: center; margin-top: 20px; font-weight: 600;">
+                *Для активации акции просто напишите менеджеру
             </div>
         </div>
-        <div class="nav-scroll">
-            <a href="#toxins" class="nav-item">🧊 ТОКСИНЫ</a>
-            <a href="#biorev" class="nav-item">🧬 БИО / МЕЗО</a>
-            <a href="#fillers-euro" class="nav-item">💎 ЕВРОПА</a>
-            <a href="#fillers-korea" class="nav-item">🇰🇷 КОРЕЯ</a>
-            <a href="#lipolytics" class="nav-item">💧 ТЕЛО</a>
-            <a href="#others" class="nav-item">🛠 ПРОЧЕЕ</a>
-        </div>
     </div>
-
-    <div class="container">
-
-        <div id="toxins" class="category-title">🧊 Ботулотоксины</div>
-        
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Botulax 100u</div><div class="item-desc">Корея (Стандарт)</div><div class="item-opt">от 5 шт: 2 600 ₽</div></div>
-            <div class="item-price">2 700 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Botulax 200u</div><div class="item-desc">Корея</div><div class="item-opt">от 5 шт: 3 800 ₽</div></div>
-            <div class="item-price">4 000 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Botulax 300u</div><div class="item-desc">Корея</div><div class="item-opt">от 5 шт: 5 800 ₽</div></div>
-            <div class="item-price">6 000 ₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Refinex Япония 100u</div><div class="item-desc">Premium Quality</div><div class="item-opt">от 10 шт: 2 900 ₽</div></div>
-            <div class="item-price">3 000 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Refinex Корея 100u</div><div class="item-desc">Эконом</div><div class="item-opt">от 10 шт: 1 600 ₽</div></div>
-            <div class="item-price">1 700 ₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">RenTox 100u / 200u</div><div class="item-desc">Корея</div><div class="item-opt">5 шт: 3300₽ / 4800₽</div></div>
-            <div class="item-price">3500₽ / 5000₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Маспорт 500ед</div><div class="item-desc">Франция/Турция</div></div>
-            <div class="item-price">5 500 ₽</div>
-        </div>
-
-        <div id="biorev" class="category-title">🧬 Биоревитализация & Мезо</div>
-        
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Aquashine BR / Soft</div><div class="item-desc">2.0 мл × 1 шпр</div><div class="item-opt">от 10 шт: 1 550 ₽</div></div>
-            <div class="item-price">1 650 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Aquashine PTX</div><div class="item-desc">2.0 мл × 1 шпр</div><div class="item-opt">от 10 шт: 1 750 ₽</div></div>
-            <div class="item-price">1 850 ₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">MesoEye C71 / MesoWharton P199</div><div class="item-desc">1.5 мл × 1 шпр</div><div class="item-opt">от 5 шт: 3 650 ₽</div></div>
-            <div class="item-price">3 800 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Novacutan С-Био / У-Био</div><div class="item-desc">Европа (Original)</div></div>
-            <div class="item-price">4 500 ₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Dermaheal (HL/HSR/SB/SR)</div><div class="item-desc">10 фл × 5 мл</div><div class="item-opt">от 5 шт: 4 800 ₽</div></div>
-            <div class="item-price">5 000 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Kiara Reju</div><div class="item-desc">3 шт × 2.2 мл</div><div class="item-opt">от 5 шт: 3 200 ₽</div></div>
-            <div class="item-price">3 300 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Hanheal Exosome</div><div class="item-desc">Экзосомы (комплект)</div></div>
-            <div class="item-price">7 500 ₽</div>
-        </div>
-
-        <div id="fillers-euro" class="category-title">💎 Филлеры Европа</div>
-        
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Stylage M Bi-Soft (No Lido) / Lido</div><div class="item-desc">2 × 1.0 мл (Франция)</div></div>
-            <div class="item-price">9100₽ / 9500₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Stylage L / L Bi-Soft Lido</div><div class="item-desc">2 × 1.0 мл</div></div>
-            <div class="item-price">9800₽ / 10000₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Stylage XL / Lips Plus</div><div class="item-desc">2ml / 1ml</div></div>
-            <div class="item-price">12500₽ / 6500₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Neauvia Intense Lips</div><div class="item-desc">Для губ Premium</div><div class="item-opt">от 5 шт: 4 600 ₽</div></div>
-            <div class="item-price">4 800 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Neauvia (Organic/Stimulate)</div><div class="item-desc">Филлер Premium</div><div class="item-opt">5 шт: 4800₽ / 5000₽</div></div>
-            <div class="item-price">5000₽ / 5200₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Juvederm Ultra 3</div><div class="item-desc">2 × 1.0 мл</div></div>
-            <div class="item-price">13 900 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Radiesse 1.5 мл</div><div class="item-desc">Оригинал (Волюмайзер)</div></div>
-            <div class="item-price">11 500 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">PROFHILO Европа</div><div class="item-desc">2.0 мл</div><div class="item-opt">от 5 шт: 5 800 ₽</div></div>
-            <div class="item-price">6 000 ₽</div>
-        </div>
-
-        <div id="fillers-korea" class="category-title">💎 Филлеры Корея</div>
-        
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Sardenya Deep / Fine / Shape</div><div class="item-desc">1.1 мл</div><div class="item-opt">от 10 шт: 1 500 ₽</div></div>
-            <div class="item-price">1 550 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Sardenya Matrix</div><div class="item-desc">Premium (Корея)</div><div class="item-opt">от 10 шт: 4 500 ₽</div></div>
-            <div class="item-price">4 700 ₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Tesoro Deep / Sub-Q</div><div class="item-desc">1.0 мл</div><div class="item-opt">от 10 шт: 1 450 ₽</div></div>
-            <div class="item-price">1 500 ₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Rejeunesse Deep</div><div class="item-desc">1.1 мл</div><div class="item-opt">от 10 шт: 1 600 ₽</div></div>
-            <div class="item-price">1 700 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Rejeuness Sparkle Lido</div><div class="item-desc">VIP (Био-филлер)</div><div class="item-opt">от 10 шт: 5 200 ₽</div></div>
-            <div class="item-price">5 500 ₽</div>
-        </div>
-
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Elasty (F/F Plus/G Plus)</div><div class="item-desc">2 × 1.0 мл</div><div class="item-opt">от 10 шт: 2 050 ₽</div></div>
-            <div class="item-price">2 200 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Hyamax (Lips/ Lips Plus)</div><div class="item-desc">Франция/Корея</div><div class="item-opt">от 5 шт: 3 800 ₽</div></div>
-            <div class="item-price">4000₽</div>
-        </div>
-
-        <div id="lipolytics" class="category-title">💧 ТЕЛО & Extras</div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Light Fit Официальный</div><div class="item-desc">10 мл × 1 фл</div><div class="item-opt">от 5 шт: 11 200 ₽</div></div>
-            <div class="item-price">11 500 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">LipoLab V-Line</div><div class="item-desc">10 мл × 1 фл</div><div class="item-opt">от 5 шт: 4 300 ₽</div></div>
-            <div class="item-price">4 500 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Tesoro Body Max</div><div class="item-desc">100 мл (Для тела)</div></div>
-            <div class="item-price">13 800 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Tesoro Body</div><div class="item-desc">50 мл (Для тела)</div><div class="item-opt">от 5 шт: 6 800 ₽</div></div>
-            <div class="item-price">7 000 ₽</div>
-        </div>
-
-        <div id="others" class="category-title">🛠 Пилинги & Анестезия</div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">BioRePeelCl3 (Биорепил)</div><div class="item-desc">флакон / упаковка</div></div>
-            <div class="item-price">3800₽ / 18500₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Fillmed NCTF 135HA</div><div class="item-desc">флакон / упаковка</div></div>
-            <div class="item-price">3800₽ / 18500₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">J-Cain 500гр / 30гр</div><div class="item-desc">Анестетик</div></div>
-            <div class="item-price">2 800 ₽ / 500 ₽</div>
-        </div>
-        <div class="item-card">
-            <div class="item-info"><div class="item-name">Коктейль Золушка</div><div class="item-desc">1 комплект / 10 комл</div></div>
-            <div class="item-price">1 300 ₽ / 12 000 ₽</div>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px; color: var(--text-main); font-size: 11px; font-weight: 600; text-transform: uppercase;">
-            В базе более 300 позиций. 👇
-        </div>
-
-    </div>
-
-    <a href="https://t.me/Fillers_Beauty" class="footer-cta" id="order-btn">👨‍⚕️ СФОРМИРОВАТЬ ЗАКАЗ</a>
 
     <script>
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        tg.expand();
-        tg.MainButton.hide();
+        const webApp = window.Telegram.WebApp;
+        webApp.ready();
+        webApp.expand(); 
+        webApp.MainButton.hide();
 
-        document.getElementById('order-btn').addEventListener('click', function() {
-            tg.HapticFeedback.notificationOccurred('success');
+        // Приветствие по имени
+        try {
+            const user = webApp.initDataUnsafe?.user;
+            if (user && user.first_name) {
+                document.getElementById('user-greeting').innerText = 'ПРИВЕТ, ' + user.first_name.toUpperCase() + '!';
+            }
+        } catch(e) {}
+
+        function openModal() {
+            webApp.HapticFeedback.impactOccurred('medium');
+            document.getElementById('promoModal').classList.add('active');
+        }
+        function closeModal(e) { if (e.target.id === 'promoModal') forceClose(); }
+        function forceClose() { document.getElementById('promoModal').classList.remove('active'); }
+        
+        // Виброотклик при нажатии на менеджера
+        document.querySelector('.btn-manager').addEventListener('click', () => {
+            webApp.HapticFeedback.notificationOccurred('success');
         });
     </script>
 </body>

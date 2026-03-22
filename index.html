@@ -496,22 +496,22 @@
     </div>
 
     <div class="bottom-nav" id="cartPanel">
+        
         <div class="delivery-widget" id="deliveryWidget">
             <div class="delivery-text" id="deliveryText">До бесплатной доставки: <span>30 000 ₽</span></div>
             <div class="progress-bg"><div class="progress-fill" id="deliveryFill"></div></div>
         </div>
 
         <button class="btn btn-promo" id="promoBtn" onclick="openModal('promoModal')">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
-        <button class="btn btn-info" id="delInfoBtn" onclick="openModal('deliveryModal')">🚚 Условия Доставки и Оплаты</button>
-        <button class="btn btn-info" id="bonusInfoBtn" onclick="openModal('bonusModal')">🎁 Программа Бонусов</button>
         <button class="btn btn-share" id="shareBtn" onclick="shareApp()">📤 ПОДЕЛИТЬСЯ ПРАЙСОМ</button>
 
         <div class="cart-panel" id="cartActivePanel">
-            <div class="cart-summary">
-                <div>🛒 В корзине: <b id="cartCount">0</b> шт.</div>
-                <div>Сумма: <span id="cartTotal">0 ₽</span></div>
+            <div class="cart-summary" style="display: flex; justify-content: space-between; align-items: center; font-size: 15px; gap: 5px;">
+                <div style="white-space: nowrap;">🛒 В корзине: <b id="cartCount">0</b> шт.</div>
+                <div style="white-space: nowrap;">Сумма: <span id="cartTotal" style="color: var(--gold); background: var(--emerald-dark); padding: 5px 10px; border-radius: 8px; font-size: 15px; display: inline-block;">0 ₽</span></div>
             </div>
-            <button class="btn btn-order" onclick="openModal('cartModal')">🛍 ПЕРЕЙТИ К ОФОРМЛЕНИЮ</button>
+            
+            <button class="btn btn-order" style="height: 50px; margin-top: 5px;" onclick="openModal('cartModal')">🛍 ПЕРЕЙТИ К ОФОРМЛЕНИЮ</button>
         </div>
     </div>
 
@@ -582,7 +582,7 @@
     </div>
 
     <div class="modal-overlay" id="cartModal" onclick="closeModal(event)">
-        <div class="modal-content" style="max-height: 95vh; padding-bottom: 20px;">
+        <div class="modal-content" style="max-height: 90vh; display: block; overflow-y: auto; padding-bottom: 40px;">
             <button class="modal-close" onclick="forceClose('cartModal')">✕</button>
             <div class="cart-modal-title">🛍 Ваш заказ</div>
             
@@ -602,17 +602,17 @@
                     </label>
                     <label class="del-label">
                         <input type="radio" name="delivery" value="0" onchange="toggleFormFields()">
-                        Регионы (СДЭК / Почта России)
+                        Регионы (СДЭК / Почта)
                     </label>
                 </div>
 
                 <div id="form-msk" class="dynamic-fields active">
-                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="msk-name" class="form-input" placeholder="Иванова Анна"></div>
-                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="msk-phone" class="form-input" placeholder="+7 (999) 000-00-00"></div>
-                    <div class="form-group"><label class="form-label">Метро / Точный адрес</label><input type="text" id="msk-address" class="form-input" placeholder="м. Тверская, ул. Горького 10"></div>
+                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="msk-name" class="form-input" style="font-size: 16px; height: 45px;" placeholder="Иванова Анна"></div>
+                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="msk-phone" class="form-input" style="font-size: 16px; height: 45px;" placeholder="+7 (999) 000-00-00"></div>
+                    <div class="form-group"><label class="form-label">Метро / Точный адрес</label><input type="text" id="msk-address" class="form-input" style="font-size: 16px; height: 45px;" placeholder="м. Тверская, ул. Горького 10"></div>
                     <div class="form-group">
                         <label class="form-label">Желаемое время (интервал 3 часа)</label>
-                        <select id="msk-time" class="form-select">
+                        <select id="msk-time" class="form-select" style="font-size: 16px; height: 45px;">
                             <option value="10:00 - 13:00">С 10:00 до 13:00</option>
                             <option value="13:00 - 16:00">С 13:00 до 16:00</option>
                             <option value="16:00 - 19:00">С 16:00 до 19:00</option>
@@ -622,9 +622,9 @@
                 </div>
 
                 <div id="form-zamkad" class="dynamic-fields">
-                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="zamkad-name" class="form-input" placeholder="Иванова Анна"></div>
-                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="zamkad-phone" class="form-input" placeholder="+7 (999) 000-00-00"></div>
-                    <div class="form-group"><label class="form-label">Точный адрес</label><input type="text" id="zamkad-address" class="form-input" placeholder="г. Химки, ул. Ленина 5"></div>
+                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="zamkad-name" class="form-input" style="font-size: 16px; height: 45px;" placeholder="Иванова Анна"></div>
+                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="zamkad-phone" class="form-input" style="font-size: 16px; height: 45px;" placeholder="+7 (999) 000-00-00"></div>
+                    <div class="form-group"><label class="form-label">Точный адрес</label><input type="text" id="zamkad-address" class="form-input" style="font-size: 16px; height: 45px;" placeholder="г. Химки, ул. Ленина 5"></div>
                     <div style="font-size: 13px; color: #e67e22; font-weight: 800; text-align: center; margin-top: 10px;">
                         🕒 Доставка осуществляется в течение дня до 21:00
                     </div>
@@ -633,28 +633,26 @@
                 <div id="form-region" class="dynamic-fields">
                     <div class="form-group">
                         <label class="form-label">Транспортная компания</label>
-                        <select id="reg-tk" class="form-select">
+                        <select id="reg-tk" class="form-select" style="font-size: 16px; height: 45px;">
                             <option value="СДЭК">СДЭК</option>
                             <option value="Почта России (1-й класс)">Почта России (1-й класс)</option>
                         </select>
                     </div>
-                    <div class="form-group"><label class="form-label">Город</label><input type="text" id="reg-city" class="form-input" placeholder="г. Казань"></div>
-                    <div class="form-group"><label class="form-label">Адрес до двери или ПВЗ</label><input type="text" id="reg-address" class="form-input" placeholder="ПВЗ на ул. Баумана 15"></div>
-                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="reg-name" class="form-input" placeholder="Иванова Анна"></div>
-                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="reg-phone" class="form-input" placeholder="+7 (999) 000-00-00"></div>
+                    <div class="form-group"><label class="form-label">Город</label><input type="text" id="reg-city" class="form-input" style="font-size: 16px; height: 45px;" placeholder="г. Казань"></div>
+                    <div class="form-group"><label class="form-label">Адрес до двери или ПВЗ</label><input type="text" id="reg-address" class="form-input" style="font-size: 16px; height: 45px;" placeholder="ПВЗ на ул. Баумана 15"></div>
+                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="reg-name" class="form-input" style="font-size: 16px; height: 45px;" placeholder="Иванова Анна"></div>
+                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="reg-phone" class="form-input" style="font-size: 16px; height: 45px;" placeholder="+7 (999) 000-00-00"></div>
                 </div>
             </div>
             
-            <div class="cart-final-total">
-                Итого к оплате: <span id="cartModalTotal">0 ₽</span>
-                <div id="cartModalDelText" style="font-size: 12px; color: #7f8c8d; font-weight: 500; margin-top: 5px;">+ Доставка 400 ₽</div>
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 2px solid var(--gold-light); text-align: center;">
+                <div style="font-size: 14px; color: #555; font-weight: 800; text-transform: uppercase;">Итого к оплате:</div>
+                <div id="cartModalTotal" style="font-size: 32px; color: var(--emerald-dark); font-weight: 900; margin: 5px 0;">0 ₽</div>
+                <div id="cartModalDelText" style="font-size: 13px; color: #27ae60; font-weight: 800; margin-bottom: 15px;"></div>
+                
+                <button class="btn btn-order" style="width: 100%; height: 55px; font-size: 15px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);" onclick="sendOrder()">🚀 ОТПРАВИТЬ ЗАКАЗ</button>
+                <button class="btn btn-clear" style="width: 100%; margin-top: 10px; height: 45px; background: #f4f6f5; color: #e74c3c;" onclick="clearCart()">🗑 Очистить корзину</button>
             </div>
-            
-            <div style="position: sticky; bottom: -20px; background: #fff; padding: 15px 0 20px 0; margin-top: 15px; border-top: 2px solid #f9f1d8; z-index: 9999;">
-                <button class="btn btn-order" style="width: 100%; height: 60px; font-size: 16px; box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);" onclick="sendOrder()">🚀 ОТПРАВИТЬ ЗАКАЗ</button>
-                <button class="btn btn-clear" style="width: 100%; margin-top: 10px; height: 45px; border: 1px solid #eee; background: #fdfdfd;" onclick="clearCart()">🗑 ОЧИСТИТЬ КОРЗИНУ</button>
-            </div>
-
         </div>
     </div>
     <script>

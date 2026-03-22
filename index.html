@@ -7,8 +7,9 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
-            --emerald-dark: #0a3a2a; 
-            --emerald-light: #165c45; 
+            --emerald-dark: #062118; /* Ещё темнее для контраста */
+            --emerald-mid: #10664d;  /* Яркий средний */
+            --emerald-light: #24bfa1; /* Очень светлый для перелива */
             --gold: #d4af37; 
             --gold-light: #f9f1d8; 
             --bg-color: #f4f6f5; 
@@ -43,17 +44,36 @@
         }
         @keyframes pulse-gold-loader { 0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); } 100% { transform: scale(1.05); box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); } }
 
-        /* ЖИВАЯ ШАПКА С ДЫШАЩИМ ГРАДИЕНТОМ */
+        /* 1. ЖИВАЯ ШАПКА: Усиленный заметный градиент */
         .header-card {
-            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-light), #0f4c3a, var(--emerald-dark));
-            background-size: 300% 300%;
-            animation: gradient-breathe 8s ease infinite;
+            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-mid), var(--emerald-light), var(--emerald-mid), var(--emerald-dark));
+            background-size: 400% 400%; /* Увеличили размер для плавности */
+            animation: gradient-breathe 10s ease infinite; /* Медленнее, но заметнее */
             border-radius: 24px; padding: 25px 15px; text-align: center; margin-bottom: 15px;
             box-shadow: 0 10px 30px rgba(10, 58, 42, 0.2); position: relative; border: 2px solid var(--gold);
         }
-        @keyframes gradient-breathe { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes gradient-breathe { 
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; } 
+        }
         
-        .logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); margin-bottom: 12px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        /* 2. ПУЛЬС СЕРДЦА на логотипе */
+        .logo { 
+            width: 100px; height: 100px; border-radius: 50%; object-fit: cover; 
+            border: 3px solid var(--gold); margin-bottom: 12px; 
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); 
+            animation: heartbeat 2s ease-in-out infinite; /* Биение сердца */
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.05); }
+            20% { transform: scale(1); }
+            30% { transform: scale(1.03); }
+            40% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
         #user-greeting { font-size: 14px; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
         .header-card h1 { font-size: 26px; font-weight: 900; margin: 0; color: #fff; }
         .header-card h1 span { color: var(--gold); }
@@ -94,17 +114,31 @@
         .item-opt { font-size: 11px; color: #27ae60; font-weight: 800; margin-top: 6px; text-transform: uppercase; }
         
         .price-cart-wrap { display: flex; align-items: center; gap: 10px; }
-        .item-price { font-size: 14px; font-weight: 900; color: var(--gold); background: var(--emerald-dark); padding: 8px 12px; border-radius: 12px; white-space: nowrap; text-align: right;}
+        
+        /* 3. Анимация отпружинивания цены при клике */
+        .item-price { 
+            font-size: 14px; font-weight: 900; color: var(--gold); background: var(--emerald-dark); 
+            padding: 8px 12px; border-radius: 12px; white-space: nowrap; text-align: right;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring */
+        }
+        .item-price.price-spring { 
+            transform: scale(1.3); /* Сильное увеличение */
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            color: #fff;
+        }
         
         .add-btn { background: var(--gold-light); border: 1px solid var(--gold); color: var(--emerald-dark); width: 36px; height: 36px; border-radius: 10px; font-size: 20px; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; position: relative; }
-        .add-btn:active { background: var(--gold); color: #fff; transform: scale(0.85); }
+        .add-btn:active { background: var(--gold); color: #fff; transform: scale(0.8); }
 
-        /* ИСКРА ПОЛЕТА В КОРЗИНУ */
+        /* 3. ШИКАРНЫЙ ПОЛЕТ ЦЕНЫ В КОРЗИНУ: Медленнее и заметнее */
         .fly-item {
-            position: fixed; width: 16px; height: 16px; background: var(--gold);
-            border-radius: 50%; z-index: 1000; pointer-events: none;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.9);
+            position: fixed; width: auto; height: auto; 
+            background: var(--gold); color: var(--emerald-dark); 
+            padding: 6px 10px; border-radius: 10px;
+            font-size: 12px; font-weight: 900; z-index: 1000; pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.2, 1, 0.4, 1.15); /* Плавный и медленный */
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+            opacity: 1;
         }
 
         /* НИЖНЯЯ ПАНЕЛЬ */
@@ -118,10 +152,10 @@
         .cart-panel.active { display: flex; }
         .cart-summary { display: flex; justify-content: space-between; font-weight: 800; color: var(--emerald-dark); font-size: 15px; padding: 0 5px; align-items: center;}
         
-        /* ПРЫЖОК СУММЫ */
-        @keyframes bounce-sum { 0% { transform: scale(1); } 50% { transform: scale(1.15); color: #27ae60; } 100% { transform: scale(1); } }
+        /* ПРЫЖОК СУММЫ: Более радостный */
+        @keyframes bounce-sum { 0% { transform: scale(1); } 50% { transform: scale(1.25); color: #27ae60; } 100% { transform: scale(1); } }
         .cart-summary span { color: var(--gold); background: var(--emerald-dark); padding: 6px 12px; border-radius: 8px; transition: 0.2s;}
-        .cart-summary span.bouncing { animation: bounce-sum 0.3s ease; }
+        .cart-summary span.bouncing { animation: bounce-sum 0.35s ease-out; }
 
         /* БЛИК НА КНОПКЕ ОФОРМЛЕНИЯ */
         .btn-order { background: linear-gradient(135deg, #d4af37 0%, #e5c158 100%); color: var(--emerald-dark); position: relative; overflow: hidden; }
@@ -443,7 +477,7 @@
         <div class="subcategory">Dr.Fill</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Dr.Fill Fine</div><div class="item-opt">От 5 шт: 1 650 ₽</div></div><div class="price-cart-wrap"><div class="item-price">1 700 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Dr.Fill Deep</div><div class="item-opt">От 5 шт: 1 650 ₽</div></div><div class="price-cart-wrap"><div class="item-price">1 700 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Dr.Fill Ultra</div><div class="item-opt">От 5 шт: 1 650 ₽</div></div><div class="price-cart-wrap"><div class="item-price">1 700 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Dr.Fill Ultra</div><div class="item-desc">Корея</div><div class="item-opt">От 5 шт: 1 650 ₽</div></div><div class="price-cart-wrap"><div class="item-price">1 700 ₽</div><div class="add-btn">+</div></div></div>
 
         <div class="subcategory">E.P.T.Q.</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">E.P.T.Q. 100</div><div class="item-desc">Корея</div></div><div class="price-cart-wrap"><div class="item-price">1 500 ₽</div><div class="add-btn">+</div></div></div>
@@ -505,7 +539,7 @@
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">25G x 50mm</div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">25G x 70mm</div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">27G x 50mm</div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">27G x 70mm</div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">27G x 70mm</div><div class="item-desc">Корея</div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
 
 
     <div style="text-align: center; margin: 40px 0; font-weight: 800; color: var(--emerald-light); text-transform: uppercase; font-size: 12px;">
@@ -565,22 +599,17 @@
         /* ЗАГРУЗКА КОРЗИНЫ ИЗ ПАМЯТИ */
         let cart = JSON.parse(localStorage.getItem('fillers_cart')) || {};
 
-        // 1. Убираем Preloader через полсекунды и обновляем UI корзины
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 600);
-            updateCartUI(); // Восстанавливаем корзину при загрузке
+            setTimeout(() => { document.getElementById('preloader').classList.add('hidden'); }, 600);
+            updateCartUI(); 
         });
 
         try {
             const user = webApp.initDataUnsafe?.user;
-            if (user && user.first_name) {
-                document.getElementById('user-greeting').innerText = 'ПРИВЕТ, ' + user.first_name.toUpperCase() + '!';
-            }
+            if (user && user.first_name) { document.getElementById('user-greeting').innerText = 'ПРИВЕТ, ' + user.first_name.toUpperCase() + '!'; }
         } catch(e) {}
 
-        /* 2. Scroll Spy (Умная навигация) */
+        /* Scroll Spy (Умная навигация) */
         const categories = document.querySelectorAll('.category');
         const navItems = document.querySelectorAll('.nav-item');
         const navContainer = document.getElementById('nav-container');
@@ -604,7 +633,7 @@
 
         categories.forEach(cat => spyObserver.observe(cat));
 
-        /* 3. Каскадная анимация карточек */
+        /* Каскадная анимация карточек */
         let delayCount = 0;
         const fadeObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -625,64 +654,69 @@
         function closeModal(e) { if (e.target.id === 'promoModal') forceClose(); }
         function forceClose() { document.getElementById('promoModal').classList.remove('active'); }
         
-        /* КОРЗИНА И ИСКРА */
-        function flyToCart(event) {
+        /* 3. УЛУЧШЕННЫЙ ПОЛЕТ В КОРЗИНУ: Медленно и заметно */
+        function flyToCart(priceElem) {
+            // Анимация цены на карточке
+            priceElem.classList.add('price-spring');
+            setTimeout(() => { priceElem.classList.remove('price-spring'); }, 400); // Spring за 0.4с
+
+            // Создаем искру полета
             const circle = document.createElement('div');
             circle.classList.add('fly-item');
+            
+            // Если текст, вставляем его. Если нет, искра. У нас цена есть всегда.
+            circle.innerText = priceElem.innerText;
             document.body.appendChild(circle);
 
-            const rect = event.target.getBoundingClientRect();
-            circle.style.left = `${rect.left + rect.width / 2 - 8}px`;
-            circle.style.top = `${rect.top + rect.height / 2 - 8}px`;
+            const priceRect = priceElem.getBoundingClientRect();
+            circle.style.left = `${priceRect.left}px`;
+            circle.style.top = `${priceRect.top}px`;
 
             const cartPanel = document.getElementById('cartPanel');
             const cartRect = cartPanel.getBoundingClientRect();
 
+            // ПОЛЕТ (0.6с cubic-bezier)
             setTimeout(() => {
-                circle.style.left = `${cartRect.left + cartRect.width / 2}px`; 
+                circle.style.left = `${cartRect.left + cartRect.width / 2 - circle.offsetWidth/2}px`; 
                 circle.style.top = `${cartRect.top + 20}px`;  
-                circle.style.transform = 'scale(0.3)';
-                circle.style.opacity = '0';
+                circle.style.transform = 'scale(0.2)'; // Уменьшается при прилете
+                circle.style.opacity = '0.3';
             }, 10);
 
-            setTimeout(() => { circle.remove(); }, 500);
+            // Очистка
+            setTimeout(() => { circle.remove(); }, 600);
         }
 
         document.querySelectorAll('.add-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function() {
                 webApp.HapticFeedback.impactOccurred('light');
-                flyToCart(e); // Запускаем искру
 
                 const card = this.closest('.item-card');
-                const name = card.querySelector('.item-name').innerText;
-                const priceText = card.querySelector('.item-price').innerText;
+                const priceElem = card.querySelector('.item-price');
                 
+                // Запускаем улучшенный полет
+                flyToCart(priceElem); 
+
+                const name = card.querySelector('.item-name').innerText;
+                const priceText = priceElem.innerText;
                 const firstPricePart = priceText.split('/')[0];
                 const basePrice = parseInt(firstPricePart.replace(/\D/g, '')) || 0;
 
-                // Парсим оптовую цену
                 let optThreshold = null;
                 let optPrice = null;
                 const optElem = card.querySelector('.item-opt');
                 if (optElem) {
                     const match = optElem.innerText.match(/От\s+(\d+)\s+шт:\s+([\d\s]+)/i);
-                    if (match) {
-                        optThreshold = parseInt(match[1]);
-                        optPrice = parseInt(match[2].replace(/\s/g, ''));
-                    }
+                    if (match) { optThreshold = parseInt(match[1]); optPrice = parseInt(match[2].replace(/\s/g, '')); }
                 }
 
-                if (cart[name]) {
-                    cart[name].qty += 1;
-                } else {
-                    cart[name] = { price: basePrice, qty: 1, optThreshold: optThreshold, optPrice: optPrice };
-                }
+                if (cart[name]) { cart[name].qty += 1; } 
+                else { cart[name] = { price: basePrice, qty: 1, optThreshold: optThreshold, optPrice: optPrice }; }
                 
-                updateCartUI();
+                // Сумма в корзине обновится с задержкой, чтобы искра "долетела"
+                setTimeout(updateCartUI, 500); 
                 
-                this.style.background = '#27ae60';
-                this.style.color = '#fff';
-                this.innerText = '✓';
+                this.style.background = '#27ae60'; this.style.color = '#fff'; this.innerText = '✓';
                 setTimeout(() => { this.style.background = ''; this.style.color = ''; this.innerText = '+'; }, 500);
             });
         });
@@ -693,12 +727,7 @@
             for (let name in cart) {
                 const item = cart[name];
                 let currentPrice = item.price;
-                
-                // Умный пересчет опта
-                if (item.optThreshold && item.qty >= item.optThreshold) {
-                    currentPrice = item.optPrice;
-                }
-
+                if (item.optThreshold && item.qty >= item.optThreshold) { currentPrice = item.optPrice; }
                 totalQty += item.qty;
                 totalSum += currentPrice * item.qty;
                 if (currentPrice === 0) hasZeroPrice = true;
@@ -711,7 +740,7 @@
             const totalSpan = document.getElementById('cartTotal');
             totalSpan.innerText = sumDisplay;
             
-            // Прыжок суммы
+            // Прыжок суммы (0.35с ease-out)
             totalSpan.classList.remove('bouncing');
             void totalSpan.offsetWidth;
             totalSpan.classList.add('bouncing');
@@ -719,50 +748,29 @@
             const cartActivePanel = document.getElementById('cartActivePanel');
             const promoBtn = document.getElementById('promoBtn');
             
-            if (totalQty > 0) {
-                cartActivePanel.classList.add('active');
-                promoBtn.style.display = 'none';
-            } else {
-                cartActivePanel.classList.remove('active');
-                promoBtn.style.display = 'flex';
-            }
-
-            // Сохраняем в память
+            if (totalQty > 0) { cartActivePanel.classList.add('active'); promoBtn.style.display = 'none'; } 
+            else { cartActivePanel.classList.remove('active'); promoBtn.style.display = 'flex'; }
             localStorage.setItem('fillers_cart', JSON.stringify(cart));
         }
 
-        function clearCart() {
-            cart = {};
-            updateCartUI();
-            webApp.HapticFeedback.notificationOccurred('warning');
-        }
+        function clearCart() { cart = {}; updateCartUI(); webApp.HapticFeedback.notificationOccurred('warning'); }
 
         function sendOrder() {
             webApp.HapticFeedback.notificationOccurred('success');
             let orderText = "🛒 *Новый заказ из прайса:*\n\n";
             let totalSum = 0;
-            
             for (let name in cart) {
                 let item = cart[name];
                 let currentPrice = item.price;
                 let optApplied = "";
-
-                if (item.optThreshold && item.qty >= item.optThreshold) {
-                    currentPrice = item.optPrice;
-                    optApplied = " (опт)";
-                }
-
-                let itemSum = currentPrice * item.qty;
-                totalSum += itemSum;
+                if (item.optThreshold && item.qty >= item.optThreshold) { currentPrice = item.optPrice; optApplied = " (опт)"; }
+                let itemSum = currentPrice * item.qty; totalSum += itemSum;
                 let priceStr = currentPrice > 0 ? `${currentPrice}₽${optApplied}` : `(уточнить цену)`;
                 orderText += `▪️ ${name} x${item.qty} — ${priceStr}\n`;
             }
-            
             orderText += `\n💰 *Итого (ориентировочно): ${totalSum.toLocaleString('ru-RU')} ₽*`;
             orderText += `\n\n_Прошу подтвердить наличие!_`;
-
-            const encodedText = encodeURIComponent(orderText);
-            window.location.href = `https://t.me/Fillers_Beauty?text=${encodedText}`;
+            window.location.href = `https://t.me/Fillers_Beauty?text=${encodeURIComponent(orderText)}`;
         }
     </script>
 </body>

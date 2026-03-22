@@ -28,7 +28,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* 1. ЭКРАН ЗАГРУЗКИ (PRELOADER) */
+        /* ЭКРАН ЗАГРУЗКИ */
         #preloader {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: var(--emerald-dark); z-index: 9999;
@@ -41,17 +41,18 @@
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); object-fit: cover;
             animation: pulse-gold-loader 1.5s infinite alternate;
         }
-        @keyframes pulse-gold-loader {
-            0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-            100% { transform: scale(1.05); box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); }
-        }
+        @keyframes pulse-gold-loader { 0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); } 100% { transform: scale(1.05); box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); } }
 
-        /* ШАПКА */
+        /* ЖИВАЯ ШАПКА С ДЫШАЩИМ ГРАДИЕНТОМ */
         .header-card {
-            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald-light) 100%);
+            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-light), #0f4c3a, var(--emerald-dark));
+            background-size: 300% 300%;
+            animation: gradient-breathe 8s ease infinite;
             border-radius: 24px; padding: 25px 15px; text-align: center; margin-bottom: 15px;
             box-shadow: 0 10px 30px rgba(10, 58, 42, 0.2); position: relative; border: 2px solid var(--gold);
         }
+        @keyframes gradient-breathe { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
         .logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); margin-bottom: 12px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
         #user-greeting { font-size: 14px; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
         .header-card h1 { font-size: 26px; font-weight: 900; margin: 0; color: #fff; }
@@ -72,29 +73,19 @@
         }
         .nav-scroll { display: flex; overflow-x: auto; gap: 10px; scrollbar-width: none; scroll-behavior: smooth; }
         .nav-scroll::-webkit-scrollbar { display: none; }
-        .nav-item { 
-            background: #fff; color: var(--emerald-dark); padding: 8px 16px; border-radius: 12px; 
-            white-space: nowrap; font-size: 11px; font-weight: 800; text-decoration: none; 
-            border: 1px solid rgba(212, 175, 55, 0.4); text-transform: uppercase; transition: 0.3s; 
-        }
-        
-        /* Активный пункт меню при скролле */
-        .nav-item.active-nav {
-            background: var(--gold); color: #fff; transform: scale(1.05); box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
-        }
+        .nav-item { background: #fff; color: var(--emerald-dark); padding: 8px 16px; border-radius: 12px; white-space: nowrap; font-size: 11px; font-weight: 800; text-decoration: none; border: 1px solid rgba(212, 175, 55, 0.4); text-transform: uppercase; transition: 0.3s; }
+        .nav-item.active-nav { background: var(--gold); color: #fff; transform: scale(1.05); box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4); }
 
         /* КАТЕГОРИИ */
         .category { font-size: 18px; font-weight: 900; margin-top: 30px; margin-bottom: 10px; color: var(--emerald-dark); border-left: 5px solid var(--gold); padding-left: 12px; text-transform: uppercase; scroll-margin-top: 90px; }
         .subcategory { font-size: 14px; font-weight: 800; color: var(--emerald-light); margin: 25px 0 10px 10px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
         .subcategory::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, rgba(212, 175, 55, 0.4), transparent); }
 
-        /* 2. АНИМАЦИЯ ПОЯВЛЕНИЯ КАРТОЧЕК (Fade-in-up) */
-        .fade-in-up {
-            opacity: 0; transform: translateY(25px);
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        /* КАСКАДНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ КАРТОЧЕК */
+        .fade-in-up { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
         .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
 
+        /* КАРТОЧКА ТОВАРА */
         .item-card { background: #fff; border-radius: 18px; padding: 18px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(212, 175, 55, 0.1); box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: transform 0.2s, background 0.2s; }
         .item-card:active { transform: scale(0.97); background: #fdfdfd; }
         .item-info { flex: 1; padding-right: 10px; }
@@ -105,10 +96,18 @@
         .price-cart-wrap { display: flex; align-items: center; gap: 10px; }
         .item-price { font-size: 14px; font-weight: 900; color: var(--gold); background: var(--emerald-dark); padding: 8px 12px; border-radius: 12px; white-space: nowrap; text-align: right;}
         
-        .add-btn { background: var(--gold-light); border: 1px solid var(--gold); color: var(--emerald-dark); width: 36px; height: 36px; border-radius: 10px; font-size: 20px; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
+        .add-btn { background: var(--gold-light); border: 1px solid var(--gold); color: var(--emerald-dark); width: 36px; height: 36px; border-radius: 10px; font-size: 20px; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; position: relative; }
         .add-btn:active { background: var(--gold); color: #fff; transform: scale(0.85); }
 
-        /* НИЖНЯЯ НАВИГАЦИЯ И КОРЗИНА */
+        /* ИСКРА ПОЛЕТА В КОРЗИНУ */
+        .fly-item {
+            position: fixed; width: 16px; height: 16px; background: var(--gold);
+            border-radius: 50%; z-index: 1000; pointer-events: none;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.9);
+        }
+
+        /* НИЖНЯЯ ПАНЕЛЬ */
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px; padding-bottom: calc(15px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; z-index: 100; border-top: 1px solid rgba(212, 175, 55, 0.2); }
         .btn { height: 50px; border: none; border-radius: 16px; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; cursor: pointer; text-transform: uppercase; }
         
@@ -119,18 +118,14 @@
         .cart-panel.active { display: flex; }
         .cart-summary { display: flex; justify-content: space-between; font-weight: 800; color: var(--emerald-dark); font-size: 15px; padding: 0 5px; align-items: center;}
         
-        /* 3. Анимация прыжка суммы */
+        /* ПРЫЖОК СУММЫ */
         @keyframes bounce-sum { 0% { transform: scale(1); } 50% { transform: scale(1.15); color: #27ae60; } 100% { transform: scale(1); } }
         .cart-summary span { color: var(--gold); background: var(--emerald-dark); padding: 6px 12px; border-radius: 8px; transition: 0.2s;}
         .cart-summary span.bouncing { animation: bounce-sum 0.3s ease; }
 
-        /* 4. Световой блик на кнопке оплаты */
+        /* БЛИК НА КНОПКЕ ОФОРМЛЕНИЯ */
         .btn-order { background: linear-gradient(135deg, #d4af37 0%, #e5c158 100%); color: var(--emerald-dark); position: relative; overflow: hidden; }
-        .btn-order::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
-            transform: skewX(-20deg); animation: shimmer 3s infinite;
-        }
+        .btn-order::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent); transform: skewX(-20deg); animation: shimmer 3s infinite; }
         @keyframes shimmer { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
         .btn-clear { background: #f2f2f2; color: #e74c3c; height: 35px; margin-top: -5px; }
@@ -567,11 +562,15 @@
         webApp.expand(); 
         webApp.MainButton.hide();
 
-        // 1. Убираем Preloader через полсекунды
+        /* ЗАГРУЗКА КОРЗИНЫ ИЗ ПАМЯТИ */
+        let cart = JSON.parse(localStorage.getItem('fillers_cart')) || {};
+
+        // 1. Убираем Preloader через полсекунды и обновляем UI корзины
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('preloader').classList.add('hidden');
             }, 600);
+            updateCartUI(); // Восстанавливаем корзину при загрузке
         });
 
         try {
@@ -594,7 +593,6 @@
                         nav.classList.remove('active-nav');
                         if (nav.getAttribute('href') === '#' + currentId) {
                             nav.classList.add('active-nav');
-                            // Центрируем активную кнопку
                             const navRect = nav.getBoundingClientRect();
                             const containerRect = navContainer.getBoundingClientRect();
                             navContainer.scrollLeft += navRect.left - containerRect.left - (containerRect.width / 2) + (navRect.width / 2);
@@ -606,12 +604,16 @@
 
         categories.forEach(cat => spyObserver.observe(cat));
 
-        /* 3. Анимация появления карточек при скролле */
+        /* 3. Каскадная анимация карточек */
+        let delayCount = 0;
         const fadeObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.style.transitionDelay = `${delayCount * 0.05}s`;
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Анимируем только один раз
+                    delayCount++;
+                    setTimeout(() => { delayCount = 0; }, 100);
+                    observer.unobserve(entry.target);
                 }
             });
         }, { rootMargin: "0px 0px -20px 0px", threshold: 0.1 });
@@ -623,21 +625,58 @@
         function closeModal(e) { if (e.target.id === 'promoModal') forceClose(); }
         function forceClose() { document.getElementById('promoModal').classList.remove('active'); }
         
-        /* КОРЗИНА */
-        let cart = {}; 
+        /* КОРЗИНА И ИСКРА */
+        function flyToCart(event) {
+            const circle = document.createElement('div');
+            circle.classList.add('fly-item');
+            document.body.appendChild(circle);
+
+            const rect = event.target.getBoundingClientRect();
+            circle.style.left = `${rect.left + rect.width / 2 - 8}px`;
+            circle.style.top = `${rect.top + rect.height / 2 - 8}px`;
+
+            const cartPanel = document.getElementById('cartPanel');
+            const cartRect = cartPanel.getBoundingClientRect();
+
+            setTimeout(() => {
+                circle.style.left = `${cartRect.left + cartRect.width / 2}px`; 
+                circle.style.top = `${cartRect.top + 20}px`;  
+                circle.style.transform = 'scale(0.3)';
+                circle.style.opacity = '0';
+            }, 10);
+
+            setTimeout(() => { circle.remove(); }, 500);
+        }
 
         document.querySelectorAll('.add-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
                 webApp.HapticFeedback.impactOccurred('light');
+                flyToCart(e); // Запускаем искру
+
                 const card = this.closest('.item-card');
                 const name = card.querySelector('.item-name').innerText;
                 const priceText = card.querySelector('.item-price').innerText;
                 
                 const firstPricePart = priceText.split('/')[0];
-                const price = parseInt(firstPricePart.replace(/\D/g, '')) || 0;
+                const basePrice = parseInt(firstPricePart.replace(/\D/g, '')) || 0;
 
-                if (cart[name]) cart[name].qty += 1;
-                else cart[name] = { price: price, qty: 1 };
+                // Парсим оптовую цену
+                let optThreshold = null;
+                let optPrice = null;
+                const optElem = card.querySelector('.item-opt');
+                if (optElem) {
+                    const match = optElem.innerText.match(/От\s+(\d+)\s+шт:\s+([\d\s]+)/i);
+                    if (match) {
+                        optThreshold = parseInt(match[1]);
+                        optPrice = parseInt(match[2].replace(/\s/g, ''));
+                    }
+                }
+
+                if (cart[name]) {
+                    cart[name].qty += 1;
+                } else {
+                    cart[name] = { price: basePrice, qty: 1, optThreshold: optThreshold, optPrice: optPrice };
+                }
                 
                 updateCartUI();
                 
@@ -651,10 +690,18 @@
         function updateCartUI() {
             let totalQty = 0; let totalSum = 0; let hasZeroPrice = false;
 
-            for (let item in cart) {
-                totalQty += cart[item].qty;
-                totalSum += cart[item].price * cart[item].qty;
-                if (cart[item].price === 0) hasZeroPrice = true;
+            for (let name in cart) {
+                const item = cart[name];
+                let currentPrice = item.price;
+                
+                // Умный пересчет опта
+                if (item.optThreshold && item.qty >= item.optThreshold) {
+                    currentPrice = item.optPrice;
+                }
+
+                totalQty += item.qty;
+                totalSum += currentPrice * item.qty;
+                if (currentPrice === 0) hasZeroPrice = true;
             }
 
             document.getElementById('cartCount').innerText = totalQty;
@@ -664,9 +711,9 @@
             const totalSpan = document.getElementById('cartTotal');
             totalSpan.innerText = sumDisplay;
             
-            // Анимация прыжка суммы
+            // Прыжок суммы
             totalSpan.classList.remove('bouncing');
-            void totalSpan.offsetWidth; // Триггер рефлоу (чтобы анимация сработала заново)
+            void totalSpan.offsetWidth;
             totalSpan.classList.add('bouncing');
 
             const cartActivePanel = document.getElementById('cartActivePanel');
@@ -679,6 +726,9 @@
                 cartActivePanel.classList.remove('active');
                 promoBtn.style.display = 'flex';
             }
+
+            // Сохраняем в память
+            localStorage.setItem('fillers_cart', JSON.stringify(cart));
         }
 
         function clearCart() {
@@ -694,9 +744,17 @@
             
             for (let name in cart) {
                 let item = cart[name];
-                let itemSum = item.price * item.qty;
+                let currentPrice = item.price;
+                let optApplied = "";
+
+                if (item.optThreshold && item.qty >= item.optThreshold) {
+                    currentPrice = item.optPrice;
+                    optApplied = " (опт)";
+                }
+
+                let itemSum = currentPrice * item.qty;
                 totalSum += itemSum;
-                let priceStr = item.price > 0 ? `${item.price}₽` : `(уточнить цену)`;
+                let priceStr = currentPrice > 0 ? `${currentPrice}₽${optApplied}` : `(уточнить цену)`;
                 orderText += `▪️ ${name} x${item.qty} — ${priceStr}\n`;
             }
             

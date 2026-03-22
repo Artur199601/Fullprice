@@ -85,7 +85,7 @@
         /* МОДАЛКИ ОБЩИЕ */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 58, 42, 0.85); backdrop-filter: blur(8px); z-index: 200; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: flex-end; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 30px 20px; padding-bottom: 400px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column;}
+        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 35px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column;}
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .modal-close { position: absolute; top: 20px; right: 20px; background: var(--gold-light); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark); cursor: pointer;}
         
@@ -496,23 +496,22 @@
     </div>
 
     <div class="bottom-nav" id="cartPanel">
+        
         <div class="delivery-widget" id="deliveryWidget">
             <div class="delivery-text" id="deliveryText">До бесплатной доставки: <span>30 000 ₽</span></div>
             <div class="progress-bg"><div class="progress-fill" id="deliveryFill"></div></div>
         </div>
 
         <button class="btn btn-promo" id="promoBtn" onclick="openModal('promoModal')">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
-        <button class="btn btn-info" id="delInfoBtn" onclick="openModal('deliveryModal')">🚚 Условия Доставки и Оплаты</button>
-        <button class="btn btn-info" id="bonusInfoBtn" onclick="openModal('bonusModal')">🎁 Программа Бонусов</button>
         <button class="btn btn-share" id="shareBtn" onclick="shareApp()">📤 ПОДЕЛИТЬСЯ ПРАЙСОМ</button>
-        
 
         <div class="cart-panel" id="cartActivePanel">
-            <div class="cart-summary">
-                <div>🛒 В корзине: <b id="cartCount">0</b> шт.</div>
-                <div>Сумма: <span id="cartTotal">0 ₽</span></div>
+            <div class="cart-summary" style="display: flex; justify-content: space-between; align-items: center; font-size: 15px; gap: 5px;">
+                <div style="white-space: nowrap;">🛒 В корзине: <b id="cartCount">0</b> шт.</div>
+                <div style="white-space: nowrap;">Сумма: <span id="cartTotal" style="color: var(--gold); background: var(--emerald-dark); padding: 5px 10px; border-radius: 8px; font-size: 15px; display: inline-block;">0 ₽</span></div>
             </div>
-            <button class="btn btn-order" onclick="openModal('cartModal')">🛍 ПЕРЕЙТИ К ОФОРМЛЕНИЮ</button>
+            
+            <button class="btn btn-order" style="height: 50px; margin-top: 5px;" onclick="openModal('cartModal')">🛍 ПЕРЕЙТИ К ОФОРМЛЕНИЮ</button>
         </div>
     </div>
 
@@ -646,7 +645,6 @@
                 </div>
             </div>
             
-                  
             <div style="margin-top: 20px; padding-top: 15px; border-top: 2px solid var(--gold-light); text-align: center; padding-bottom: 40px;">
                 <div style="font-size: 14px; color: #555; font-weight: 800; text-transform: uppercase;">Итого к оплате:</div>
                 <div id="cartModalTotal" style="font-size: 32px; color: var(--emerald-dark); font-weight: 900; margin: 5px 0;">0 ₽</div>
@@ -663,7 +661,6 @@
         webApp.expand(); 
         webApp.MainButton.hide();
 
-        
         /* ПОЛНАЯ БАЗА ЗНАНИЙ (ИНФО-ШТОРКИ) */
         const productInfoDB = {
             'Botulax 100': 'Корейский ботулотоксин типа А (100 единиц). Отличается мягкой блокировкой мимики, отсутствием ощущения "каменного лица" и быстрым началом действия.',

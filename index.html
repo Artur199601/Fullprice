@@ -1022,10 +1022,10 @@
             if (totalQty > 0) { 
                 cartActivePanel.classList.add('active'); 
                 deliveryWidget.classList.add('active');
-                promoBtn.style.display = 'none'; 
-                delInfoBtn.style.display = 'none'; 
-                bonusInfoBtn.style.display = 'none'; 
-                shareBtn.style.display = 'none'; 
+                if (promoBtn) promoBtn.style.display = 'none'; 
+                if (delInfoBtn) delInfoBtn.style.display = 'none'; 
+                if (bonusInfoBtn) bonusInfoBtn.style.display = 'none'; 
+                if (shareBtn) shareBtn.style.display = 'none'; 
 
                 let percent = (totalSum / 30000) * 100;
                 if (percent >= 100) {
@@ -1045,11 +1045,12 @@
             } else { 
                 cartActivePanel.classList.remove('active'); 
                 deliveryWidget.classList.remove('active');
-                promoBtn.style.display = 'flex'; 
-                delInfoBtn.style.display = 'flex'; 
-                bonusInfoBtn.style.display = 'flex'; 
-                shareBtn.style.display = 'flex'; 
+                if (promoBtn) promoBtn.style.display = 'flex'; 
+                if (delInfoBtn) delInfoBtn.style.display = 'flex'; 
+                if (bonusInfoBtn) bonusInfoBtn.style.display = 'flex'; 
+                if (shareBtn) shareBtn.style.display = 'flex'; 
             }
+
             
             localStorage.setItem('fillers_cart', JSON.stringify(cart));
         }
@@ -1120,8 +1121,8 @@
                 }
             }
 
-            webApp.HapticFeedback.notificationOccurred('success');
-            window.location.href = `https://t.me/Fillers_Beauty?text=${encodeURIComponent(orderText)}`;
+                        webApp.HapticFeedback.notificationOccurred('success');
+            webApp.openTelegramLink(`https://t.me/Fillers_Beauty?text=${encodeURIComponent(orderText)}`);
         }
     </script>
 </body>

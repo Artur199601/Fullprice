@@ -8,7 +8,7 @@
     <style>
         :root { --emerald-dark: #062118; --emerald-mid: #10664d; --emerald-light: #24bfa1; --gold: #d4af37; --gold-light: #f9f1d8; --bg-color: #f4f6f5; --text-main: #1a2521; }
         html { scroll-behavior: smooth; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); background-attachment: fixed; color: var(--text-main); margin: 0; padding: 15px; padding-bottom: 320px; -webkit-tap-highlight-color: transparent; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); background-attachment: fixed; color: var(--text-main); margin: 0; padding: 15px; padding-bottom: 250px; -webkit-tap-highlight-color: transparent; }
 
         #preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--emerald-dark); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s; }
         #preloader.hidden { opacity: 0; visibility: hidden; }
@@ -57,9 +57,10 @@
         .add-btn:active { background: var(--gold); color: #fff; transform: scale(0.8); }
         .fly-item { position: fixed; width: auto; height: auto; background: var(--gold); color: var(--emerald-dark); padding: 6px 10px; border-radius: 10px; font-size: 12px; font-weight: 900; z-index: 1000; pointer-events: none; transition: all 0.6s cubic-bezier(0.2, 1, 0.4, 1.15); box-shadow: 0 0 15px rgba(212, 175, 55, 0.8); opacity: 1; }
 
-        /* НИЖНЯЯ ПАНЕЛЬ И ПРОГРЕСС-БАР */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px; padding-bottom: calc(15px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; z-index: 100; border-top: 1px solid rgba(212, 175, 55, 0.2); }
-        .delivery-widget { background: #fdfdfd; border-radius: 12px; padding: 10px; border: 1px solid rgba(39, 174, 96, 0.3); display: none; flex-direction: column; gap: 5px; }
+        /* НИЖНЯЯ ПАНЕЛЬ - КОМПАКТНАЯ И БЕЗОПАСНАЯ */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px; padding-bottom: calc(15px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; z-index: 100; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+        #mainButtonsBlock { display: flex; flex-direction: column; gap: 8px; }
+        .delivery-widget { background: #fdfdfd; border-radius: 12px; padding: 10px; border: 1px solid rgba(39, 174, 96, 0.3); display: none; flex-direction: column; gap: 5px; margin-bottom: 8px;}
         .delivery-widget.active { display: flex; }
         .delivery-text { font-size: 12px; font-weight: 800; color: var(--emerald-dark); text-align: center; }
         .delivery-text span { color: #27ae60; }
@@ -68,36 +69,37 @@
 
         .btn { height: 50px; border: none; border-radius: 16px; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; cursor: pointer; text-transform: uppercase; gap: 8px;}
         @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); } 70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
-        .btn-promo { background: var(--emerald-dark); color: var(--gold); animation: pulse-gold 2s infinite; border: 1px solid var(--gold); margin-bottom: 0px;}
+        .btn-promo { background: var(--emerald-dark); color: var(--gold); animation: pulse-gold 2s infinite; border: 1px solid var(--gold); }
         .btn-info { background: #f4f6f5; color: var(--emerald-mid); border: 1px solid var(--emerald-light); font-size: 13px;}
+        .btn-share { background: #f4f6f5; color: var(--emerald-light); border: 1px solid var(--emerald-light); }
         
-        .cart-panel { display: none; flex-direction: column; gap: 10px; }
+        .cart-panel { display: none; flex-direction: column; gap: 8px; }
         .cart-panel.active { display: flex; }
         .cart-summary { display: flex; justify-content: space-between; font-weight: 800; color: var(--emerald-dark); font-size: 15px; padding: 0 5px; align-items: center;}
-        @keyframes bounce-sum { 0% { transform: scale(1); } 50% { transform: scale(1.25); color: #27ae60; } 100% { transform: scale(1); } }
+        @keyframes bounce-sum { 0% { transform: scale(1); } 50% { transform: scale(1.15); color: #27ae60; } 100% { transform: scale(1); } }
         .cart-summary span { color: var(--gold); background: var(--emerald-dark); padding: 6px 12px; border-radius: 8px; transition: 0.2s;}
         .cart-summary span.bouncing { animation: bounce-sum 0.35s ease-out; }
+        .btn-order { background: linear-gradient(135deg, #d4af37 0%, #e5c158 100%); color: var(--emerald-dark); }
 
-        .btn-order { background: linear-gradient(135deg, #d4af37 0%, #e5c158 100%); color: var(--emerald-dark); position: relative; overflow: hidden; margin-top: 5px; }
-        .btn-order::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent); transform: skewX(-20deg); animation: shimmer 3s infinite; }
-        @keyframes shimmer { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
-
-        /* МОДАЛКИ ОБЩИЕ */
+        /* МОДАЛКИ (ОБЩЕЕ) */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 58, 42, 0.85); backdrop-filter: blur(8px); z-index: 200; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: flex-end; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 35px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column;}
+        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 30px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column;}
         .modal-overlay.active .modal-content { transform: translateY(0); }
-        .modal-close { position: absolute; top: 20px; right: 20px; background: var(--gold-light); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark); cursor: pointer;}
+        .modal-close { position: absolute; top: 15px; right: 15px; background: var(--gold-light); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark); cursor: pointer;}
         
-        .promo-card { background: var(--gold-light); border: 1px solid var(--gold); border-left: 8px solid var(--gold); border-radius: 15px; padding: 20px; margin-bottom: 15px; }
-        .promo-buy { font-size: 16px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 8px; }
-        .promo-gift { font-size: 16px; font-weight: 900; color: #27ae60; }
-        #infoTitle { font-size: 20px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 15px; line-height: 1.3;}
+        .promo-card { background: var(--gold-light); border: 1px solid var(--gold); border-left: 8px solid var(--gold); border-radius: 15px; padding: 15px; margin-bottom: 12px; }
+        .promo-buy { font-size: 15px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 5px; }
+        .promo-gift { font-size: 15px; font-weight: 900; color: #27ae60; }
+        #infoTitle { font-size: 20px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 10px; line-height: 1.3;}
         #infoText { font-size: 14px; color: #444; line-height: 1.6; }
+        .info-ul { padding-left: 20px; color: #444; font-size: 14px; line-height: 1.6;}
+        .info-ul li { margin-bottom: 8px;}
+        .info-ul strong { color: var(--emerald-dark);}
 
         /* СТИЛИ КОРЗИНЫ С ПЛЮС И МИНУС */
-        .cart-modal-title { font-size: 24px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 20px; border-bottom: 2px solid var(--gold-light); padding-bottom: 10px;}
-        .cart-items-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; padding-right: 5px;}
+        .cart-modal-title { font-size: 22px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 15px; border-bottom: 2px solid var(--gold-light); padding-bottom: 10px;}
+        .cart-items-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;}
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; background: #fdfdfd; padding: 12px; border-radius: 12px; border: 1px solid #eee; }
         .cart-item-name { font-size: 14px; font-weight: 800; color: var(--emerald-dark); margin-bottom: 4px; }
         .cart-item-price { font-size: 13px; color: var(--gold); font-weight: 900; }
@@ -109,11 +111,12 @@
         /* СТИЛИ ФОРМЫ ЗАКАЗА */
         .order-form { background: #f9f9f9; border-radius: 15px; padding: 15px; margin-bottom: 20px; border: 1px solid #eaeaea;}
         .order-form h4 { margin: 0 0 15px 0; font-size: 15px; color: var(--emerald-dark); text-transform: uppercase;}
-        .form-group { margin-bottom: 15px; }
-        .form-label { display: block; font-size: 12px; font-weight: 800; color: #555; margin-bottom: 5px; text-transform: uppercase;}
-        .form-input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 14px; box-sizing: border-box; background: #fff;}
+        .form-group { margin-bottom: 12px; }
+        .form-label { display: block; font-size: 11px; font-weight: 800; color: #777; margin-bottom: 5px; text-transform: uppercase;}
+        /* FONT-SIZE 16px ПРЕДОТВРАЩАЕТ ЗУМ В IPHONE */
+        .form-input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; box-sizing: border-box; background: #fff; height: 45px;}
         .form-input:focus { outline: none; border-color: var(--emerald-light); }
-        .form-select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 14px; background: #fff;}
+        .form-select { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; background: #fff; height: 45px;}
         
         .radio-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
         .del-label { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; cursor: pointer; color: #333;}
@@ -121,14 +124,7 @@
 
         .dynamic-fields { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc;}
         .dynamic-fields.active { display: block; }
-
-        .cart-final-total { font-size: 16px; font-weight: 900; color: var(--emerald-dark); text-align: right; margin-bottom: 10px; padding-top: 15px; border-top: 2px solid var(--gold-light);}
-        .cart-final-total span { color: var(--gold); font-size: 22px; display: block; margin-top: 5px;}
         .empty-cart-msg { text-align: center; color: #999; font-weight: 600; padding: 20px 0; font-size: 15px;}
-        
-        .info-ul { padding-left: 20px; color: #444; font-size: 14px; line-height: 1.6;}
-        .info-ul li { margin-bottom: 8px;}
-        .info-ul strong { color: var(--emerald-dark);}
     </style>
 </head>
 <body>
@@ -212,7 +208,6 @@
         <div class="subcategory">Другие Бренды</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Маспорт 500u <i class="info-icon" onclick="showInfo('Masport')">i</i></div><div class="item-desc">Франция / Турция</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
 
-
         <div id="biorev" class="category">🧬 Биоревитализация</div>
 
         <div class="subcategory">Плацентарные препараты</div>
@@ -268,7 +263,6 @@
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Kiara Reju <i class="info-icon" onclick="showInfo('Kiara Reju')">i</i></div><div class="item-desc">3 шт × 2.2 мл</div><div class="item-opt">От 5 шт: 3 200 ₽</div></div><div class="price-cart-wrap"><div class="item-price">3 300 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">GemVous <i class="info-icon" onclick="showInfo('GemVous')">i</i></div><div class="item-desc">Биоревитализант</div><div class="item-opt">От 5 шт: 3 000 ₽</div></div><div class="price-cart-wrap"><div class="item-price">3 100 ₽</div><div class="add-btn">+</div></div></div>
 
-
         <div id="meso" class="category">💉 Мезотерапия</div>
 
         <div class="subcategory">Dermaheal</div>
@@ -298,7 +292,6 @@
         <div class="subcategory">Fillmed</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Fillmed NCTF 135HA <i class="info-icon" onclick="showInfo('Fillmed')">i</i></div><div class="item-desc">Фл / Уп</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽ / 18 500 ₽</div><div class="add-btn">+</div></div></div>
 
-
         <div id="plla" class="category">💊 Полимолочная кислота</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Аэстефил Европа <i class="info-icon" onclick="showInfo('AestheFill Euro')">i</i></div><div class="item-desc">AestheFill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Аэстефил официальный <i class="info-icon" onclick="showInfo('AestheFill Off')">i</i></div><div class="item-desc">AestheFill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
@@ -309,6 +302,7 @@
         <div class="subcategory">Richesse & Olidia</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Richessse PCL 200мг <i class="info-icon" onclick="showInfo('Richesse PCL')">i</i></div><div class="item-desc">PCL</div></div><div class="price-cart-wrap"><div class="item-price">7 800 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Olidia 364мг <i class="info-icon" onclick="showInfo('Olidia')">i</i></div><div class="item-desc">PLLA</div></div><div class="price-cart-wrap"><div class="item-price">9 500 ₽</div><div class="add-btn">+</div></div></div>
+
         <div id="collagen" class="category">🧬 Коллаген</div>
         
         <div class="subcategory">Коллаген</div>
@@ -330,8 +324,6 @@
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Сферогель Light <i class="info-icon" onclick="showInfo('Сферогель Light')">i</i></div><div class="item-desc">Матрикс</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Сферогель Fine <i class="info-icon" onclick="showInfo('Сферогель Fine')">i</i></div><div class="item-desc">Матрикс</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Сферогель Medium <i class="info-icon" onclick="showInfo('Сферогель Medium')">i</i></div><div class="item-desc">Матрикс</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-
-
         <div id="euro" class="category">💎 Филлеры (Европа)</div>
         
         <div class="subcategory">Stylage (Франция)</div>
@@ -496,21 +488,23 @@
     </div>
 
     <div class="bottom-nav" id="cartPanel">
-        
         <div class="delivery-widget" id="deliveryWidget">
             <div class="delivery-text" id="deliveryText">До бесплатной доставки: <span>30 000 ₽</span></div>
             <div class="progress-bg"><div class="progress-fill" id="deliveryFill"></div></div>
         </div>
 
-        <button class="btn btn-promo" id="promoBtn" onclick="openModal('promoModal')">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
-        <button class="btn btn-share" id="shareBtn" onclick="shareApp()">📤 ПОДЕЛИТЬСЯ ПРАЙСОМ</button>
+        <div id="mainButtonsBlock">
+            <button class="btn btn-promo" onclick="openModal('promoModal')">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
+            <button class="btn btn-info" onclick="openModal('deliveryModal')">🚚 Условия Доставки и Оплаты</button>
+            <button class="btn btn-info" onclick="openModal('bonusModal')">🎁 Программа Бонусов</button>
+            <button class="btn btn-share" onclick="shareApp()">📤 ПОДЕЛИТЬСЯ ПРАЙСОМ</button>
+        </div>
 
         <div class="cart-panel" id="cartActivePanel">
             <div class="cart-summary" style="display: flex; justify-content: space-between; align-items: center; font-size: 15px; gap: 5px;">
                 <div style="white-space: nowrap;">🛒 В корзине: <b id="cartCount">0</b> шт.</div>
                 <div style="white-space: nowrap;">Сумма: <span id="cartTotal" style="color: var(--gold); background: var(--emerald-dark); padding: 5px 10px; border-radius: 8px; font-size: 15px; display: inline-block;">0 ₽</span></div>
             </div>
-            
             <button class="btn btn-order" style="height: 50px; margin-top: 5px;" onclick="openModal('cartModal')">🛍 ПЕРЕЙТИ К ОФОРМЛЕНИЮ</button>
         </div>
     </div>
@@ -531,25 +525,25 @@
         <div class="modal-content">
             <button class="modal-close" onclick="forceClose('deliveryModal')">✕</button>
             <div style="font-size: 24px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 20px; border-bottom: 2px solid var(--gold-light); padding-bottom: 10px;">🚚 Доставка и Оплата</div>
-            <div class="info-block-bottom" style="box-shadow: none; border: none; padding: 0;">
-                <h3>🏙 ДОСТАВКА: МОСКВА И МО</h3>
+            <div style="font-size: 14px; color: #444; line-height: 1.6;">
+                <h3 style="color: var(--emerald-dark); margin-top: 0;">🏙 ДОСТАВКА: МОСКВА И МО</h3>
                 <ul class="info-ul">
-                    <li>🏎 <span class="highlight-text">Курьерская доставка на следующий день.</span></li>
+                    <li>🏎 <strong style="color: #27ae60;">Курьерская доставка на следующий день.</strong></li>
                     <li>В пределах МКАД — <strong>400 руб</strong></li>
                     <li>За МКАД (до 5 км) — <strong>800 руб</strong></li>
                     <li>⚠️ Самовывоза нет. Отгрузка строго курьерской службой.</li>
                 </ul>
                 <br>
-                <h3>📦 ДОСТАВКА: РЕГИОНЫ РФ И СНГ</h3>
+                <h3 style="color: var(--emerald-dark); margin-top: 0;">📦 ДОСТАВКА: РЕГИОНЫ РФ И СНГ</h3>
                 <ul class="info-ul">
-                    <li>✈️ <span class="highlight-text">Отправка:</span> Строго на следующий день после оплаты.</li>
-                    <li>📩 <span class="highlight-text">Трек-номер:</span> Присылаем фото накладной вечером.</li>
-                    <li>📮 <span class="highlight-text">Службы:</span> СДЭК / Почта России.</li>
+                    <li>✈️ <strong style="color: #27ae60;">Отправка:</strong> Строго на следующий день после оплаты.</li>
+                    <li>📩 <strong style="color: #27ae60;">Трек-номер:</strong> Присылаем фото накладной вечером.</li>
+                    <li>📮 <strong style="color: #27ae60;">Службы:</strong> СДЭК / Почта России.</li>
                 </ul>
                 <br>
-                <h3>💳 ОФОРМЛЕНИЕ И ОПЛАТА</h3>
+                <h3 style="color: var(--emerald-dark); margin-top: 0;">💳 ОФОРМЛЕНИЕ И ОПЛАТА</h3>
                 <ul class="info-ul">
-                    <li>🔹 <span class="highlight-text">Минимальный заказ:</span> от 2 упаковок или от 7 000 руб.</li>
+                    <li>🔹 <strong style="color: #27ae60;">Минимальный заказ:</strong> от 2 упаковок или от 7 000 руб.</li>
                     <li>💸 Перевод на карту (Сбер / Тинькофф / Альфа)</li>
                     <li>💸 USDT (TRC-20) — <strong>скидка 2%</strong></li>
                 </ul>
@@ -561,8 +555,8 @@
         <div class="modal-content">
             <button class="modal-close" onclick="forceClose('bonusModal')">✕</button>
             <div style="font-size: 24px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 20px; border-bottom: 2px solid var(--gold-light); padding-bottom: 10px;">🎁 Программа Бонусов</div>
-            <div class="info-block-bottom" style="box-shadow: none; border: none; padding: 0;">
-                <h3>Закрытый клуб 'FILLER'S FAMILY'</h3>
+            <div style="font-size: 14px; color: #444; line-height: 1.6;">
+                <h3 style="color: var(--emerald-dark); margin-top: 0;">Закрытый клуб 'FILLER'S FAMILY'</h3>
                 <ul class="info-ul">
                     <li>👯 <strong>ПРИВЕДИ КОЛЛЕГУ — СКИДКА 5%</strong> на следующий заказ.</li>
                     <li>📦 <strong>ФОТО-ОТЗЫВ — БЕСПЛАТНАЯ ДОСТАВКА</strong>. Пришлите фото распаковки менеджеру!</li>
@@ -581,7 +575,7 @@
         </div>
     </div>
 
-<div class="modal-overlay" id="cartModal" onclick="closeModal(event)">
+    <div class="modal-overlay" id="cartModal" onclick="closeModal(event)">
         <div class="modal-content" style="max-height: 90vh; display: block; overflow-y: auto; padding-bottom: 350px;">
             <button class="modal-close" onclick="forceClose('cartModal')">✕</button>
             <div class="cart-modal-title">🛍 Ваш заказ</div>
@@ -602,17 +596,17 @@
                     </label>
                     <label class="del-label">
                         <input type="radio" name="delivery" value="0" onchange="toggleFormFields()">
-                        Регионы (СДЭК / Почта)
+                        Регионы (СДЭК / Почта России)
                     </label>
                 </div>
 
                 <div id="form-msk" class="dynamic-fields active">
-                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="msk-name" class="form-input" style="font-size: 16px; height: 45px;" placeholder="Иванова Анна"></div>
-                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="msk-phone" class="form-input" style="font-size: 16px; height: 45px;" placeholder="+7 (999) 000-00-00"></div>
-                    <div class="form-group"><label class="form-label">Метро / Точный адрес</label><input type="text" id="msk-address" class="form-input" style="font-size: 16px; height: 45px;" placeholder="м. Тверская, ул. Горького 10"></div>
+                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="msk-name" class="form-input" placeholder="Иванова Анна"></div>
+                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="msk-phone" class="form-input" placeholder="+7 (999) 000-00-00"></div>
+                    <div class="form-group"><label class="form-label">Метро / Точный адрес</label><input type="text" id="msk-address" class="form-input" placeholder="м. Тверская, ул. Горького 10"></div>
                     <div class="form-group">
                         <label class="form-label">Желаемое время (интервал 3 часа)</label>
-                        <select id="msk-time" class="form-select" style="font-size: 16px; height: 45px;">
+                        <select id="msk-time" class="form-select">
                             <option value="10:00 - 13:00">С 10:00 до 13:00</option>
                             <option value="13:00 - 16:00">С 13:00 до 16:00</option>
                             <option value="16:00 - 19:00">С 16:00 до 19:00</option>
@@ -622,9 +616,9 @@
                 </div>
 
                 <div id="form-zamkad" class="dynamic-fields">
-                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="zamkad-name" class="form-input" style="font-size: 16px; height: 45px;" placeholder="Иванова Анна"></div>
-                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="zamkad-phone" class="form-input" style="font-size: 16px; height: 45px;" placeholder="+7 (999) 000-00-00"></div>
-                    <div class="form-group"><label class="form-label">Точный адрес</label><input type="text" id="zamkad-address" class="form-input" style="font-size: 16px; height: 45px;" placeholder="г. Химки, ул. Ленина 5"></div>
+                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="zamkad-name" class="form-input" placeholder="Иванова Анна"></div>
+                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="zamkad-phone" class="form-input" placeholder="+7 (999) 000-00-00"></div>
+                    <div class="form-group"><label class="form-label">Точный адрес</label><input type="text" id="zamkad-address" class="form-input" placeholder="г. Химки, ул. Ленина 5"></div>
                     <div style="font-size: 13px; color: #e67e22; font-weight: 800; text-align: center; margin-top: 10px;">
                         🕒 Доставка осуществляется в течение дня до 21:00
                     </div>
@@ -633,15 +627,15 @@
                 <div id="form-region" class="dynamic-fields">
                     <div class="form-group">
                         <label class="form-label">Транспортная компания</label>
-                        <select id="reg-tk" class="form-select" style="font-size: 16px; height: 45px;">
+                        <select id="reg-tk" class="form-select">
                             <option value="СДЭК">СДЭК</option>
                             <option value="Почта России (1-й класс)">Почта России (1-й класс)</option>
                         </select>
                     </div>
-                    <div class="form-group"><label class="form-label">Город</label><input type="text" id="reg-city" class="form-input" style="font-size: 16px; height: 45px;" placeholder="г. Казань"></div>
-                    <div class="form-group"><label class="form-label">Адрес до двери или ПВЗ</label><input type="text" id="reg-address" class="form-input" style="font-size: 16px; height: 45px;" placeholder="ПВЗ на ул. Баумана 15"></div>
-                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="reg-name" class="form-input" style="font-size: 16px; height: 45px;" placeholder="Иванова Анна"></div>
-                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="reg-phone" class="form-input" style="font-size: 16px; height: 45px;" placeholder="+7 (999) 000-00-00"></div>
+                    <div class="form-group"><label class="form-label">Город</label><input type="text" id="reg-city" class="form-input" placeholder="г. Казань"></div>
+                    <div class="form-group"><label class="form-label">Адрес до двери или ПВЗ</label><input type="text" id="reg-address" class="form-input" placeholder="ПВЗ на ул. Баумана 15"></div>
+                    <div class="form-group"><label class="form-label">ФИО Получателя</label><input type="text" id="reg-name" class="form-input" placeholder="Иванова Анна"></div>
+                    <div class="form-group"><label class="form-label">Номер телефона</label><input type="tel" id="reg-phone" class="form-input" placeholder="+7 (999) 000-00-00"></div>
                 </div>
             </div>
             
@@ -655,7 +649,8 @@
             </div>
         </div>
     </div>
-<script>
+
+    <script>
         const webApp = window.Telegram.WebApp;
         webApp.ready();
         webApp.expand(); 
@@ -845,8 +840,11 @@
 
         function showInfo(key) {
             webApp.HapticFeedback.impactOccurred('medium');
-            document.getElementById('infoTitle').innerText = key;
-            document.getElementById('infoText').innerHTML = productInfoDB[key] || "Подробности у менеджера.";
+            const titleEl = document.getElementById('infoTitle');
+            const textEl = document.getElementById('infoText');
+            titleEl.innerText = key;
+            if (productInfoDB[key]) { textEl.innerHTML = productInfoDB[key]; } 
+            else { textEl.innerHTML = "Подробную информацию и протокол применения вы можете уточнить у нашего менеджера."; }
             document.getElementById('infoModal').classList.add('active');
         }
 
@@ -884,7 +882,7 @@
             const circle = document.createElement('div'); circle.classList.add('fly-item'); circle.innerText = priceElem.innerText; document.body.appendChild(circle);
             const priceRect = priceElem.getBoundingClientRect(); circle.style.left = `${priceRect.left}px`; circle.style.top = `${priceRect.top}px`;
             const cartPanel = document.getElementById('cartPanel'); const cartRect = cartPanel.getBoundingClientRect();
-            setTimeout(() => { circle.style.left = `${cartRect.left + cartRect.width / 2 - circle.offsetWidth/2}px`; circle.style.top = `${cartRect.top + 20}px`; circle.style.transform = 'scale(0.2)'; circle.style.opacity = '0.3'; }, 10);
+            setTimeout(() => { circle.style.left = `${cartRect.left + cartRect.width / 2}px`; circle.style.top = `${cartRect.top + 20}px`; circle.style.transform = 'scale(0.2)'; circle.style.opacity = '0.3'; }, 10);
             setTimeout(() => { circle.remove(); }, 600);
         }
 
@@ -981,7 +979,7 @@
                 totalEl.innerText = finalTotal.toLocaleString('ru-RU') + ' ₽';
                 
                 if (itemsSum >= 30000) {
-                    delTextEl.innerHTML = `Бесплатная доставка за счет компании! 🎁`;
+                    delTextEl.innerHTML = `<span style="color:#27ae60; font-weight:800;">Бесплатная доставка за счет компании! 🎁</span>`;
                 } else if (deliveryFee === 0) {
                     delTextEl.innerHTML = `Оплата доставки при получении в ТК`;
                 }
@@ -1019,18 +1017,12 @@
             const deliveryFill = document.getElementById('deliveryFill');
             
             const cartActivePanel = document.getElementById('cartActivePanel');
-            const promoBtn = document.getElementById('promoBtn');
-            const delInfoBtn = document.getElementById('delInfoBtn');
-            const bonusInfoBtn = document.getElementById('bonusInfoBtn');
-            const shareBtn = document.getElementById('shareBtn');
+            const mainButtonsBlock = document.getElementById('mainButtonsBlock');
             
             if (totalQty > 0) { 
                 cartActivePanel.classList.add('active'); 
                 deliveryWidget.classList.add('active');
-                promoBtn.style.display = 'none'; 
-                delInfoBtn.style.display = 'none'; 
-                bonusInfoBtn.style.display = 'none'; 
-                shareBtn.style.display = 'none'; 
+                if(mainButtonsBlock) mainButtonsBlock.style.display = 'none'; 
 
                 let percent = (totalSum / 30000) * 100;
                 if (percent >= 100) {
@@ -1046,19 +1038,16 @@
                     deliveryText.innerHTML = `До бесплатной доставки: <span>${left.toLocaleString('ru-RU')} ₽</span>`;
                     localStorage.removeItem('delivery_won');
                 }
+
             } else { 
                 cartActivePanel.classList.remove('active'); 
                 deliveryWidget.classList.remove('active');
-                promoBtn.style.display = 'flex'; 
-                delInfoBtn.style.display = 'flex'; 
-                bonusInfoBtn.style.display = 'flex'; 
-                shareBtn.style.display = 'flex'; 
+                if(mainButtonsBlock) mainButtonsBlock.style.display = 'flex'; 
             }
             
             localStorage.setItem('fillers_cart', JSON.stringify(cart));
         }
 
-        /* ИСПРАВЛЕНА ОЧИСТКА ПАМЯТИ */
         function clearCart() { 
             cart = {}; 
             localStorage.removeItem('fillers_cart'); 
@@ -1067,7 +1056,6 @@
             webApp.HapticFeedback.notificationOccurred('warning'); 
         }
 
-        /* ИСПРАВЛЕНА ОТПРАВКА (НАТИВНАЯ ТЕЛЕГРАМ-СВЯЗЬ) */
         function sendOrder() {
             if (Object.keys(cart).length === 0) return;
             
@@ -1132,11 +1120,9 @@
             }
 
             webApp.HapticFeedback.notificationOccurred('success');
-            // НАТИВНЫЙ МЕТОД, КОТОРЫЙ РАБОТАЕТ БЕЗОТКАЗНО
             const url = `https://t.me/Fillers_Beauty?text=${encodeURIComponent(orderText)}`;
             webApp.openTelegramLink(url);
         }
     </script>
 </body>
 </html>
-

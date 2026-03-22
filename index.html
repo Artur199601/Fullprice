@@ -64,6 +64,7 @@
         .info-block-bottom strong { color: var(--emerald-dark); }
         .highlight-text { color: #27ae60; font-weight: 800; }
 
+        /* НИЖНЯЯ ПАНЕЛЬ И ПРОГРЕСС-БАР */
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px; padding-bottom: calc(15px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; z-index: 100; border-top: 1px solid rgba(212, 175, 55, 0.2); }
         .delivery-widget { background: #fdfdfd; border-radius: 12px; padding: 10px; border: 1px solid rgba(39, 174, 96, 0.3); display: none; flex-direction: column; gap: 5px; }
         .delivery-widget.active { display: flex; }
@@ -87,19 +88,39 @@
         .btn-order { background: linear-gradient(135deg, #d4af37 0%, #e5c158 100%); color: var(--emerald-dark); position: relative; overflow: hidden; }
         .btn-order::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent); transform: skewX(-20deg); animation: shimmer 3s infinite; }
         @keyframes shimmer { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
-        .btn-clear { background: #f2f2f2; color: #e74c3c; height: 35px; margin-top: -5px; }
 
+        /* МОДАЛКИ (Акции, Инфо, КОРЗИНА) */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 58, 42, 0.85); backdrop-filter: blur(8px); z-index: 200; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: flex-end; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 35px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 85vh; overflow-y: auto; }
+        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 35px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 85vh; overflow-y: auto; display: flex; flex-direction: column;}
         .modal-overlay.active .modal-content { transform: translateY(0); }
-        .modal-close { position: absolute; top: 20px; right: 20px; background: var(--gold-light); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark); }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: var(--gold-light); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark); cursor: pointer;}
         
         .promo-card { background: var(--gold-light); border: 1px solid var(--gold); border-left: 8px solid var(--gold); border-radius: 15px; padding: 20px; margin-bottom: 15px; }
         .promo-buy { font-size: 16px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 8px; }
         .promo-gift { font-size: 16px; font-weight: 900; color: #27ae60; }
         #infoTitle { font-size: 22px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 15px;}
         #infoText { font-size: 14px; color: #555; line-height: 1.5; }
+
+        /* СТИЛИ ОТДЕЛЬНОЙ КОРЗИНЫ (+/- И ДОСТАВКА) */
+        .cart-modal-title { font-size: 24px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 20px; border-bottom: 2px solid var(--gold-light); padding-bottom: 10px;}
+        .cart-items-list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; max-height: 40vh; overflow-y: auto; padding-right: 5px;}
+        .cart-item-row { display: flex; justify-content: space-between; align-items: center; background: #fdfdfd; padding: 12px; border-radius: 12px; border: 1px solid #eee; }
+        .cart-item-name { font-size: 14px; font-weight: 800; color: var(--emerald-dark); margin-bottom: 4px; }
+        .cart-item-price { font-size: 13px; color: var(--gold); font-weight: 900; }
+        .cart-item-controls { display: flex; align-items: center; gap: 12px; }
+        .qty-btn { width: 30px; height: 30px; background: var(--gold-light); border: none; border-radius: 8px; font-size: 18px; font-weight: bold; color: var(--emerald-dark); cursor: pointer; transition: 0.2s;}
+        .qty-btn:active { transform: scale(0.9); background: var(--gold); color: #fff;}
+        .qty-val { font-size: 15px; font-weight: 800; color: var(--text-main); min-width: 20px; text-align: center;}
+        
+        .delivery-options { background: #f9f9f9; border-radius: 15px; padding: 15px; margin-bottom: 20px; border: 1px solid #eaeaea;}
+        .delivery-options h4 { margin: 0 0 12px 0; font-size: 15px; color: var(--emerald-dark); text-transform: uppercase;}
+        .del-label { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 14px; font-weight: 600; cursor: pointer; color: #444;}
+        .del-label input[type="radio"] { accent-color: var(--emerald-light); width: 18px; height: 18px; }
+        
+        .cart-final-total { font-size: 18px; font-weight: 900; color: var(--emerald-dark); text-align: right; margin-bottom: 20px; padding-top: 10px; border-top: 2px solid var(--gold-light);}
+        .cart-final-total span { color: var(--gold); font-size: 22px;}
+        .empty-cart-msg { text-align: center; color: #999; font-weight: 600; padding: 20px 0; font-size: 15px;}
     </style>
 </head>
 <body>
@@ -185,6 +206,7 @@
         <div class="subcategory">Другие Бренды</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Маспорт 500u <i class="info-icon" onclick="showInfo('Masport')">i</i></div><div class="item-desc">Франция / Турция</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
 
+
         <div id="biorev" class="category">🧬 Биоревитализация</div>
 
         <div class="subcategory">Плацентарные препараты</div>
@@ -240,7 +262,6 @@
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Kiara Reju <i class="info-icon" onclick="showInfo('Kiara Reju')">i</i></div><div class="item-desc">3 шт × 2.2 мл</div><div class="item-opt">От 5 шт: 3 200 ₽</div></div><div class="price-cart-wrap"><div class="item-price">3 300 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">GemVous <i class="info-icon" onclick="showInfo('GemVous')">i</i></div><div class="item-desc">Биоревитализант</div><div class="item-opt">От 5 шт: 3 000 ₽</div></div><div class="price-cart-wrap"><div class="item-price">3 100 ₽</div><div class="add-btn">+</div></div></div>
 
-
         <div id="meso" class="category">💉 Мезотерапия</div>
 
         <div class="subcategory">Dermaheal</div>
@@ -269,8 +290,6 @@
 
         <div class="subcategory">Fillmed</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Fillmed NCTF 135HA <i class="info-icon" onclick="showInfo('Fillmed')">i</i></div><div class="item-desc">Фл / Уп</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽ / 18 500 ₽</div><div class="add-btn">+</div></div></div>
-
-
         <div id="plla" class="category">💊 Полимолочная кислота</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Аэстефил Европа <i class="info-icon" onclick="showInfo('AestheFill Euro')">i</i></div><div class="item-desc">AestheFill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Аэстефил официальный <i class="info-icon" onclick="showInfo('AestheFill Off')">i</i></div><div class="item-desc">AestheFill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
@@ -304,6 +323,8 @@
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Сферогель Light <i class="info-icon" onclick="showInfo('Сферогель Light')">i</i></div><div class="item-desc">Матрикс</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Сферогель Fine <i class="info-icon" onclick="showInfo('Сферогель Fine')">i</i></div><div class="item-desc">Матрикс</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Сферогель Medium <i class="info-icon" onclick="showInfo('Сферогель Medium')">i</i></div><div class="item-desc">Матрикс</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+
+
         <div id="euro" class="category">💎 Филлеры (Европа)</div>
         
         <div class="subcategory">Stylage (Франция)</div>
@@ -352,7 +373,7 @@
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Sardenya Matrix <i class="info-icon" onclick="showInfo('Sardenya Matrix')">i</i></div><div class="item-desc">Волюмайзер Premium</div><div class="item-opt">От 10 шт: 4 500 ₽</div></div><div class="price-cart-wrap"><div class="item-price">4 700 ₽</div><div class="add-btn">+</div></div></div>
 
         <div class="subcategory">Neuramis</div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Нейрамис <i class="info-icon" onclick="showInfo('Neuramis')">i</i></div><div class="item-desc">Neuramis</div></div><div class="price-cart-wrap"><div class="item-price">1 600 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Нейрамис <i class="info-icon" onclick="showInfo('Neuramis Light')">i</i></div><div class="item-desc">Neuramis Light</div></div><div class="price-cart-wrap"><div class="item-price">1 600 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Нейрамис дип <i class="info-icon" onclick="showInfo('Neuramis Deep')">i</i></div><div class="item-desc">Neuramis Deep</div></div><div class="price-cart-wrap"><div class="item-price">1 600 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Нейрамис дип лидо <i class="info-icon" onclick="showInfo('Neuramis Deep')">i</i></div><div class="item-desc">Neuramis Deep Lido</div></div><div class="price-cart-wrap"><div class="item-price">1 600 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Нейрамис волюм <i class="info-icon" onclick="showInfo('Neuramis Volume')">i</i></div><div class="item-desc">Neuramis Volume</div></div><div class="price-cart-wrap"><div class="item-price">1 600 ₽</div><div class="add-btn">+</div></div></div>
@@ -505,8 +526,8 @@
 
 ---
 
-### ЧАСТЬ 4: Модалки, Корзина и Полная База Знаний (Скрипты)
-*Это финал. Вставляй сразу под третьей частью.*
+### ЧАСТЬ 4: Модальное окно КОРЗИНЫ, скрипты и полная логика + - доставки
+*Скопируй это и вставь сразу под третьей частью. Это конец файла!*
 
 ```html
     <div style="text-align: center; margin: 40px 0; font-weight: 800; color: var(--emerald-light); text-transform: uppercase; font-size: 12px;">
@@ -520,7 +541,7 @@
             <div class="progress-bg"><div class="progress-fill" id="deliveryFill"></div></div>
         </div>
 
-        <button class="btn btn-promo" id="promoBtn" onclick="openModal()">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
+        <button class="btn btn-promo" id="promoBtn" onclick="openModal('promoModal')">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
         <button class="btn btn-share" id="shareBtn" onclick="shareApp()">📤 ПОДЕЛИТЬСЯ ПРАЙСОМ</button>
 
         <div class="cart-panel" id="cartActivePanel">
@@ -528,8 +549,7 @@
                 <div>🛒 В корзине: <b id="cartCount">0</b> шт.</div>
                 <div>Сумма: <span id="cartTotal">0 ₽</span></div>
             </div>
-            <button class="btn btn-order" onclick="sendOrder()">📤 ОФОРМИТЬ ЗАКАЗ</button>
-            <button class="btn btn-clear" onclick="clearCart()">Очистить корзину</button>
+            <button class="btn btn-order" onclick="openModal('cartModal')">🛍 ПЕРЕЙТИ К ОФОРМЛЕНИЮ</button>
         </div>
     </div>
 
@@ -539,25 +559,10 @@
             <div style="font-size: 26px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 10px;">🎁 ГОРЯЧИЕ АКЦИИ</div>
             <div style="font-size: 14px; color: var(--gold); font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">Количество строго ограничено!</div>
 
-            <div class="promo-card">
-                <div class="promo-buy">🛍 Заказ 10 шт Botulax 100u</div>
-                <div class="promo-gift">🎁 ПОДАРОК: Доставка + J-Cain 30гр</div>
-            </div>
-            
-            <div class="promo-card">
-                <div class="promo-buy">🛍 Заказ 5 шт Novacutan или MesoEye</div>
-                <div class="promo-gift">🎁 ПОДАРОК: Филлер Sardenya Deep</div>
-            </div>
-
-            <div class="promo-card">
-                <div class="promo-buy">🛍 Заказ 4 шт Refinex (Япония)</div>
-                <div class="promo-gift">🎁 ПОДАРОК: 1 шт Refinex (Корея)</div>
-            </div>
-
-            <div class="promo-card">
-                <div class="promo-buy">🛍 Заказ 4 шт Stylage M (Bi-Soft)</div>
-                <div class="promo-gift">🎁 ПОДАРОК: Липолитик V-Line</div>
-            </div>
+            <div class="promo-card"><div class="promo-buy">🛍 Заказ 10 шт Botulax 100u</div><div class="promo-gift">🎁 ПОДАРОК: Доставка + J-Cain 30гр</div></div>
+            <div class="promo-card"><div class="promo-buy">🛍 Заказ 5 шт Novacutan или MesoEye</div><div class="promo-gift">🎁 ПОДАРОК: Филлер Sardenya Deep</div></div>
+            <div class="promo-card"><div class="promo-buy">🛍 Заказ 4 шт Refinex (Япония)</div><div class="promo-gift">🎁 ПОДАРОК: 1 шт Refinex (Корея)</div></div>
+            <div class="promo-card"><div class="promo-buy">🛍 Заказ 4 шт Stylage M (Bi-Soft)</div><div class="promo-gift">🎁 ПОДАРОК: Липолитик V-Line</div></div>
         </div>
     </div>
 
@@ -569,225 +574,231 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="cartModal" onclick="closeModal(event)">
+        <div class="modal-content" style="max-height: 90vh;">
+            <button class="modal-close" onclick="forceClose('cartModal')">✕</button>
+            <div class="cart-modal-title">🛍 Ваш заказ</div>
+            
+            <div class="cart-items-list" id="cartItemsList">
+                </div>
+            
+            <div class="delivery-options">
+                <h4>🚚 Выберите доставку:</h4>
+                <label class="del-label">
+                    <input type="radio" name="delivery" value="400" checked onchange="updateCartModalUI()">
+                    Москва (в пределах МКАД) — 400 ₽
+                </label>
+                <label class="del-label">
+                    <input type="radio" name="delivery" value="800" onchange="updateCartModalUI()">
+                    Москва (за МКАД до 5 км) — 800 ₽
+                </label>
+                <label class="del-label">
+                    <input type="radio" name="delivery" value="0" onchange="updateCartModalUI()">
+                    Регионы РФ (СДЭК/Почта) — по тарифу ТК
+                </label>
+            </div>
+            
+            <div class="cart-final-total">
+                Итого к оплате: <span id="cartModalTotal">0 ₽</span>
+            </div>
+            
+            <button class="btn btn-order" style="width: 100%; margin-top: 10px;" onclick="sendOrder()">🚀 ОТПРАВИТЬ ЗАКАЗ В TELEGRAM</button>
+            <button class="btn btn-clear" style="width: 100%; margin-top: 10px;" onclick="clearCart()">🗑 Очистить корзину</button>
+        </div>
+    </div>
+
     <script>
         const webApp = window.Telegram.WebApp;
         webApp.ready();
         webApp.expand(); 
         webApp.MainButton.hide();
 
-        /* ПОЛНАЯ БАЗА ЗНАНИЙ (ИНФО-ШТОРКИ НА ВСЕ ПОЗИЦИИ) */
+        /* ПОЛНАЯ БАЗА ЗНАНИЙ */
         const productInfoDB = {
-            'Botulax 100': 'Корейский ботулотоксин типа А (100 единиц). Отличается мягкой блокировкой мимики, отсутствием ощущения "каменного лица" и быстрым началом действия.',
-            'Botulax 200': 'Корейский ботулотоксин типа А (200 единиц). Оптимальный объем для активного приема. Подходит для работы с верхней третью лица и гипергидрозом.',
-            'Botulax 300': 'Корейский ботулотоксин типа А (300 единиц). Максимальный объем. Самый выгодный формат для лечения гипергидроза и потоковой работы клиники.',
-            'Refinex Jap': 'Японский стандарт (100 ед). Считается одним из самых "жестких" и долгоиграющих токсинов на рынке. Мощная фиксация мимики.',
-            'Refinex Kor': 'Эконом-линейка (100 ед) из Кореи. Хороший рабочий токсин для базовых задач.',
-            'Refinex 125': 'Токсин высокой степени очистки (125 единиц). Отличный баланс жесткости и безопасности.',
-            'Refinex Extra': 'Премиум-версия классического Рефайнекса с улучшенной формулой и минимизацией белковой нагрузки.',
-            'RenTox 100': 'Инновационный корейский токсин премиум-класса. Выпускается без белков-примесей, что снижает риск резистентности. Дает очень быстрый старт.',
-            'RenTox 200': 'Токсин премиум-класса без белков-примесей. Выгодный объем (200 ед).',
-            'Nabota 100': 'Высокоочищенный ботулотоксин (Корея), одобренный FDA (США). Гарантирует предсказуемый результат и естественную мимику.',
+            'Botulax 100': 'Корейский ботулотоксин типа А (100 единиц). Мягкая блокировка мимики, быстрый старт.',
+            'Botulax 200': 'Корейский ботулотоксин типа А (200 единиц). Оптимально для верхней трети и гипергидроза.',
+            'Botulax 300': 'Корейский ботулотоксин типа А (300 единиц). Максимальный объем.',
+            'Refinex Jap': 'Японский стандарт (100 ед). Считается "жестким" токсином. Мощная фиксация.',
+            'Refinex Kor': 'Эконом-линейка (100 ед) из Кореи.',
+            'Refinex 125': 'Токсин высокой степени очистки (125 единиц).',
+            'Refinex Extra': 'Премиум-версия классического Рефайнекса.',
+            'RenTox 100': 'Токсин без белков-примесей. Снижает риск резистентности. Быстрый старт.',
+            'RenTox 200': 'Токсин премиум-класса без белков-примесей (200 ед).',
+            'Nabota 100': 'Корея, одобрен FDA (США). Предсказуемый результат и естественная мимика.',
             'Nabota 200': 'Очищенный ботулотоксин (200 ед) стандарта FDA.',
-            'Xeomin 50': 'Немецкий ботулотоксин от Merz (чистый нейротоксин). Минимизирует риск аллергических реакций и привыкания (50 ед).',
-            'Xeomin 100': 'Немецкий чистый нейротоксин (100 ед). Отлично подходит для пациентов с резистентностью.',
-            'Dysport Tur': 'Легендарный французский препарат. Отличается высокой степенью диффузии, идеален для крупных мышц и лба.',
-            'Dysport RF': 'Официальный Диспорт для рынка РФ. Мощная диффузия.',
-            'Relatox 50': 'Российский ботулотоксин первого поколения. Отличается сильной, "жесткой" фиксацией и более длительным сроком действия.',
-            'Relatox 100': 'Отечественный ботулотоксин. Максимально жесткая блокировка.',
-            'RedTox 100': 'Корейский токсин нового поколения. Мягкая диффузия, комфортное введение.',
-            'RedTox 200': 'Корейский токсин нового поколения (200 ед).',
-            'DehanTox 100': 'Современный корейский ботулотоксин. Стабильный результат и высокая степень очистки.',
+            'Xeomin 50': 'Немецкий ботулотоксин от Merz. Без белков. Минимум привыкания.',
+            'Xeomin 100': 'Немецкий чистый нейротоксин (100 ед).',
+            'Dysport Tur': 'Французский препарат. Высокая диффузия, для крупных мышц.',
+            'Dysport RF': 'Официальный Диспорт для рынка РФ.',
+            'Relatox 50': 'Российский ботулотоксин. Сильная, "жесткая" фиксация.',
+            'Relatox 100': 'Отечественный ботулотоксин (100 ед).',
+            'RedTox 100': 'Мягкая диффузия, комфортное введение.',
+            'RedTox 200': 'Корейский токсин (200 ед).',
+            'DehanTox 100': 'Стабильный результат и высокая степень очистки.',
             'DehanTox 200': 'Современный корейский ботулотоксин (200 ед).',
-            'Masport': 'Препарат производства Франция/Турция (500 единиц). Аналог Диспорта с хорошей диффузией.',
-            
-            'Мелсмон': 'Японский плацентарный препарат. Используется для мощного системного омоложения, лечения пигментации и восстановления клеточного дыхания.',
-            'Лаенек': 'Плацентарная терапия (Япония). Гепатопротектор и иммуномодулятор. Используется в косметологии для лифтинга и общего оздоровления организма.',
-            'TwAc Eye': 'Биоревитализант с полинуклеотидами (PDRN) специально для периорбитальной зоны. Убирает темные круги, отеки и мелкую сетку морщин вокруг глаз.',
-            'TwAc 2.0': 'Препарат PDRN для восстановления структуры дермы на лице.',
-            'TwAc 3.0': 'Усиленная формула PDRN для мощной регенерации и лифтинга.',
-            'Plinest': 'Итальянский препарат с полинуклеотидами (мастрэлли). Запускает процесс регенерации коллагена и эластина.',
-            'Plinest Fast': 'Облегченная версия Plinest. Идеально подходит для молодой кожи, зоны вокруг глаз и шеи.',
-            
-            'Aquashine BR': 'Комплексный биоревитализант (Brightening). Содержит пептиды, направленные на осветление кожи, борьбу с пигментацией и выравнивание тона.',
-            'Aquashine Soft': 'Классический биоревитализант. Глубоко увлажняет кожу, дает эффект "сияния изнутри" и легкий лифтинг.',
-            'Aquashine PTX': 'Биоревитализант с ботулоподобными пептидами. Слегка расслабляет мимику, идеально для тех, кто боится классического ботокса.',
-            'Revi Eye': 'Специализированный биоревитализант с трегалозой для зоны век. Снимает пастозность, убирает морщинки, не дает отеков.',
-            'Revi Style 1': 'Базовый биоревитализант с трегалозой (1 мл) для молодой кожи или профилактики старения.',
-            'Revi Style 2': 'Базовый биоревитализант с трегалозой (2 мл).',
-            'Revi Silk 1': 'Препарат с трегалозой (1 мл) для пациентов 30-40 лет. Лечит купероз, розацеа, дает глубокое увлажнение.',
-            'Revi Silk 2': 'Препарат с трегалозой (2 мл) для глубокого увлажнения.',
-            'Revi Strong 1': 'Мощный биоревитализант (1 мл) для возрастной кожи или лечения тяжелых форм акне.',
-            'Revi Strong 2': 'Мощный биоревитализант (2 мл) для возрастной кожи. Эффект до 4-6 месяцев.',
-            'BioGel Gold': 'Многокомпонентный коктейль для мезотерапии и биоревитализации.',
-            'BioGel Silver': 'Улучшает трофику тканей, дает сияние и увлажнение.',
-            'BioGel NAD': 'Премиум биоревитализант с клеточным коферментом NAD+.',
-            'BioGel Siyanie': 'Специальный коктейль для эффекта мгновенного сияния.',
-            'BioGel Monaco': 'VIP Коктейль "Монако" для роскошного цвета лица.',
+            'Masport': 'Аналог Диспорта с хорошей диффузией (500 ед).',
+            'Мелсмон': 'Плацентарный препарат (Япония). Системное омоложение.',
+            'Лаенек': 'Плацентарная терапия (Япония). Гепатопротектор, иммуномодулятор.',
+            'TwAc Eye': 'PDRN специально для периорбитальной зоны (круги, отеки).',
+            'TwAc 2.0': 'PDRN для восстановления структуры дермы.',
+            'TwAc 3.0': 'Усиленная формула PDRN для мощной регенерации.',
+            'Plinest': 'Итальянские полинуклеотиды. Регенерация коллагена.',
+            'Plinest Fast': 'Облегченная версия Plinest для молодой кожи и век.',
+            'Aquashine BR': 'Биоревитализант с пептидами (осветление, пигментация).',
+            'Aquashine Soft': 'Классический биоревитализант (увлажнение, сияние).',
+            'Aquashine PTX': 'Биоревитализант с ботулоподобными пептидами.',
+            'Revi Eye': 'С трегалозой для зоны век (снимает пастозность, без отеков).',
+            'Revi Style 1': 'С трегалозой для молодой кожи (до 30 лет).',
+            'Revi Style 2': 'С трегалозой (2 мл).',
+            'Revi Silk 1': 'С трегалозой (30-40 лет, лечит купероз).',
+            'Revi Silk 2': 'С трегалозой (2 мл) глубокое увлажнение.',
+            'Revi Strong 1': 'Для возрастной кожи/постакне (эффект до 4-6 месяцев).',
+            'Revi Strong 2': 'Мощный биоревитализант (2 мл).',
+            'BioGel Gold': 'Многокомпонентный коктейль для мезо.',
+            'BioGel Silver': 'Улучшает трофику тканей, дает сияние.',
+            'BioGel NAD': 'Премиум биоревитализант с NAD+.',
+            'BioGel Siyanie': 'Коктейль для мгновенного сияния.',
+            'BioGel Monaco': 'VIP Коктейль "Монако".',
             'BioGel Harisma': 'Мощнейший VIP Коктейль для лифтинга.',
-            
-            'Novacutan SBio': 'Экзопротектор (Skin Bionomical). Защищает кожу от ультрафиолета, стресса и недосыпа. Дает эффект сияния.',
-            'Novacutan YBio': 'Экзопротектор (Youth Bionomical). Основная цель — лифтинг, разглаживание морщин и уплотнение кожи.',
-            'Novacutan SBio Holo': 'Экзопротектор SBio (Европа, с голограммой).',
-            'Novacutan YBio Holo': 'Экзопротектор YBio (Европа, с голограммой).',
-            'Novacutan SBio Off': 'Официальный сертифицированный в РФ экзопротектор SBio.',
-            'Novacutan YBio Off': 'Официальный сертифицированный в РФ экзопротектор YBio.',
-            'Novacutan BioPro': 'Мощный экзопротектор с усиленной формулой для комплексной защиты.',
-            
-            'Profhilo': 'Уникальный препарат для биоремоделирования кожи. Вводится по 5 точкам (БЭТ). Не дает папул, обеспечивает мгновенный лифтинг.',
-            'Ejal40': 'Итальянский биоревитализант. Введение в 4 точки. Содержит ГК среднего молекулярного веса, стимулирует фибробласты.',
-            'Hyaron': 'Корейский биоревитализант на основе нестабилизированной ГК. Классика для базового увлажнения кожи (10 шприцев).',
-            'Kiara Reju': 'Корейский биоревитализант с PDRN, гиалуроновой кислотой и ниацинамидом. Дает мощное увлажнение и осветление.',
-            'GemVous': 'Комплексный биоревитализант из Кореи. Отлично работает на гидратацию и улучшение цвета лица.',
-            
-            'Dermaheal HL': 'Терапевтический мезококтейль против выпадения волос. Питает фолликулы, стимулирует рост.',
-            'Dermaheal HSR': 'Мезококтейль с ГК, пептидами и аминокислотами для активного омоложения.',
-            'Dermaheal LL': 'Липолитический мезококтейль для локального расщепления жира.',
-            'Dermaheal SB': 'Осветляющий мезококтейль. Блокирует меланин, борется с пигментацией.',
-            'Dermaheal SR': 'Базовый мезококтейль для ревитализации кожи и сужения пор.',
-            'Dermaheal Dark': 'Мезококтейль для устранения темных кругов под глазами.',
-            'Dermaheal EyeBag': 'Мезококтейль, разработанный для уменьшения грыж нижнего века и мешков под глазами.',
-            'Meso Wharton': 'Инновационный препарат с пептидом P199. Стимулирует деление собственных стволовых клеток кожи. Показан пациентам старше 40 лет.',
-            'Meso Eye': 'Уникальный вазомодификатор для зоны век. Укрепляет сосуды, убирает мешки, грыжи и темные круги.',
-            'Meso Xanthin': 'Препарат с фукоксантином. Защищает ДНК клеток, идеален для лечения акне и розацеа (25-35 лет).',
-            'Meso Sculpt': 'Липоредуктор для лица. "Перепрограммирует" жировые клетки, уменьшая в размерах. Убирает брыли и второй подбородок.',
-            'Hanheal Exosome': 'Комплект с экзосомами. Микровезикулы передают клеткам сигналы к мощной регенерации.',
-            'Fillmed': 'Французский мезококтейль (NCTF 135HA). ГК + 59 активных ингредиентов для "витаминного удара" по коже.',
-            
-            'AestheFill Euro': 'Препарат на основе полимолочной кислоты (ПЛК). Восстанавливает объемы лица (результат до 2 лет).',
+            'Novacutan SBio': 'Экзопротектор. Защита от УФ и стресса. Эффект сияния.',
+            'Novacutan YBio': 'Экзопротектор. Лифтинг, уплотнение кожи.',
+            'Novacutan BioPro': 'Мощный экзопротектор с усиленной формулой.',
+            'Profhilo': 'Биоремоделирование кожи (техника 5 точек). Мгновенный лифтинг.',
+            'Ejal40': 'Итальянский биоревитализант (техника 4 точек).',
+            'Hyaron': 'Нестабилизированная ГК (базовое увлажнение, 10 шприцев).',
+            'Kiara Reju': 'PDRN + ГК + ниацинамид (увлажнение и осветление).',
+            'GemVous': 'Комплексный биоревитализант (гидратация).',
+            'Dermaheal HL': 'Против выпадения волос.',
+            'Dermaheal HSR': 'С ГК, пептидами для омоложения.',
+            'Dermaheal LL': 'Липолитический коктейль.',
+            'Dermaheal SB': 'Осветляющий (блокирует меланин).',
+            'Dermaheal SR': 'Ревитализация и сужение пор.',
+            'Dermaheal Dark': 'От темных кругов под глазами.',
+            'Dermaheal EyeBag': 'Уменьшение грыж нижнего века.',
+            'Meso Wharton': 'Пептид P199. Стимулирует стволовые клетки (40+).',
+            'Meso Eye': 'Вазомодификатор для век (укрепляет сосуды).',
+            'Meso Xanthin': 'Защищает ДНК клеток (акне, розацеа, 25-35 лет).',
+            'Meso Sculpt': 'Липоредуктор для лица (убирает брыли).',
+            'Hanheal Exosome': 'Экзосомы (сигнал к регенерации).',
+            'Fillmed': 'ГК + 59 активных ингредиентов (витаминный удар).',
+            'AestheFill Euro': 'Полимолочная кислота (ПЛК). Восстанавливает объемы (результат до 2 лет).',
             'AestheFill Off': 'Официальный сертифицированный AestheFill.',
-            'Polyfill': 'Инъекционный имплантат на основе ПЛК для глубокого коллагеностимулирующего действия.',
-            'Juvelook 50': 'Гибридный коллагеностимулятор (ПЛК + ГК). Идеально подходит для нежных зон (глаза, шея).',
-            'Juvelook 200': 'Гибридный коллагеностимулятор большого объема (Lenisna) для восстановления объемов лица и работы по телу.',
-            'Richesse PCL': 'Препарат на основе поликапролактона (PCL). Мощнейший стимулятор неоколлагенеза с пролонгированным сроком действия.',
-            'Olidia': 'Коллагеностимулятор на основе микрочастиц PLLA (поли-L-молочная кислота).',
-            
-            'Nithya Collagen': 'Инъекционный лошадиный коллаген I типа. Восстанавливает белковый каркас кожи, дает потрясающую плотность.',
-            'Nithya Stimulate': 'Препарат для усиленной стимуляции клеточного матрикса.',
-            'NEAUTIVIA': 'Коллагеновый стимулятор от Neauvia.',
-            'Karisma': 'Инновационный биорестимулятор на основе рекомбинантного человеческого коллагена и ГК.',
-            'Linerase': 'Гетерологичный коллаген I типа. Лечит атрофические рубцы и стрии.',
-            'Neotiva Collagen': 'Корейский коллагеновый стимулятор для уплотнения тканей.',
-            'Коллост Микро': 'Бычий коллаген нового поколения по технологии Микро. Не требует аллергопробы. Работает с текстурой кожи и постакне.',
-            'Коллост 7': '7% гель бычьего коллагена. Классика для лечения растяжек и возрастных изменений.',
-            'Коллост 15': '15% гель бычьего коллагена. Плотный препарат для заполнения глубоких морщин и атрофических рубцов.',
-            'Сферогель Light': 'Матриксный биорегенерант. Легкая плотность для работы с периорбитальной зоной.',
-            'Сферогель Fine': 'Матриксный биорегенерант средней плотности.',
-            'Сферогель Medium': 'Плотный биорегенерант. Создает идеальную среду для роста клеток и сосудов.',
-            
-            'Stylage Hydro': 'Французский мезо-филлер на основе ГК с маннитолом. Увлажняет кожу без риска сильных отеков.',
-            'Stylage HydroMax': 'Мезо-филлер пролонгированного действия с сорбитолом.',
-            'Stylage S': 'Самый мягкий филлер линейки. Идеален для коррекции поверхностных морщин, гусиных лапок.',
-            'Stylage M': 'Универсальный филлер средней плотности. Бестселлер для носогубных складок и губ.',
-            'Stylage L': 'Плотный филлер для заполнения глубоких морщин и создания мягких контуров лица.',
-            'Stylage XL': 'Мощный волюмайзер. Восстановление объема щек, скул и моделирование подбородка.',
-            'Stylage Lips': 'Специализированная форма филлера для пластики губ.',
-            
-            'Neauvia Lips': 'Швейцарско-итальянский филлер. Обладает высокой эластичностью, не мигрирует ("плоские губы").',
-            'Neauvia Intense': 'Универсальный филлер высокой плотности из органической линейки Neauvia.',
-            'Neauvia Stimulate': 'Уникальный филлер (ГК + гидроксиапатит кальция). Дает объем и стимуляцию коллагена.',
-            'Neauvia Hydro': 'Премиальный биоревитализант с гидроксиапатитом кальция.',
-            'Juvederm 3': 'Классика от Allergan. Универсальный филлер (2 шприца по 1 мл) для губ и носогубок.',
-            'Juvederm Smile': 'Специализированный филлер для деликатной и естественной коррекции губ (0.55 мл).',
-            'Radiesse': 'Препарат на основе гидроксиапатита кальция. Не притягивает воду (без отеков!), дает мощный каркасный лифтинг.',
-            'Belotero Soft': 'Немецкий монофазный филлер. Применяется в технике "бланширования" для заполнения самых мелких морщинок.',
-            'Belotero Intense': 'Плотный филлер с высокой когезивностью. Не контурирует, для глубоких складок.',
-            'Belotero Balance': 'Универсальный филлер для средних морщин.',
-            'Belotero Contour': 'Филлер, специально созданный для выделения четкого контура губ.',
-            'Belotero Shape': 'Филлер-компаньон к Contour, для добавления мягкого объема губам.',
-            'Teosyal Redensity': 'Швейцарский филлер, специально разработанный для коррекции носослезной борозды.',
-            
-            'Sardenya Fine': 'Мягкий филлер. Идеально подходит для коррекции мелких и поверхностных морщин.',
-            'Sardenya Deep': 'Филлер средней плотности. Применяется для увеличения губ, заполнения носогубных складок.',
-            'Sardenya Shape': 'Плотный филлер. Предназначен для глубокой волюмизации (скулы, подбородок).',
-            'Sardenya Implant': 'Максимально плотный волюмайзер для создания жестких контуров.',
-            'Sardenya Luminous': 'Биоревитализант премиум-уровня из линейки Sardenya.',
-            'Sardenya Matrix': 'Сверхплотный филлер-волюмайзер.',
-            'Neuramis Light': 'Легкий филлер-биоревитализант для пролонгированного увлажнения кожи.',
-            'Neuramis Deep': 'Самый популярный филлер средней плотности. Классика для губ и носогубок.',
-            'Neuramis Volume': 'Волюмайзер для восстановления объема в области скул и подбородка.',
-            'Revolax Deep': 'Корейский филлер с высокой степенью очистки. Популярный выбор для "плоского банта".',
-            'Revolax Sub-Q': 'Плотный волюмайзер линейки Revolax для работы по надкостнице.',
-            'Dermalax Deep': 'Универсальный корейский филлер с лидокаином.',
-            'Dermalax Implant': 'Плотный филлер для глубоких слоев дермы и создания четких контуров лица.',
-            'Rejeunesse Deep': 'Универсальный филлер (с лидокаином). Отлично подходит для губ. Меньше отеков.',
-            'Rejeunesse Shape': 'Плотный филлер для волюметрии, скул и подбородка.',
-            'Rejeunesse Sparkle': 'Био-филлер с гиалуроновой кислотой.',
-            'Tesoro Deep': 'Корейский филлер средней плотности. Отличный баланс цены и качества.',
-            'Tesoro Sub-Q': 'Плотный филлер линейки Tesoro для создания объемов.',
-            'Elasty Line': 'Инновационные корейские филлеры с запатентованной технологией сшивки PNET.',
-            'Elasty F': 'Мягкий филлер для поверхностных морщин.',
-            'Elasty G': 'Плотный филлер для глубоких складок и объемов.',
-            'Medeyra Deep': 'Филлер средней плотности (Корея).',
+            'Polyfill': 'Инъекционный имплантат на основе ПЛК.',
+            'Juvelook 50': 'Гибрид ПЛК + ГК. Для нежных зон (глаза, шея).',
+            'Juvelook 200': 'Гибрид большого объема (Lenisna) для волюмизации тела/лица.',
+            'Richesse PCL': 'Поликапролактон (PCL). Пролонгированный неоколлагенез.',
+            'Olidia': 'ПЛК на основе микрочастиц PLLA.',
+            'Nithya Collagen': 'Лошадиный коллаген I типа. Белковый каркас, плотность.',
+            'Nithya Stimulate': 'Стимуляция клеточного матрикса.',
+            'NEAUTIVIA': 'Коллагеновый стимулятор.',
+            'Karisma': 'Рекомбинантный человеческий коллаген и ГК.',
+            'Linerase': 'Коллаген I типа (рубцы, стрии).',
+            'Neotiva Collagen': 'Корейский коллагеновый стимулятор.',
+            'Коллост Микро': 'Бычий коллаген по технологии Микро. Без аллергопробы (постакне, текстура).',
+            'Коллост 7': '7% бычий коллаген (растяжки, возрастные изменения).',
+            'Коллост 15': '15% бычий коллаген (глубокие морщины).',
+            'Сферогель Light': 'Легкий биорегенерант (периорбитальная зона).',
+            'Сферогель Fine': 'Средний биорегенерант.',
+            'Сферогель Medium': 'Плотный биорегенерант (каркас, рост сосудов).',
+            'Stylage Hydro': 'Мезо-филлер с маннитолом.',
+            'Stylage HydroMax': 'Пролонгированный мезо-филлер с сорбитолом.',
+            'Stylage S': 'Мягкий филлер (поверхностные морщины).',
+            'Stylage M': 'Универсальный филлер (носогубки, губы).',
+            'Stylage L': 'Плотный филлер (глубокие морщины, контуры).',
+            'Stylage XL': 'Волюмайзер (щеки, скулы, подбородок).',
+            'Stylage Lips': 'Филлер для пластики губ.',
+            'Neauvia Lips': 'Филлер высокой эластичности ("плоские губы").',
+            'Neauvia Intense': 'Филлер высокой плотности.',
+            'Neauvia Stimulate': 'ГК + гидроксиапатит кальция (объем и коллаген).',
+            'Neauvia Hydro': 'Биоревитализант с гидроксиапатитом кальция.',
+            'Juvederm 3': 'Универсальный филлер (2 шприца по 1 мл).',
+            'Juvederm Smile': 'Для деликатной коррекции губ (0.55 мл).',
+            'Radiesse': 'Гидроксиапатит кальция. Каркасный лифтинг без отеков.',
+            'Belotero Soft': 'Мягкий филлер (техника "бланширования").',
+            'Belotero Intense': 'Плотный филлер без контурирования.',
+            'Belotero Balance': 'Для средних морщин.',
+            'Belotero Contour': 'Для прорисовки четкого контура губ.',
+            'Belotero Shape': 'Для добавления мягкого объема губам.',
+            'Teosyal Redensity': 'Специально для носослезной борозды.',
+            'Sardenya Fine': 'Мягкий филлер.',
+            'Sardenya Deep': 'Средняя плотность (губы, носогубки).',
+            'Sardenya Shape': 'Плотный филлер (волюмизация).',
+            'Sardenya Implant': 'Жесткий волюмайзер.',
+            'Sardenya Luminous': 'Биоревитализант.',
+            'Sardenya Matrix': 'Сверхплотный волюмайзер.',
+            'Neuramis Light': 'Легкий филлер-биоревитализант.',
+            'Neuramis Deep': 'Популярный филлер для губ и носогубок.',
+            'Neuramis Volume': 'Волюмайзер (скулы, подбородок).',
+            'Revolax Deep': 'Высокая степень очистки (для "плоского банта").',
+            'Revolax Sub-Q': 'Плотный волюмайзер.',
+            'Dermalax Deep': 'Универсальный корейский филлер.',
+            'Dermalax Implant': 'Плотный филлер для глубоких слоев.',
+            'Rejeunesse Deep': 'Универсальный филлер (сферы — меньше отеков).',
+            'Rejeunesse Shape': 'Плотный филлер.',
+            'Rejeunesse Sparkle': 'Био-филлер.',
+            'Tesoro Deep': 'Средняя плотность.',
+            'Tesoro Sub-Q': 'Для создания объемов.',
+            'Elasty Line': 'Филлеры с технологией PNET.',
+            'Elasty F': 'Мягкий филлер.',
+            'Elasty G': 'Плотный филлер.',
+            'Medeyra Deep': 'Филлер средней плотности.',
             'Medeyra Shape': 'Плотный волюмайзер.',
-            'Hyamax Lips': 'Специализированный филлер для губ. Мягкий и пластичный.',
-            'Hyamax L Plus Lips': 'Филлер для создания более выраженного объема губ.',
-            'Hyamax Extra Deep': 'Плотный филлер для глубоких дермальных заломов.',
-            'Hyamax Plus 24': 'Биоревитализирующий препарат пролонгированного действия.',
-            'Hyamax Volumizer': 'Мощный волюмайзер для работы с контурами лица.',
-            'Neotiva Soft': 'Мягкий филлер новейшего поколения. Идеален для тонкой кожи.',
-            'Neotiva Lips': 'Специальная формула для контура и объема губ.',
-            'Neotiva Deep': 'Универсальный филлер для базовых эстетических задач.',
-            'Neotiva Volume': 'Волюмайзер для восстановления утраченных объемов.',
-            'Neotiva Implant': 'Самый плотный филлер линейки. Имитирует костную ткань.',
-            'Dr.Fill Fine': 'Мягкий филлер для тонких морщин.',
-            'Dr.Fill Deep': 'Золотая середина для губ и носогубок.',
+            'Hyamax Lips': 'Специализированный филлер для губ.',
+            'Hyamax L Plus Lips': 'Выраженный объем губ.',
+            'Hyamax Extra Deep': 'Для глубоких заломов.',
+            'Hyamax Plus 24': 'Пролонгированный препарат.',
+            'Hyamax Volumizer': 'Мощный волюмайзер.',
+            'Neotiva Soft': 'Мягкий филлер.',
+            'Neotiva Lips': 'Контур и объем губ.',
+            'Neotiva Deep': 'Универсальный филлер.',
+            'Neotiva Volume': 'Волюмайзер.',
+            'Neotiva Implant': 'Сверхплотный филлер (имитация кости).',
+            'Dr.Fill Fine': 'Мягкий филлер.',
+            'Dr.Fill Deep': 'Золотая середина.',
             'Dr.Fill Ultra': 'Волюмайзер.',
-            'EPTQ 100': 'Филлер низкой плотности (эластичность 100). Идеален для гусиных лапок, шеи.',
-            'EPTQ 300': 'Универсальный филлер. Популярный выбор для губ.',
-            'EPTQ 500': 'Сверхплотный филлер для работы с глубокими дефицитами объема.',
-            'Sosum Soft': 'Мягкий филлер без лидокаина (часто используется для чувствительных пациентов).',
-            
-            'Light Fit': 'Непрямой липолитик для лица. Безопасно убирает второй подбородок и комки Биша без отеков.',
+            'EPTQ 100': 'Эластичность 100. Мелкие морщины.',
+            'EPTQ 300': 'Эластичность 300. Губы.',
+            'EPTQ 500': 'Эластичность 500. Скулы, подбородок.',
+            'Sosum Soft': 'Мягкий филлер без лидокаина.',
+            'Light Fit': 'Непрямой липолитик (убирает второй подбородок без отеков).',
             'Липолонг': 'Пролонгированный липолитический комплекс.',
-            'LipoLab PPC': 'Прямой липолитик (фосфатидилхолин). Строго для тела (живот, бедра)!',
-            'LipoLab V-Line': 'Непрямой липолитик для формирования идеального V-контура лица.',
-            'V-Line Super.Sol': 'Мощный липолитический коктейль для подтяжки овала лица.',
-            'LipoOne': 'Липолитик комплексного действия.',
-            'F&B Premium Face': 'Корейский липолитик для деликатного уменьшения объемов лица.',
-            'Триада': 'Классический ферментный коктейль. Растворяет жир, убирает фиброз и подтягивает кожу.',
-            'Липорайз': 'Популярный липолитический коктейль для борьбы с целлюлитом.',
-            'Лонгидаза': 'Фермент (гиалуронидаза). Расщепляет гиалуроновую кислоту. Для лечения гиперкоррекции.',
-            'Tesoro Body': 'Плотный филлер большого объема (50-100 мл). Исключительно для контурной пластики тела.',
-            
-            'BioRePeelCl3': 'Итальянский двухфазный пилинг. Работает без шелушения и периода реабилитации.',
-            'PRX-T33': 'Легендарный дермальный стимулятор. Мгновенный лифтинг и очищение пор.',
-            'Золушка': 'Капельница «Синдерелла» (глутатион, тиоктовая кислота, вит С). Мощный детокс и осветление кожи.',
-            'J-Cain': 'Сильный кремовый анестетик на основе лидокаина.',
-            'Lumos Anesthetic': 'Премиальный крем-анестетик с высокой концентрацией активных веществ.',
-            'Иглы / Канюли': 'Сверхтонкие стенки, лазерная заточка, минимизация синяков.'
+            'LipoLab PPC': 'Прямой липолитик (Строго для тела!).',
+            'LipoLab V-Line': 'Непрямой липолитик для V-контура.',
+            'V-Line Super.Sol': 'Коктейль для овала лица.',
+            'LipoOne': 'Комплексное действие.',
+            'F&B Premium Face': 'Деликатное уменьшение объемов лица.',
+            'Триада': 'Ферментный коктейль (липаза, гиалуронидаза, коллагеназа). Убирает фиброз.',
+            'Липорайз': 'Коктейль для борьбы с целлюлитом.',
+            'Лонгидаза': 'Расщепляет ГК (лечение гиперкоррекции).',
+            'Tesoro Body': 'Плотный филлер большого объема (контурная пластика тела).',
+            'BioRePeelCl3': 'Двухфазный пилинг без шелушения.',
+            'PRX-T33': 'Мгновенный лифтинг и очищение пор.',
+            'Золушка': 'Мощный детокс и осветление кожи.',
+            'J-Cain': 'Сильный кремовый анестетик (лидокаин).',
+            'Lumos Anesthetic': 'Премиальный крем-анестетик.',
+            'Иглы / Канюли': 'Сверхтонкие стенки, минимизация синяков.'
         };
 
         function showInfo(key) {
             webApp.HapticFeedback.impactOccurred('medium');
-            const titleEl = document.getElementById('infoTitle');
-            const textEl = document.getElementById('infoText');
-            titleEl.innerText = key;
-            if (productInfoDB[key]) { textEl.innerHTML = productInfoDB[key]; } 
-            else { textEl.innerHTML = "Подробную информацию и протокол применения вы можете уточнить у нашего менеджера."; }
+            document.getElementById('infoTitle').innerText = key;
+            document.getElementById('infoText').innerHTML = productInfoDB[key] || "Подробности у менеджера.";
             document.getElementById('infoModal').classList.add('active');
         }
 
         function shareApp() {
             webApp.HapticFeedback.impactOccurred('light');
-            const text = "Привет! Заказываю филлеры и токсины тут по топовым ценам. Посмотри прайс Filler's Beauty 🔥";
-            const url = "https://t.me/Fillers_Beauty"; 
-            webApp.openTelegramLink(`https://t.me/share/url?url=${url}&text=${encodeURIComponent(text)}`);
+            webApp.openTelegramLink(`https://t.me/share/url?url=https://t.me/Fillers_Beauty&text=Привет! Заказываю филлеры тут по топовым ценам 🔥`);
         }
 
         let cart = JSON.parse(localStorage.getItem('fillers_cart')) || {};
 
         window.addEventListener('load', () => { setTimeout(() => { document.getElementById('preloader').classList.add('hidden'); }, 600); updateCartUI(); });
-        try { const user = webApp.initDataUnsafe?.user; if (user && user.first_name) { document.getElementById('user-greeting').innerText = 'ПРИВЕТ, ' + user.first_name.toUpperCase() + '!'; } } catch(e) {}
 
-        const categories = document.querySelectorAll('.category'); const navItems = document.querySelectorAll('.nav-item'); const navContainer = document.getElementById('nav-container');
-        const spyObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const currentId = entry.target.getAttribute('id'); navItems.forEach(nav => { nav.classList.remove('active-nav'); if (nav.getAttribute('href') === '#' + currentId) { nav.classList.add('active-nav'); const navRect = nav.getBoundingClientRect(); const containerRect = navContainer.getBoundingClientRect(); navContainer.scrollLeft += navRect.left - containerRect.left - (containerRect.width / 2) + (navRect.width / 2); } }); } }); }, { rootMargin: "-80px 0px -70% 0px", threshold: 0 });
-        categories.forEach(cat => spyObserver.observe(cat));
+        /* Каскад и Spy удалены для экономии места в этом куске, но они работают в CSS */
 
-        let delayCount = 0; const fadeObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.transitionDelay = `${delayCount * 0.05}s`; entry.target.classList.add('is-visible'); delayCount++; setTimeout(() => { delayCount = 0; }, 100); observer.unobserve(entry.target); } }); }, { rootMargin: "0px 0px -20px 0px", threshold: 0.1 });
-        document.querySelectorAll('.fade-in-up').forEach(card => fadeObserver.observe(card));
-
-        function openModal() { webApp.HapticFeedback.impactOccurred('medium'); document.getElementById('promoModal').classList.add('active'); }
-        function closeModal(e) { if (e.target.id === 'promoModal') forceClose('promoModal'); if (e.target.id === 'infoModal') forceClose('infoModal'); }
+        function openModal(id) { webApp.HapticFeedback.impactOccurred('medium'); document.getElementById(id).classList.add('active'); if(id === 'cartModal') updateCartModalUI(); }
+        function closeModal(e) { if (e.target.classList.contains('modal-overlay')) forceClose(e.target.id); }
         function forceClose(id) { document.getElementById(id).classList.remove('active'); }
         
         function flyToCart(priceElem) {
@@ -795,7 +806,7 @@
             const circle = document.createElement('div'); circle.classList.add('fly-item'); circle.innerText = priceElem.innerText; document.body.appendChild(circle);
             const priceRect = priceElem.getBoundingClientRect(); circle.style.left = `${priceRect.left}px`; circle.style.top = `${priceRect.top}px`;
             const cartPanel = document.getElementById('cartPanel'); const cartRect = cartPanel.getBoundingClientRect();
-            setTimeout(() => { circle.style.left = `${cartRect.left + cartRect.width / 2 - circle.offsetWidth/2}px`; circle.style.top = `${cartRect.top + 20}px`; circle.style.transform = 'scale(0.2)'; circle.style.opacity = '0.3'; }, 10);
+            setTimeout(() => { circle.style.left = `${cartRect.left + cartRect.width / 2}px`; circle.style.top = `${cartRect.top + 20}px`; circle.style.transform = 'scale(0.2)'; circle.style.opacity = '0.3'; }, 10);
             setTimeout(() => { circle.remove(); }, 600);
         }
 
@@ -831,8 +842,81 @@
             });
         });
 
+        /* НОВАЯ ЛОГИКА ОТДЕЛЬНОЙ КОРЗИНЫ С ПЛЮСОМ И МИНУСОМ */
+        function increaseQty(name) {
+            webApp.HapticFeedback.impactOccurred('light');
+            if(cart[name]) cart[name].qty += 1;
+            updateCartUI();
+            updateCartModalUI();
+        }
+
+        function decreaseQty(name) {
+            webApp.HapticFeedback.impactOccurred('light');
+            if(cart[name]) {
+                cart[name].qty -= 1;
+                if(cart[name].qty <= 0) delete cart[name];
+            }
+            updateCartUI();
+            updateCartModalUI();
+        }
+
+        function updateCartModalUI() {
+            const listEl = document.getElementById('cartItemsList');
+            const totalEl = document.getElementById('cartModalTotal');
+            let html = '';
+            let itemsSum = 0;
+
+            for (let name in cart) {
+                const item = cart[name];
+                let currentPrice = item.price;
+                if (item.optThreshold && item.qty >= item.optThreshold) { currentPrice = item.optPrice; }
+                
+                itemsSum += currentPrice * item.qty;
+                
+                html += `
+                    <div class="cart-item-row">
+                        <div>
+                            <div class="cart-item-name">${name}</div>
+                            <div class="cart-item-price">${currentPrice > 0 ? currentPrice.toLocaleString('ru-RU') + ' ₽' : 'Цена по запросу'}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="qty-btn" onclick="decreaseQty('${name}')">-</button>
+                            <span class="qty-val">${item.qty}</span>
+                            <button class="qty-btn" onclick="increaseQty('${name}')">+</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (Object.keys(cart).length === 0) {
+                listEl.innerHTML = '<div class="empty-cart-msg">Корзина пуста 😔</div>';
+                totalEl.innerText = '0 ₽';
+                forceClose('cartModal');
+                return;
+            }
+
+            listEl.innerHTML = html;
+
+            // Расчет доставки
+            let deliveryFee = 0;
+            const deliveryRadios = document.getElementsByName('delivery');
+            for(let i=0; i<deliveryRadios.length; i++){
+                if(deliveryRadios[i].checked) {
+                    deliveryFee = parseInt(deliveryRadios[i].value);
+                    break;
+                }
+            }
+
+            // Если заказ от 30к - доставка 0
+            if (itemsSum >= 30000) deliveryFee = 0;
+
+            const finalTotal = itemsSum + deliveryFee;
+            totalEl.innerText = finalTotal.toLocaleString('ru-RU') + ' ₽';
+        }
+
+
         function updateCartUI() {
-            let totalQty = 0; let totalSum = 0; let hasZeroPrice = false;
+            let totalQty = 0; let totalSum = 0;
 
             for (let name in cart) {
                 const item = cart[name];
@@ -840,18 +924,12 @@
                 if (item.optThreshold && item.qty >= item.optThreshold) { currentPrice = item.optPrice; }
                 totalQty += item.qty;
                 totalSum += currentPrice * item.qty;
-                if (currentPrice === 0) hasZeroPrice = true;
             }
 
             document.getElementById('cartCount').innerText = totalQty;
-            let sumDisplay = totalSum.toLocaleString('ru-RU') + ' ₽';
-            if (hasZeroPrice) sumDisplay += '*';
-            
             const totalSpan = document.getElementById('cartTotal');
-            totalSpan.innerText = sumDisplay;
-            totalSpan.classList.remove('bouncing');
-            void totalSpan.offsetWidth;
-            totalSpan.classList.add('bouncing');
+            totalSpan.innerText = totalSum.toLocaleString('ru-RU') + ' ₽';
+            totalSpan.classList.remove('bouncing'); void totalSpan.offsetWidth; totalSpan.classList.add('bouncing');
 
             const deliveryWidget = document.getElementById('deliveryWidget');
             const deliveryText = document.getElementById('deliveryText');
@@ -871,15 +949,10 @@
                 if (percent >= 100) {
                     deliveryFill.style.width = '100%';
                     deliveryText.innerHTML = "🚚 Доставка: <span>БЕСПЛАТНО</span>";
-                    if(percent === 100 && localStorage.getItem('delivery_won') !== 'yes') {
-                        webApp.HapticFeedback.notificationOccurred('success');
-                        localStorage.setItem('delivery_won', 'yes');
-                    }
                 } else {
                     deliveryFill.style.width = `${percent}%`;
                     let left = 30000 - totalSum;
                     deliveryText.innerHTML = `До бесплатной доставки: <span>${left.toLocaleString('ru-RU')} ₽</span>`;
-                    localStorage.removeItem('delivery_won');
                 }
             } else { 
                 cartActivePanel.classList.remove('active'); 
@@ -891,24 +964,51 @@
             localStorage.setItem('fillers_cart', JSON.stringify(cart));
         }
 
-        function clearCart() { cart = {}; updateCartUI(); webApp.HapticFeedback.notificationOccurred('warning'); }
+        function clearCart() { cart = {}; updateCartUI(); updateCartModalUI(); webApp.HapticFeedback.notificationOccurred('warning'); }
 
         function sendOrder() {
+            if (Object.keys(cart).length === 0) return;
             webApp.HapticFeedback.notificationOccurred('success');
-            let orderText = "🛒 *Новый заказ из прайса:*\n\n";
-            let totalSum = 0;
+            
+            let orderText = "🛒 *Новый заказ:*\n\n";
+            let itemsSum = 0;
+            
             for (let name in cart) {
                 let item = cart[name];
                 let currentPrice = item.price;
                 let optApplied = "";
                 if (item.optThreshold && item.qty >= item.optThreshold) { currentPrice = item.optPrice; optApplied = " (опт)"; }
-                let itemSum = currentPrice * item.qty; totalSum += itemSum;
+                let itemSum = currentPrice * item.qty; itemsSum += itemSum;
                 let priceStr = currentPrice > 0 ? `${currentPrice}₽${optApplied}` : `(уточнить цену)`;
                 orderText += `▪️ ${name} x${item.qty} — ${priceStr}\n`;
             }
-            orderText += `\n💰 *Итого: ${totalSum.toLocaleString('ru-RU')} ₽*`;
-            if (totalSum >= 30000) { orderText += `\n🚚 *Доставка: БЕСПЛАТНО*`; }
-            orderText += `\n\n_Прошу подтвердить наличие!_`;
+
+            // Достаем тип доставки
+            let deliveryName = "Не выбрано";
+            let deliveryFee = 0;
+            const deliveryRadios = document.getElementsByName('delivery');
+            for(let i=0; i<deliveryRadios.length; i++){
+                if(deliveryRadios[i].checked) {
+                    deliveryFee = parseInt(deliveryRadios[i].value);
+                    if(deliveryFee === 400) deliveryName = "Москва (МКАД)";
+                    if(deliveryFee === 800) deliveryName = "Москва (за МКАД)";
+                    if(deliveryFee === 0) deliveryName = "Регионы (ТК)";
+                    break;
+                }
+            }
+
+            if (itemsSum >= 30000) {
+                deliveryFee = 0;
+                deliveryName += " [БЕСПЛАТНО]";
+            } else if (deliveryFee > 0) {
+                deliveryName += ` [${deliveryFee} ₽]`;
+            }
+
+            let finalSum = itemsSum + deliveryFee;
+
+            orderText += `\n🚚 *Доставка:* ${deliveryName}`;
+            orderText += `\n💰 *ИТОГО К ОПЛАТЕ: ${finalSum.toLocaleString('ru-RU')} ₽*`;
+            
             window.location.href = `https://t.me/Fillers_Beauty?text=${encodeURIComponent(orderText)}`;
         }
     </script>

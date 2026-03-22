@@ -24,7 +24,7 @@
             color: var(--text-main);
             margin: 0;
             padding: 15px;
-            padding-bottom: 250px;
+            padding-bottom: 250px; /* Подвал для корзины */
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -39,9 +39,16 @@
             position: relative;
             border: 2px solid var(--gold);
         }
+        .logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); margin-bottom: 12px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
         #user-greeting { font-size: 14px; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
         .header-card h1 { font-size: 26px; font-weight: 900; margin: 0; color: #fff; }
         .header-card h1 span { color: var(--gold); }
+        .header-card p { font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 8px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;}
+
+        /* БЛОКИ ДОВЕРИЯ */
+        .trust-badges { display: flex; justify-content: space-between; align-items: center; background: #fff; border-radius: 12px; padding: 12px; margin-bottom: 15px; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .trust-item { text-align: center; font-size: 10px; font-weight: 800; color: var(--emerald-dark); flex: 1; border-right: 1px solid #eee;}
+        .trust-item:last-child { border-right: none; }
 
         /* НАВИГАЦИЯ */
         .nav-wrapper {
@@ -52,63 +59,54 @@
         }
         .nav-scroll { display: flex; overflow-x: auto; gap: 10px; scrollbar-width: none; }
         .nav-scroll::-webkit-scrollbar { display: none; }
-        .nav-item {
-            background: #fff; color: var(--emerald-dark); padding: 8px 16px;
-            border-radius: 12px; white-space: nowrap; font-size: 11px; font-weight: 800;
-            text-decoration: none; border: 1px solid rgba(212, 175, 55, 0.4);
-        }
+        .nav-item { background: #fff; color: var(--emerald-dark); padding: 8px 16px; border-radius: 12px; white-space: nowrap; font-size: 11px; font-weight: 800; text-decoration: none; border: 1px solid rgba(212, 175, 55, 0.4); }
         .nav-item:active { background: var(--gold-light); }
 
         /* ПОИСК */
-        .search-box {
-            width: 100%; padding: 12px 15px; border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.4); background: #fff;
-            font-size: 14px; margin-bottom: 20px; box-sizing: border-box;
-            color: var(--emerald-dark); font-weight: 600; outline: none;
-        }
+        .search-box { width: 100%; padding: 12px 15px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.4); background: #fff; font-size: 14px; margin-bottom: 20px; box-sizing: border-box; color: var(--emerald-dark); font-weight: 600; outline: none; }
         .search-box::placeholder { color: #95a5a6; font-weight: 500; }
 
         /* КАТЕГОРИИ */
-        .category { font-size: 18px; font-weight: 900; margin-top: 25px; margin-bottom: 10px; color: var(--emerald-dark); border-left: 5px solid var(--gold); padding-left: 12px; scroll-margin-top: 130px; }
-        .subcategory { font-size: 14px; font-weight: 800; color: var(--emerald-light); margin: 20px 0 10px 10px; display: flex; align-items: center; gap: 8px; }
+        .category { font-size: 18px; font-weight: 900; margin-top: 25px; margin-bottom: 10px; color: var(--emerald-dark); border-left: 5px solid var(--gold); padding-left: 12px; text-transform: uppercase; scroll-margin-top: 130px; }
+        .subcategory { font-size: 14px; font-weight: 800; color: var(--emerald-light); margin: 25px 0 10px 10px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
+        .subcategory::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, rgba(212, 175, 55, 0.4), transparent); }
 
         /* КАРТОЧКА ТОВАРА */
-        .item-card {
-            background: #fff; border-radius: 18px; padding: 15px; margin-bottom: 10px;
-            display: flex; justify-content: space-between; align-items: center;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
+        .item-card { background: #fff; border-radius: 18px; padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(212, 175, 55, 0.1); }
         .item-info { flex: 1; padding-right: 10px; }
         .item-name { font-size: 15px; font-weight: 800; color: var(--emerald-dark); }
         .item-desc { font-size: 12px; color: #7f8c8d; margin-top: 2px; font-weight: 500; }
+        .item-opt { font-size: 11px; color: #27ae60; font-weight: 800; margin-top: 6px; text-transform: uppercase; }
         
         .price-cart-wrap { display: flex; align-items: center; gap: 10px; }
         .item-price { font-size: 14px; font-weight: 900; color: var(--gold); background: var(--emerald-dark); padding: 8px 12px; border-radius: 12px; white-space: nowrap; }
         
-        .add-btn {
-            background: var(--gold-light); border: 1px solid var(--gold); color: var(--emerald-dark);
-            width: 36px; height: 36px; border-radius: 10px; font-size: 20px; font-weight: bold;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            transition: 0.2s;
-        }
+        .add-btn { background: var(--gold-light); border: 1px solid var(--gold); color: var(--emerald-dark); width: 36px; height: 36px; border-radius: 10px; font-size: 20px; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
         .add-btn:active { background: var(--gold); color: #fff; transform: scale(0.9); }
 
-        /* КОРЗИНА (ВНИЗУ) */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);
-            padding: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 100;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            transform: translateY(100%); transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .bottom-nav.active { transform: translateY(0); }
-
+        /* КОРЗИНА И НИЖНИЕ КНОПКИ */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 100; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+        .btn { height: 50px; border: none; border-radius: 16px; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; cursor: pointer; text-transform: uppercase; }
+        @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); } 70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
+        .btn-promo { background: var(--emerald-dark); color: var(--gold); animation: pulse-gold 2s infinite; border: 1px solid var(--gold); margin-bottom: 5px;}
+        
+        /* Скрытая панель заказа (показывается если в корзине есть товар) */
+        .cart-panel { display: none; flex-direction: column; gap: 10px; }
+        .cart-panel.active { display: flex; }
         .cart-summary { display: flex; justify-content: space-between; font-weight: 800; color: var(--emerald-dark); font-size: 15px; padding: 0 5px; }
         .cart-summary span { color: var(--gold); background: var(--emerald-dark); padding: 4px 10px; border-radius: 8px; }
-
-        .btn { height: 50px; border: none; border-radius: 16px; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; }
-        .btn-order { background: linear-gradient(135deg, #d4af37 0%, #e5c158 100%); color: var(--emerald-dark); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
+        .btn-order { background: linear-gradient(135deg, #d4af37 0%, #e5c158 100%); color: var(--emerald-dark); }
         .btn-clear { background: #f2f2f2; color: #e74c3c; height: 35px; margin-top: -5px; }
+
+        /* МОДАЛКА АКЦИЙ */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 58, 42, 0.85); backdrop-filter: blur(8px); z-index: 200; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: flex-end; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 35px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 85vh; overflow-y: auto; }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: var(--gold-light); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark); }
+        .promo-card { background: var(--gold-light); border: 1px solid var(--gold); border-left: 8px solid var(--gold); border-radius: 15px; padding: 20px; margin-bottom: 15px; }
+        .promo-buy { font-size: 16px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 8px; }
+        .promo-gift { font-size: 16px; font-weight: 900; color: #27ae60; }
 
     </style>
 </head>
@@ -116,7 +114,15 @@
 
     <div class="header-card">
         <div id="user-greeting">ЛИЧНЫЙ ДОСТУП</div>
+        <img src="IMG_0797.jpeg" alt="Logo" class="logo" onerror="this.style.display='none'">
         <h1>FILLER'S <span>BEAUTY</span></h1>
+        <p>ПРЯМЫЕ ПОСТАВКИ С КОРЕИ И ЕВРОПЫ</p>
+    </div>
+
+    <div class="trust-badges">
+        <div class="trust-item">❄️ Термоконтроль</div>
+        <div class="trust-item">🛡 100% Оригинал</div>
+        <div class="trust-item">🚚 Отгрузка 24ч</div>
     </div>
 
     <div class="nav-wrapper">
@@ -129,55 +135,63 @@
             <a href="#euro" class="nav-item">💎 ФИЛЛЕРЫ ЕВРОПА</a>
             <a href="#korea" class="nav-item">🇰🇷 ФИЛЛЕРЫ КОРЕЯ</a>
             <a href="#lipo" class="nav-item">💧 ЛИПОЛИТИКИ</a>
-            <a href="#peels" class="nav-item">🛠 ПИЛИНГИ</a>
+            <a href="#peels" class="nav-item">🛠 ПИЛИНГИ И АНЕСТЕЗИЯ</a>
             <a href="#consumables" class="nav-item">⚙️ РАСХОДНИКИ</a>
         </div>
     </div>
 
-    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Введите название (например, Neuramis Deep)...">
+    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Поиск по прайсу...">
 
     <div id="catalog">
 
         <div id="toxins" class="category">🧊 Ботулотоксины</div>
         
-        <div class="subcategory">Botulax (Корея)</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Botulax 100u</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Botulax 200u</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Botulax 300u</div></div><div class="price-cart-wrap"><div class="item-price">6 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="subcategory">Botulax</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Botulax 100u</div><div class="item-desc">Корея (Premium)</div><div class="item-opt">От 5 шт: 2 600 ₽</div></div><div class="price-cart-wrap"><div class="item-price">2 700 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Botulax 200u</div><div class="item-desc">Корея (Premium)</div><div class="item-opt">От 5 шт: 3 800 ₽</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Botulax 300u</div><div class="item-desc">Корея (Premium)</div><div class="item-opt">От 5 шт: 5 800 ₽</div></div><div class="price-cart-wrap"><div class="item-price">6 000 ₽</div><div class="add-btn">+</div></div></div>
         
         <div class="subcategory">Refinex</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Refinex 100u (Корея)</div></div><div class="price-cart-wrap"><div class="item-price">900 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Refinex 100u (Япония)</div></div><div class="price-cart-wrap"><div class="item-price">3 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Refinex 100u (Корея)</div><div class="item-desc">Эконом-линейка</div><div class="item-opt">От 10 шт: 1 600 ₽</div></div><div class="price-cart-wrap"><div class="item-price">1 700 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Refinex 100u (Япония)</div><div class="item-desc">Оригинал</div><div class="item-opt">От 10 шт: 2 900 ₽</div></div><div class="price-cart-wrap"><div class="item-price">3 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Refinex 125u</div></div><div class="price-cart-wrap"><div class="item-price">1 650 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Refinex Extra</div></div><div class="price-cart-wrap"><div class="item-price">1 650 ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">RenTox (Корея)</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">RenTox 100u</div></div><div class="price-cart-wrap"><div class="item-price">2 400 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">RenTox 200u</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽</div><div class="add-btn">+</div></div></div>
         
-        <div class="subcategory">Nabota (Корея)</div>
+        <div class="subcategory">RenTox</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">RenTox 100u</div><div class="item-desc">Корея</div><div class="item-opt">От 5 шт: 3 300 ₽</div></div><div class="price-cart-wrap"><div class="item-price">3 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">RenTox 200u</div><div class="item-desc">Корея</div><div class="item-opt">От 5 шт: 4 800 ₽</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+
+        <div class="subcategory">Nabota</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Nabota 100u</div></div><div class="price-cart-wrap"><div class="item-price">3 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Nabota 200u</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
 
-        <div class="subcategory">Xeomin (Германия)</div>
+        <div class="subcategory">Xeomin & Dysport & Relatox</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Xeomin 50u</div></div><div class="price-cart-wrap"><div class="item-price">5 550 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Xeomin 100u</div></div><div class="price-cart-wrap"><div class="item-price">9 000 ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">Dysport</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Dysport (Турция)</div></div><div class="price-cart-wrap"><div class="item-price">7 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Dysport (РФ)</div></div><div class="price-cart-wrap"><div class="item-price">7 000 ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">Relatox (Россия)</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Relatox 50u</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Relatox 100u</div></div><div class="price-cart-wrap"><div class="item-price">10 000 ₽</div><div class="add-btn">+</div></div></div>
 
+        <div class="subcategory">Другие Бренды</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">RedTox 100u</div><div class="item-desc">Корея</div><div class="item-opt">От 5 шт: 2 600 ₽</div></div><div class="price-cart-wrap"><div class="item-price">2 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">DehanTox 100u</div><div class="item-desc">Корея</div><div class="item-opt">От 5 шт: 2 600 ₽</div></div><div class="price-cart-wrap"><div class="item-price">2 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">DehanTox 200u</div><div class="item-desc">Корея</div><div class="item-opt">От 5 шт: 3 800 ₽</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Маспорт 500u</div><div class="item-desc">Франция / Турция</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
 
         <div id="bio" class="category">🧬 Биоревитализация</div>
 
+        <div class="subcategory">Плацентарные препараты & PDRN</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Мелсмон (50 шт)</div></div><div class="price-cart-wrap"><div class="item-price">800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Лаенек</div></div><div class="price-cart-wrap"><div class="item-price">800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">TwAc Eye</div></div><div class="price-cart-wrap"><div class="item-price">2 600 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">TwAc 2.0</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">TwAc 3.0</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+
         <div class="subcategory">Aquashine</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Aquashine Soft</div></div><div class="price-cart-wrap"><div class="item-price">900 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Aquashine BR</div></div><div class="price-cart-wrap"><div class="item-price">900 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Aquashine PTX</div></div><div class="price-cart-wrap"><div class="item-price">900 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Aquashine Soft</div><div class="item-desc">2.0 мл</div><div class="item-opt">От 10 шт: 1 550 ₽</div></div><div class="price-cart-wrap"><div class="item-price">1 650 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Aquashine BR</div><div class="item-desc">2.0 мл</div><div class="item-opt">От 10 шт: 1 550 ₽</div></div><div class="price-cart-wrap"><div class="item-price">1 650 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Aquashine PTX</div><div class="item-desc">2.0 мл</div><div class="item-opt">От 10 шт: 1 750 ₽</div></div><div class="price-cart-wrap"><div class="item-price">1 850 ₽</div><div class="add-btn">+</div></div></div>
 
         <div class="subcategory">Revi</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Revi Eye 1 мл</div></div><div class="price-cart-wrap"><div class="item-price">3 500 ₽</div><div class="add-btn">+</div></div></div>
@@ -188,82 +202,91 @@
         <div class="item-card"><div class="item-info"><div class="item-name">Revi Strong 1 мл</div></div><div class="price-cart-wrap"><div class="item-price">4 400 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Revi Strong 2 мл</div></div><div class="price-cart-wrap"><div class="item-price">5 900 ₽</div><div class="add-btn">+</div></div></div>
 
-        <div class="subcategory">Novacutan</div>
+        <div class="subcategory">Novacutan & BioGel & Profhilo</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Novacutan С-Био</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Novacutan У-Био</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Novacutan Официальный</div></div><div class="price-cart-wrap"><div class="item-price">6 800 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Novacutan (С голограммой)</div></div><div class="price-cart-wrap"><div class="item-price">2 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Novacutan (Без голограммы)</div></div><div class="price-cart-wrap"><div class="item-price">2 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Novacutan Bio Pro</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">BioGel (Gold / Silver)</div></div><div class="price-cart-wrap"><div class="item-price">3 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">BioGel Сияние 2 мл</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">BioGel Монако</div></div><div class="price-cart-wrap"><div class="item-price">6 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">BioGel Харизма</div></div><div class="price-cart-wrap"><div class="item-price">8 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">PROFHILO Европа</div><div class="item-desc">2.0 мл</div><div class="item-opt">От 5 шт: 5 800 ₽</div></div><div class="price-cart-wrap"><div class="item-price">6 000 ₽</div><div class="add-btn">+</div></div></div>
 
-        <div class="subcategory">TwAc</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">TwAc Eye</div></div><div class="price-cart-wrap"><div class="item-price">2 600 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">TwAc 2.0</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">TwAc 3.0</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">Другие Биоревитализанты</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Hyaron</div></div><div class="price-cart-wrap"><div class="item-price">3 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Kiara Reju</div></div><div class="price-cart-wrap"><div class="item-price">2 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">PROFHILO</div></div><div class="price-cart-wrap"><div class="item-price">3 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="subcategory">Популярные Биоревитализанты</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Hyaron</div><div class="item-desc">10 шт × 2.5 мл</div><div class="item-opt">От 5 шт: 4 100 ₽</div></div><div class="price-cart-wrap"><div class="item-price">4 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Kiara Reju</div><div class="item-desc">3 шт × 2.2 мл</div><div class="item-opt">От 5 шт: 3 200 ₽</div></div><div class="price-cart-wrap"><div class="item-price">3 300 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Ejal40</div></div><div class="price-cart-wrap"><div class="item-price">3 300 ₽</div><div class="add-btn">+</div></div></div>
-
+        <div class="item-card"><div class="item-info"><div class="item-name">GemVous</div><div class="item-opt">От 5 шт: 3 000 ₽</div></div><div class="price-cart-wrap"><div class="item-price">3 100 ₽</div><div class="add-btn">+</div></div></div>
 
         <div id="meso" class="category">💉 Мезотерапия</div>
         
-        <div class="subcategory">Мезо Линейка (РФ / Европа)</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Мезо линейка (Европа/РФ)</div></div><div class="price-cart-wrap"><div class="item-price">2 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="subcategory">Dermaheal</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Dermaheal HL</div><div class="item-desc">10 фл × 5 мл</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Dermaheal HSR</div><div class="item-desc">10 фл × 5 мл</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Dermaheal LL</div><div class="item-desc">10 фл × 5 мл</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Dermaheal SB</div><div class="item-desc">10 фл × 5 мл</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Dermaheal SR</div><div class="item-desc">10 фл × 5 мл</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Dermaheal Dark Solution</div><div class="item-desc">10 фл × 5 мл</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Dermaheal EyeBag</div><div class="item-desc">10 фл × 5 мл</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
 
         <div class="subcategory">Специфическая Мезотерапия</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">MesoEye C71</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">MesoWharton P199</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Dermaheal (Вся линейка)</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-
+        <div class="item-card"><div class="item-info"><div class="item-name">MesoEye C71</div><div class="item-desc">1.5 мл</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">MesoWharton P199</div><div class="item-desc">1.5 мл</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Hanheal Exosome</div><div class="item-desc">Комплект</div></div><div class="price-cart-wrap"><div class="item-price">7 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Мезо линейка (Европа/РФ)</div></div><div class="price-cart-wrap"><div class="item-price">2 500 ₽</div><div class="add-btn">+</div></div></div>
 
         <div id="plla" class="category">💊 Полимолочная кислота</div>
-        
-        <div class="subcategory">AestheFill & Juvelook</div>
         <div class="item-card"><div class="item-info"><div class="item-name">AestheFill (Европа)</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">AestheFill (Официальный)</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Juvelook 50</div></div><div class="price-cart-wrap"><div class="item-price">10 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Juvelook 200 мл</div></div><div class="price-cart-wrap"><div class="item-price">12 000 ₽</div><div class="add-btn">+</div></div></div>
-        
-        <div class="subcategory">Polyfill</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Polyfill</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
 
-
         <div id="collagen" class="category">🧬 Коллаген</div>
-
-        <div class="subcategory">Коллост (Collost)</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Колост микро 150 мг</div></div><div class="price-cart-wrap"><div class="item-price">7 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Колост 7% 1.5 мл</div></div><div class="price-cart-wrap"><div class="item-price">4 900 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Колост 15% 1.5 мл</div></div><div class="price-cart-wrap"><div class="item-price">7 100 ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">Nithya</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Nithya (Коллаген)</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Nithya Stimulate</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">Другие коллагеновые препараты</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Сферогель</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Karisma</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Linerase</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">NEAUTIVIA rh collagen</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
 
-
         <div id="euro" class="category">💎 Филлеры Европа</div>
         
-        <div class="subcategory">Belotero</div>
+        <div class="subcategory">Stylage (Франция)</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage Bi-Soft Hydro</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage Bi-Soft HydroMax</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage S</div></div><div class="price-cart-wrap"><div class="item-price">8 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage S Bi-Soft Lido</div></div><div class="price-cart-wrap"><div class="item-price">8 400 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage M Bi-Soft (No Lido)</div></div><div class="price-cart-wrap"><div class="item-price">9 100 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage M Lido</div></div><div class="price-cart-wrap"><div class="item-price">9 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage L</div></div><div class="price-cart-wrap"><div class="item-price">9 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage L Bi-Soft Lido</div></div><div class="price-cart-wrap"><div class="item-price">10 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage XL</div></div><div class="price-cart-wrap"><div class="item-price">12 300 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage XL Bi-Soft Lido</div></div><div class="price-cart-wrap"><div class="item-price">12 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Stylage Bi-Soft Lips Plus</div></div><div class="price-cart-wrap"><div class="item-price">6 500 ₽</div><div class="add-btn">+</div></div></div>
+
+        <div class="subcategory">Belotero & Juvederm & Radiesse</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Belotero Soft</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Belotero Balance Lido</div></div><div class="price-cart-wrap"><div class="item-price">7 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Belotero Intense</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Belotero Lips Contour</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Belotero Lips Shape</div></div><div class="price-cart-wrap"><div class="item-price">5 900 ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">Juvederm</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Juvederm Ultra 3</div></div><div class="price-cart-wrap"><div class="item-price">12 600 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Juvederm Smile</div></div><div class="price-cart-wrap"><div class="item-price">10 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Juvederm 3</div></div><div class="price-cart-wrap"><div class="item-price">12 600 ₽</div><div class="add-btn">+</div></div></div>
-        
-        <div class="subcategory">Teosyal</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Teosyal Redensity 2</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Radiesse 1.5 мл</div></div><div class="price-cart-wrap"><div class="item-price">11 500 ₽</div><div class="add-btn">+</div></div></div>
 
+        <div class="subcategory">Neauvia & Teosyal</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Neauvia Intense Lips</div></div><div class="price-cart-wrap"><div class="item-price">4 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Neauvia Intense Organic</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Neauvia Stimulate</div></div><div class="price-cart-wrap"><div class="item-price">5 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Neauvia Hydro Deluxe</div></div><div class="price-cart-wrap"><div class="item-price">5 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Teosyal Redensity 2</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
 
         <div id="korea" class="category">🇰🇷 Филлеры Корея</div>
         
@@ -279,30 +302,41 @@
         <div class="item-card"><div class="item-info"><div class="item-name">Sardenya Deep</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Sardenya Shape</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Sardenya Implant</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Sardenya Luminous</div></div><div class="price-cart-wrap"><div class="item-price">3 700 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Sardenya Matrix</div></div><div class="price-cart-wrap"><div class="item-price">4 700 ₽</div><div class="add-btn">+</div></div></div>
 
-        <div class="subcategory">Revolax</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Revolax Fine</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+        <div class="subcategory">Revolax & Dermalax</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Revolax Deep</div></div><div class="price-cart-wrap"><div class="item-price">1 700 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Revolax Sub-Q</div></div><div class="price-cart-wrap"><div class="item-price">1 700 ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">Rejeunesse</div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Rejeunesse Deep</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Rejeunesse Shape</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
-
-        <div class="subcategory">Dermalax</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Dermalax Deep</div></div><div class="price-cart-wrap"><div class="item-price">1 700 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Dermalax Implant</div></div><div class="price-cart-wrap"><div class="item-price">3 400 ₽</div><div class="add-btn">+</div></div></div>
 
-        <div class="subcategory">Tesoro</div>
+        <div class="subcategory">Rejeunesse & Tesoro</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Rejeunesse Deep</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Rejeunesse Shape</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Rejeuness Sparkle Lido</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Tesoro Deep</div></div><div class="price-cart-wrap"><div class="item-price">1 300 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Tesoro Sub-Q</div></div><div class="price-cart-wrap"><div class="item-price">1 300 ₽</div><div class="add-btn">+</div></div></div>
+
+        <div class="subcategory">Elasty</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Elasty F</div></div><div class="price-cart-wrap"><div class="item-price">2 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Elasty F Plus</div></div><div class="price-cart-wrap"><div class="item-price">2 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Elasty G Plus</div></div><div class="price-cart-wrap"><div class="item-price">2 200 ₽</div><div class="add-btn">+</div></div></div>
+
+        <div class="subcategory">Medeyra & Hyamax</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Medeyra Deep Lido</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Medeyra Shape Lido</div></div><div class="price-cart-wrap"><div class="item-price">1 400 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Hyamax Lips</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Hyamax L Plus Lips</div></div><div class="price-cart-wrap"><div class="item-price">4 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Hyamax Extra Deep</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Hyamax Plus 24</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Hyamax Volumizer (2*2ml)</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Hyamax Volumizer (2*1ml)</div></div><div class="price-cart-wrap"><div class="item-price">3 600 ₽</div><div class="add-btn">+</div></div></div>
 
         <div class="subcategory">Другие Бренды</div>
         <div class="item-card"><div class="item-info"><div class="item-name">e.p.t.q. Сун Фил</div></div><div class="price-cart-wrap"><div class="item-price">1 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Sosum Soft</div></div><div class="price-cart-wrap"><div class="item-price">2 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Lumos</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">Elasty (Вся линейка)</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-
 
         <div id="lipo" class="category">💧 Липолитики & Тело</div>
         
@@ -310,18 +344,32 @@
         <div class="item-card"><div class="item-info"><div class="item-name">Light Fit</div></div><div class="price-cart-wrap"><div class="item-price">10 200 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Липолонг</div></div><div class="price-cart-wrap"><div class="item-price">7 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">LipoLab PPC</div></div><div class="price-cart-wrap"><div class="item-price">3 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">LipoLab V-Line</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">V-Line Super.Sol</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">LipoOne +</div></div><div class="price-cart-wrap"><div class="item-price">4 000 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">F&B Premium Face</div></div><div class="price-cart-wrap"><div class="item-price">5 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Триада</div></div><div class="price-cart-wrap"><div class="item-price">2 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Липорайз (Упаковка)</div></div><div class="price-cart-wrap"><div class="item-price">3 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Липорайз + Лонгидаза (Штука)</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
 
+        <div class="subcategory">Филлеры для Тела</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Tesoro Body Max 100ml</div></div><div class="price-cart-wrap"><div class="item-price">13 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Tesoro Body 50ml</div></div><div class="price-cart-wrap"><div class="item-price">7 000 ₽</div><div class="add-btn">+</div></div></div>
 
-        <div id="peels" class="category">🛠 Пилинги & Капельницы</div>
+        <div id="peels" class="category">🛠 Пилинги & Анестезия</div>
+        
+        <div class="subcategory">Пилинги & Капельницы</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Золушка (Упаковка)</div></div><div class="price-cart-wrap"><div class="item-price">9 000 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">Золушка (Штука)</div></div><div class="price-cart-wrap"><div class="item-price">900 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">BioRePeelCl3 (Новая упаковка)</div></div><div class="price-cart-wrap"><div class="item-price">3 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">BioRePeelCl3 (Флакон старый)</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card"><div class="item-info"><div class="item-name">PRX-T33</div></div><div class="price-cart-wrap"><div class="item-price">3 200 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card"><div class="item-info"><div class="item-name">J-Cain 500гр</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Fillmed NCTF 135HA (Упаковка)</div></div><div class="price-cart-wrap"><div class="item-price">18 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">Fillmed NCTF 135HA (Флакон)</div></div><div class="price-cart-wrap"><div class="item-price">3 800 ₽</div><div class="add-btn">+</div></div></div>
 
+        <div class="subcategory">Анестезия</div>
+        <div class="item-card"><div class="item-info"><div class="item-name">J-Cain 500гр</div></div><div class="price-cart-wrap"><div class="item-price">2 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card"><div class="item-info"><div class="item-name">J-Cain 30гр</div></div><div class="price-cart-wrap"><div class="item-price">500 ₽</div><div class="add-btn">+</div></div></div>
 
         <div id="consumables" class="category">⚙️ Расходники</div>
         <div class="item-card"><div class="item-info"><div class="item-name">Иглы</div></div><div class="price-cart-wrap"><div class="item-price">40 ₽</div><div class="add-btn">+</div></div></div>
@@ -330,12 +378,28 @@
     </div> 
 
     <div class="bottom-nav" id="cartPanel">
-        <div class="cart-summary">
-            <div>🛒 В корзине: <b id="cartCount">0</b> шт.</div>
-            <div>Сумма: <span id="cartTotal">0 ₽</span></div>
+        <button class="btn btn-promo" id="promoBtn" onclick="openModal()">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
+        <div class="cart-panel" id="cartActivePanel">
+            <div class="cart-summary">
+                <div>🛒 В корзине: <b id="cartCount">0</b> шт.</div>
+                <div>Сумма: <span id="cartTotal">0 ₽</span></div>
+            </div>
+            <button class="btn btn-order" onclick="sendOrder()">📤 ОФОРМИТЬ ЗАКАЗ</button>
+            <button class="btn btn-clear" onclick="clearCart()">Очистить корзину</button>
         </div>
-        <button class="btn btn-order" onclick="sendOrder()">📤 ОФОРМИТЬ ЗАКАЗ В TELEGRAM</button>
-        <button class="btn btn-clear" onclick="clearCart()">Очистить корзину</button>
+    </div>
+
+    <div class="modal-overlay" id="promoModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="forceClose()">✕</button>
+            <div style="font-size: 26px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 10px;">🎁 ГОРЯЧИЕ АКЦИИ</div>
+            <div style="font-size: 14px; color: var(--gold); font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">Количество строго ограничено!</div>
+            <div class="promo-card"><div class="promo-buy">🛍 Заказ 10 шт Botulax 100u</div><div class="promo-gift">🎁 ПОДАРОК: Доставка + J-Cain 30гр</div></div>
+            <div class="promo-card"><div class="promo-buy">🛍 Заказ 5 шт Novacutan или MesoEye</div><div class="promo-gift">🎁 ПОДАРОК: Филлер Sardenya Deep</div></div>
+            <div class="promo-card"><div class="promo-buy">🛍 Заказ 4 шт Refinex (Япония)</div><div class="promo-gift">🎁 ПОДАРОК: 1 шт Refinex (Корея)</div></div>
+            <div class="promo-card"><div class="promo-buy">🛍 Заказ 4 шт Stylage M (Bi-Soft)</div><div class="promo-gift">🎁 ПОДАРОК: Липолитик V-Line</div></div>
+            <div style="font-size: 12px; color: #7f8c8d; text-align: center; margin-top: 20px; font-weight: 600;">*Для фиксации акции отправьте заказ менеджеру</div>
+        </div>
     </div>
 
     <script>
@@ -350,55 +414,48 @@
             }
         } catch(e) {}
 
+        /* МОДАЛКА */
+        function openModal() { webApp.HapticFeedback.impactOccurred('medium'); document.getElementById('promoModal').classList.add('active'); }
+        function closeModal(e) { if (e.target.id === 'promoModal') forceClose(); }
+        function forceClose() { document.getElementById('promoModal').classList.remove('active'); }
+
+        /* ПОИСК */
         const searchInput = document.getElementById('searchInput');
         const items = document.querySelectorAll('.item-card');
-
         searchInput.addEventListener('input', function() {
             const filter = this.value.toLowerCase();
             items.forEach(item => {
                 const text = item.querySelector('.item-info').innerText.toLowerCase();
-                if (text.includes(filter)) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
+                if (text.includes(filter)) item.style.display = 'flex';
+                else item.style.display = 'none';
             });
         });
 
+        /* КОРЗИНА */
         let cart = {}; 
 
         document.querySelectorAll('.add-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 webApp.HapticFeedback.impactOccurred('light');
-                
                 const card = this.closest('.item-card');
                 const name = card.querySelector('.item-name').innerText;
                 const priceText = card.querySelector('.item-price').innerText;
                 const price = parseInt(priceText.replace(/\D/g, '')) || 0;
 
-                if (cart[name]) {
-                    cart[name].qty += 1;
-                } else {
-                    cart[name] = { price: price, qty: 1 };
-                }
+                if (cart[name]) cart[name].qty += 1;
+                else cart[name] = { price: price, qty: 1 };
                 
                 updateCartUI();
                 
                 this.style.background = '#27ae60';
                 this.style.color = '#fff';
                 this.innerText = '✓';
-                setTimeout(() => {
-                    this.style.background = '';
-                    this.style.color = '';
-                    this.innerText = '+';
-                }, 500);
+                setTimeout(() => { this.style.background = ''; this.style.color = ''; this.innerText = '+'; }, 500);
             });
         });
 
         function updateCartUI() {
-            let totalQty = 0;
-            let totalSum = 0;
-            let hasZeroPrice = false;
+            let totalQty = 0; let totalSum = 0; let hasZeroPrice = false;
 
             for (let item in cart) {
                 totalQty += cart[item].qty;
@@ -411,11 +468,15 @@
             if (hasZeroPrice) sumDisplay += '*';
             document.getElementById('cartTotal').innerText = sumDisplay;
 
-            const cartPanel = document.getElementById('cartPanel');
+            const cartActivePanel = document.getElementById('cartActivePanel');
+            const promoBtn = document.getElementById('promoBtn');
+            
             if (totalQty > 0) {
-                cartPanel.classList.add('active');
+                cartActivePanel.classList.add('active');
+                promoBtn.style.display = 'none'; // Скрываем кнопку акций, когда корзина активна
             } else {
-                cartPanel.classList.remove('active');
+                cartActivePanel.classList.remove('active');
+                promoBtn.style.display = 'flex';
             }
         }
 
@@ -427,7 +488,6 @@
 
         function sendOrder() {
             webApp.HapticFeedback.notificationOccurred('success');
-            
             let orderText = "🛒 *Новый заказ из прайса:*\n\n";
             let totalSum = 0;
             

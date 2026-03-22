@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Filler's Beauty — Полный Оптовый Прайс</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
+      <style>
         :root { --emerald-dark: #062118; --emerald-mid: #10664d; --emerald-light: #24bfa1; --gold: #d4af37; --gold-light: #f9f1d8; --bg-color: #f4f6f5; --text-main: #1a2521; }
+        * { box-sizing: border-box; max-width: 100%; }
+        html, body { max-width: 100%; overflow-x: clip; }
         html { scroll-behavior: smooth; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); background-attachment: fixed; color: var(--text-main); margin: 0; padding: 15px; padding-bottom: 320px; -webkit-tap-highlight-color: transparent; max-width: 100vw; overflow-x: clip; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); background-attachment: fixed; color: var(--text-main); margin: 0; padding: 15px; padding-bottom: 320px; -webkit-tap-highlight-color: transparent; width: 100%; }
 
         #preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--emerald-dark); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s; }
         #preloader.hidden { opacity: 0; visibility: hidden; }

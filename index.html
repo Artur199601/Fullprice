@@ -85,7 +85,7 @@
         /* МОДАЛКИ ОБЩИЕ */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 58, 42, 0.85); backdrop-filter: blur(8px); z-index: 200; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: flex-end; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 35px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column;}
+        .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 30px 20px; padding-bottom: 400px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column;}
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .modal-close { position: absolute; top: 20px; right: 20px; background: var(--gold-light); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark); cursor: pointer;}
         
@@ -662,6 +662,15 @@
         webApp.ready();
         webApp.expand(); 
         webApp.MainButton.hide();
+        /* ФИКС ДЛЯ IOS: Плавный скролл при открытии клавиатуры */
+        document.querySelectorAll('.form-input, .form-select').forEach(input => {
+            input.addEventListener('focus', function() {
+                setTimeout(() => {
+                    // Плавно прокручиваем окно так, чтобы поле оказалось по центру экрана
+                    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300); // Ждем 300мс, пока выедет клавиатура айфона
+            });
+        });
 
         /* ПОЛНАЯ БАЗА ЗНАНИЙ (ИНФО-ШТОРКИ) */
         const productInfoDB = {

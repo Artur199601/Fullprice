@@ -662,13 +662,30 @@
         webApp.ready();
         webApp.expand(); 
         webApp.MainButton.hide();
-        /* ФИКС ДЛЯ IOS: Плавный скролл при открытии клавиатуры */
+
+        /* ЖЕЛЕЗОБЕТОННЫЙ ФИКС КЛАВИАТУРЫ ДЛЯ IOS TELEGRAM WEBAPP */
+        const cartModalContent = document.querySelector('#cartModal .modal-content');
+
         document.querySelectorAll('.form-input, .form-select').forEach(input => {
             input.addEventListener('focus', function() {
+                // 1. Как только кликнули на поле, добавляем полметра пустоты снизу формы
+                cartModalContent.style.paddingBottom = '400px';
+
+                // 2. Ждем 300 миллисекунд (чтобы клава успела выехать) и принудительно крутим саму модалку
                 setTimeout(() => {
-                    // Плавно прокручиваем окно так, чтобы поле оказалось по центру экрана
-                    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 300); // Ждем 300мс, пока выедет клавиатура айфона
+                    const inputPosition = this.offsetTop; // Узнаем, где именно находится поле
+                    cartModalContent.scrollTo({
+                        top: inputPosition - 100, // Крутим так, чтобы поле было чуть выше центра
+                        behavior: 'smooth'
+                    });
+                }, 300); 
+            });
+
+            input.addEventListener('blur', function() {
+                // 3. Когда закончили вводить (закрыли клаву), убираем пустоту
+                setTimeout(() => {
+                    cartModalContent.style.paddingBottom = '40px'; 
+                }, 200);
             });
         });
 

@@ -6,9 +6,28 @@
     <title>Filler's Beauty — Полный Оптовый Прайс</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        :root { --emerald-dark: #062118; --emerald-mid: #10664d; --emerald-light: #24bfa1; --gold: #d4af37; --gold-light: #f9f1d8; --bg-color: #f4f6f5; --text-main: #1a2521; }
+        :root {
+            --emerald-dark: #062118; 
+            --emerald-mid: #10664d;  
+            --emerald-light: #24bfa1; 
+            --gold: #d4af37; 
+            --gold-light: #f9f1d8; 
+            --bg-color: #f4f6f5; 
+            --text-main: #1a2521; 
+        }
+
         html { scroll-behavior: smooth; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); background-attachment: fixed; color: var(--text-main); margin: 0; padding: 15px; padding-bottom: 280px; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-color);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            padding: 15px;
+            padding-bottom: 280px; 
+            -webkit-tap-highlight-color: transparent;
+        }
 
         #preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--emerald-dark); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s; }
         #preloader.hidden { opacity: 0; visibility: hidden; }
@@ -97,6 +116,7 @@
         .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 35px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 85vh; overflow-y: auto; }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         .modal-close { position: absolute; top: 20px; right: 20px; background: var(--gold-light); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; font-weight: bold; color: var(--emerald-dark); }
+        
         .promo-card { background: var(--gold-light); border: 1px solid var(--gold); border-left: 8px solid var(--gold); border-radius: 15px; padding: 20px; margin-bottom: 15px; }
         .promo-buy { font-size: 16px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 8px; }
         .promo-gift { font-size: 16px; font-weight: 900; color: #27ae60; }
@@ -209,12 +229,12 @@
         
         <div class="subcategory">Revi</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Eye 1 мл <i class="info-icon" onclick="showInfo('Revi Eye')">i</i></div><div class="item-desc">Для зоны вокруг глаз</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Style 1 мл <i class="info-icon" onclick="showInfo('Revi Style')">i</i></div><div class="item-desc">Биоревитализант</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Style 2 мл <i class="info-icon" onclick="showInfo('Revi Style')">i</i></div><div class="item-desc">Биоревитализант</div></div><div class="price-cart-wrap"><div class="item-price">4 400 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Silk 1 мл <i class="info-icon" onclick="showInfo('Revi Silk')">i</i></div><div class="item-desc">Биоревитализант</div></div><div class="price-cart-wrap"><div class="item-price">4 900 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Silk 2 мл <i class="info-icon" onclick="showInfo('Revi Silk')">i</i></div><div class="item-desc">Биоревитализант</div></div><div class="price-cart-wrap"><div class="item-price">6 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Strong 1 мл <i class="info-icon" onclick="showInfo('Revi Strong')">i</i></div><div class="item-desc">Глубокое увлажнение</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Strong 2 мл <i class="info-icon" onclick="showInfo('Revi Strong')">i</i></div><div class="item-desc">Глубокое увлажнение</div></div><div class="price-cart-wrap"><div class="item-price">7 200 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Style 1 мл <i class="info-icon" onclick="showInfo('Revi Style 1')">i</i></div><div class="item-desc">Биоревитализант</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Style 2 мл <i class="info-icon" onclick="showInfo('Revi Style 2')">i</i></div><div class="item-desc">Биоревитализант</div></div><div class="price-cart-wrap"><div class="item-price">4 400 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Silk 1 мл <i class="info-icon" onclick="showInfo('Revi Silk 1')">i</i></div><div class="item-desc">Биоревитализант</div></div><div class="price-cart-wrap"><div class="item-price">4 900 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Silk 2 мл <i class="info-icon" onclick="showInfo('Revi Silk 2')">i</i></div><div class="item-desc">Биоревитализант</div></div><div class="price-cart-wrap"><div class="item-price">6 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Strong 1 мл <i class="info-icon" onclick="showInfo('Revi Strong 1')">i</i></div><div class="item-desc">Глубокое увлажнение</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Revi Strong 2 мл <i class="info-icon" onclick="showInfo('Revi Strong 2')">i</i></div><div class="item-desc">Глубокое увлажнение</div></div><div class="price-cart-wrap"><div class="item-price">7 200 ₽</div><div class="add-btn">+</div></div></div>
         
         <div class="subcategory">BioGel</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">BioGel Gold <i class="info-icon" onclick="showInfo('BioGel Gold')">i</i></div><div class="item-desc">Коктейль</div></div><div class="price-cart-wrap"><div class="item-price">3 200 ₽</div><div class="add-btn">+</div></div></div>
@@ -226,11 +246,11 @@
         
         <div class="subcategory">Novacutan</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan SBio <i class="info-icon" onclick="showInfo('Novacutan SBio')">i</i></div><div class="item-desc">Оригинал Европа</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan SBio с голограммой <i class="info-icon" onclick="showInfo('Novacutan SBio')">i</i></div><div class="item-desc">Оригинал Европа</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan SBio с голограммой <i class="info-icon" onclick="showInfo('Novacutan SBio Holo')">i</i></div><div class="item-desc">Оригинал Европа</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan YBio <i class="info-icon" onclick="showInfo('Novacutan YBio')">i</i></div><div class="item-desc">Оригинал Европа</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan YBio с голограммой <i class="info-icon" onclick="showInfo('Novacutan YBio')">i</i></div><div class="item-desc">Оригинал Европа</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan SBio Официальный <i class="info-icon" onclick="showInfo('Novacutan SBio')">i</i></div><div class="item-desc">Официальный РФ</div></div><div class="price-cart-wrap"><div class="item-price">6 800 ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan YBio Официальный <i class="info-icon" onclick="showInfo('Novacutan YBio')">i</i></div><div class="item-desc">Официальный РФ</div></div><div class="price-cart-wrap"><div class="item-price">6 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan YBio с голограммой <i class="info-icon" onclick="showInfo('Novacutan YBio Holo')">i</i></div><div class="item-desc">Оригинал Европа</div></div><div class="price-cart-wrap"><div class="item-price">4 500 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan SBio Официальный <i class="info-icon" onclick="showInfo('Novacutan SBio Off')">i</i></div><div class="item-desc">Официальный РФ</div></div><div class="price-cart-wrap"><div class="item-price">6 800 ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan YBio Официальный <i class="info-icon" onclick="showInfo('Novacutan YBio Off')">i</i></div><div class="item-desc">Официальный РФ</div></div><div class="price-cart-wrap"><div class="item-price">6 800 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Novacutan BioPro <i class="info-icon" onclick="showInfo('Novacutan BioPro')">i</i></div><div class="item-desc">Экзопротектор</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
 
         <div class="subcategory">Profhilo</div>
@@ -276,8 +296,8 @@
 
 
         <div id="plla" class="category">💊 Полимолочная кислота</div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Аэстефил Европа <i class="info-icon" onclick="showInfo('AestheFill')">i</i></div><div class="item-desc">AestheFill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Аэстефил официальный <i class="info-icon" onclick="showInfo('AestheFill')">i</i></div><div class="item-desc">AestheFill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Аэстефил Европа <i class="info-icon" onclick="showInfo('AestheFill Euro')">i</i></div><div class="item-desc">AestheFill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Аэстефил официальный <i class="info-icon" onclick="showInfo('AestheFill Off')">i</i></div><div class="item-desc">AestheFill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Полифил <i class="info-icon" onclick="showInfo('Polyfill')">i</i></div><div class="item-desc">Polyfill ПЛК</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Джувелук 50 <i class="info-icon" onclick="showInfo('Juvelook 50')">i</i></div><div class="item-desc">Juvelook ПЛК+ГК</div></div><div class="price-cart-wrap"><div class="item-price">10 500 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Джувелук 200 мл <i class="info-icon" onclick="showInfo('Juvelook 200')">i</i></div><div class="item-desc">Juvelook ПЛК+ГК</div></div><div class="price-cart-wrap"><div class="item-price">12 000 ₽</div><div class="add-btn">+</div></div></div>
@@ -290,7 +310,7 @@
         <div id="collagen" class="category">🧬 Коллаген</div>
         
         <div class="subcategory">Коллаген</div>
-        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Нития коллаген <i class="info-icon" onclick="showInfo('Nithya')">i</i></div><div class="item-desc">Nithya</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
+        <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Нития коллаген <i class="info-icon" onclick="showInfo('Nithya Collagen')">i</i></div><div class="item-desc">Nithya</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Нития стимулейт <i class="info-icon" onclick="showInfo('Nithya Stimulate')">i</i></div><div class="item-desc">Nithya Stimulate</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">NEAUTIVIA rh collagen <i class="info-icon" onclick="showInfo('NEAUTIVIA')">i</i></div><div class="item-desc">Коллаген</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Каризма <i class="info-icon" onclick="showInfo('Karisma')">i</i></div><div class="item-desc">Karisma</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
@@ -345,8 +365,6 @@
 
         <div class="subcategory">Teosyal</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Реденсити 2 <i class="info-icon" onclick="showInfo('Teosyal Redensity')">i</i></div><div class="item-desc">Teosyal Redensity 2</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-
-
         <div id="korea" class="category">💎 Филлеры (Корея)</div>
         
         <div class="subcategory">Sardenya</div>
@@ -471,6 +489,100 @@
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">27G x 50mm <i class="info-icon" onclick="showInfo('Иглы / Канюли')">i</i></div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">27G x 70mm <i class="info-icon" onclick="showInfo('Иглы / Канюли')">i</i></div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
 
+        <div id="delivery" class="category">🚚 Доставка и Оплата</div>
+        <div class="info-block-bottom fade-in-up">
+            <h3>🏙 ДОСТАВКА: МОСКВА И МО</h3>
+            <ul>
+                <li>🏎 <span class="highlight-text">Курьерская доставка на следующий день.</span></li>
+                <li>В пределах МКАД — <strong>400 руб</strong></li>
+                <li>За МКАД (до 5 км) — <strong>800 руб</strong></li>
+                <li>⚠️ Самовывоза нет. Отгрузка строго курьерской службой.</li>
+            </ul>
+            <br>
+            <h3>📦 ДОСТАВКА: РЕГИОНЫ РФ И СНГ</h3>
+            <ul>
+                <li>✈️ <span class="highlight-text">Отправка:</span> Строго на следующий день после оплаты.</li>
+                <li>📩 <span class="highlight-text">Трек-номер:</span> Присылаем фото накладной вечером.</li>
+                <li>📮 <span class="highlight-text">Службы:</span> СДЭК / Почта России.</li>
+            </ul>
+            <br>
+            <h3>💳 ОФОРМЛЕНИЕ И ОПЛАТА</h3>
+            <ul>
+                <li>🔹 <span class="highlight-text">Минимальный заказ:</span> от 2 упаковок или от 7 000 руб.</li>
+                <li>💸 Перевод на карту (Сбер / Тинькофф / Альфа)</li>
+                <li>💸 USDT (TRC-20) — <strong>скидка 2%</strong></li>
+            </ul>
+        </div>
+
+        <div id="bonuses" class="category">🎁 Бонусы</div>
+        <div class="info-block-bottom fade-in-up">
+            <h3>Закрытый клуб 'FILLER'S FAMILY'</h3>
+            <ul>
+                <li>👯 <strong>ПРИВЕДИ КОЛЛЕГУ — СКИДКА 5%</strong> на следующий заказ.</li>
+                <li>📦 <strong>ФОТО-ОТЗЫВ — БЕСПЛАТНАЯ ДОСТАВКА</strong>. Пришлите фото распаковки менеджеру!</li>
+                <li>📸 <strong>ВИДЕО В СТОРИС — БОНУС 1000 РУБ</strong> скидки на заказ (от 15к).</li>
+                <li>👑 <strong>КЕШБЭК 3% И ОПТ ОТ 1 ШТ</strong>. Возвращается 3% баллами. От 100 000 руб выкупов — оптовая колонка навсегда!</li>
+            </ul>
+        </div>
+
+    <div style="text-align: center; margin: 40px 0; font-weight: 800; color: var(--emerald-light); text-transform: uppercase; font-size: 12px;">
+        В прайсе более 300 позиций 👇
+    </div>
+
+    <div class="bottom-nav" id="cartPanel">
+        
+        <div class="delivery-widget" id="deliveryWidget">
+            <div class="delivery-text" id="deliveryText">До бесплатной доставки: <span>30 000 ₽</span></div>
+            <div class="progress-bg"><div class="progress-fill" id="deliveryFill"></div></div>
+        </div>
+
+        <button class="btn btn-promo" id="promoBtn" onclick="openModal()">🔥 ГОРЯЧИЕ АКЦИИ НЕДЕЛИ</button>
+        <button class="btn btn-share" id="shareBtn" onclick="shareApp()">📤 ПОДЕЛИТЬСЯ ПРАЙСОМ</button>
+
+        <div class="cart-panel" id="cartActivePanel">
+            <div class="cart-summary">
+                <div>🛒 В корзине: <b id="cartCount">0</b> шт.</div>
+                <div>Сумма: <span id="cartTotal">0 ₽</span></div>
+            </div>
+            <button class="btn btn-order" onclick="sendOrder()">📤 ОФОРМИТЬ ЗАКАЗ</button>
+            <button class="btn btn-clear" onclick="clearCart()">Очистить корзину</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="promoModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="forceClose('promoModal')">✕</button>
+            <div style="font-size: 26px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 10px;">🎁 ГОРЯЧИЕ АКЦИИ</div>
+            <div style="font-size: 14px; color: var(--gold); font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">Количество строго ограничено!</div>
+
+            <div class="promo-card">
+                <div class="promo-buy">🛍 Заказ 10 шт Botulax 100u</div>
+                <div class="promo-gift">🎁 ПОДАРОК: Доставка + J-Cain 30гр</div>
+            </div>
+            
+            <div class="promo-card">
+                <div class="promo-buy">🛍 Заказ 5 шт Novacutan или MesoEye</div>
+                <div class="promo-gift">🎁 ПОДАРОК: Филлер Sardenya Deep</div>
+            </div>
+
+            <div class="promo-card">
+                <div class="promo-buy">🛍 Заказ 4 шт Refinex (Япония)</div>
+                <div class="promo-gift">🎁 ПОДАРОК: 1 шт Refinex (Корея)</div>
+            </div>
+
+            <div class="promo-card">
+                <div class="promo-buy">🛍 Заказ 4 шт Stylage M (Bi-Soft)</div>
+                <div class="promo-gift">🎁 ПОДАРОК: Липолитик V-Line</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="infoModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="forceClose('infoModal')">✕</button>
+            <div id="infoTitle">Название препарата</div>
+            <div id="infoText">Описание загружается...</div>
+        </div>
     </div>
 
     <script>
@@ -479,8 +591,9 @@
         webApp.expand(); 
         webApp.MainButton.hide();
 
-        /* ПОЛНАЯ БАЗА ЗНАНИЙ НА ВСЕ ПРЕПАРАТЫ */
+        /* ПОЛНАЯ БАЗА ЗНАНИЙ (ИНФО-ШТОРКИ НА ВСЕ ПОЗИЦИИ) */
         const productInfoDB = {
+            /* ТОКСИНЫ */
             'Botulax 100': 'Корейский ботулотоксин типа А (100 единиц). Отличается мягкой блокировкой мимики, отсутствием ощущения "каменного лица" и быстрым началом действия.',
             'Botulax 200': 'Корейский ботулотоксин типа А (200 единиц). Оптимальный объем для активного приема. Подходит для работы с верхней третью лица и гипергидрозом.',
             'Botulax 300': 'Корейский ботулотоксин типа А (300 единиц). Максимальный объем. Самый выгодный формат для лечения гипергидроза и потоковой работы клиники.',
@@ -503,6 +616,8 @@
             'DehanTox 100': 'Современный корейский ботулотоксин. Стабильный результат и высокая степень очистки.',
             'DehanTox 200': 'Современный корейский ботулотоксин (200 ед).',
             'Masport': 'Препарат производства Франция/Турция (500 единиц). Аналог Диспорта с хорошей диффузией.',
+            
+            /* ПЛАЦЕНТА И PDRN */
             'Мелсмон': 'Японский плацентарный препарат. Используется для мощного системного омоложения, лечения пигментации и восстановления клеточного дыхания.',
             'Лаенек': 'Плацентарная терапия (Япония). Гепатопротектор и иммуномодулятор. Используется в косметологии для лифтинга и общего оздоровления организма.',
             'TwAc Eye': 'Биоревитализант с полинуклеотидами (PDRN) специально для периорбитальной зоны. Убирает темные круги, отеки и мелкую сетку морщин вокруг глаз.',
@@ -510,25 +625,34 @@
             'TwAc 3.0': 'Усиленная формула PDRN для мощной регенерации и лифтинга.',
             'Plinest': 'Итальянский препарат с полинуклеотидами (мастрэлли). Запускает процесс регенерации коллагена и эластина.',
             'Plinest Fast': 'Облегченная версия Plinest. Идеально подходит для молодой кожи, зоны вокруг глаз и шеи.',
+            
+            /* БИО И МЕЗО */
             'Aquashine BR': 'Комплексный биоревитализант (Brightening). Содержит пептиды, направленные на осветление кожи, борьбу с пигментацией и выравнивание тона.',
             'Aquashine Soft': 'Классический биоревитализант. Глубоко увлажняет кожу, дает эффект "сияния изнутри" и легкий лифтинг.',
             'Aquashine PTX': 'Биоревитализант с ботулоподобными пептидами. Слегка расслабляет мимику, идеально для тех, кто боится классического ботокса.',
             'Revi Eye': 'Специализированный биоревитализант с трегалозой для зоны век. Снимает пастозность, убирает морщинки, не дает отеков.',
-            'Revi Style': 'Базовый биоревитализант с трегалозой для молодой кожи (до 30 лет) или для профилактики старения.',
-            'Revi Silk': 'Препарат с трегалозой для пациентов 30-40 лет. Лечит купероз, розацеа, дает глубокое увлажнение (пролонгированный эффект).',
-            'Revi Strong': 'Мощный биоревитализант для возрастной кожи или лечения тяжелых форм акне. Эффект держится до 4-6 месяцев от 1 процедуры.',
+            'Revi Style 1': 'Базовый биоревитализант с трегалозой (1 мл) для молодой кожи или профилактики старения.',
+            'Revi Style 2': 'Базовый биоревитализант с трегалозой (2 мл).',
+            'Revi Silk 1': 'Препарат с трегалозой (1 мл) для пациентов 30-40 лет. Лечит купероз, розацеа, дает глубокое увлажнение.',
+            'Revi Silk 2': 'Препарат с трегалозой (2 мл) для глубокого увлажнения.',
+            'Revi Strong 1': 'Мощный биоревитализант (1 мл) для возрастной кожи или лечения тяжелых форм акне.',
+            'Revi Strong 2': 'Мощный биоревитализант (2 мл) для возрастной кожи. Эффект до 4-6 месяцев.',
             'BioGel Gold': 'Многокомпонентный коктейль для мезотерапии и биоревитализации.',
             'BioGel Silver': 'Улучшает трофику тканей, дает сияние и увлажнение.',
             'BioGel NAD': 'Премиум биоревитализант с клеточным коферментом.',
             'BioGel Siyanie': 'Специальный коктейль для эффекта мгновенного сияния.',
             'BioGel Monaco': 'VIP Коктейль "Монако" для роскошного цвета лица.',
             'BioGel Harisma': 'Мощнейший VIP Коктейль для лифтинга.',
-            'Novacutan SBio': 'Экзопротектор (Skin Bionomical). Работает на уровне ДНК клеток. Защищает кожу от ультрафиолета, стресса и недосыпа. Дает эффект сияния.',
-            'Novacutan YBio': 'Экзопротектор (Youth Bionomical). Основная цель — лифтинг, разглаживание морщин и уплотнение возрастной кожи.',
-            'Novacutan BioPro': 'Новинка линейки Novacutan. Мощный экзопротектор с усиленной формулой для комплексной защиты.',
+            'Novacutan SBio': 'Экзопротектор (Skin Bionomical). Защищает кожу от ультрафиолета, стресса и недосыпа. Дает эффект сияния.',
+            'Novacutan YBio': 'Экзопротектор (Youth Bionomical). Основная цель — лифтинг, разглаживание морщин и уплотнение кожи.',
+            'Novacutan SBio Holo': 'Экзопротектор SBio (с голограммой).',
+            'Novacutan YBio Holo': 'Экзопротектор YBio (с голограммой).',
+            'Novacutan SBio Off': 'Официальный сертифицированный в РФ экзопротектор SBio.',
+            'Novacutan YBio Off': 'Официальный сертифицированный в РФ экзопротектор YBio.',
+            'Novacutan BioPro': 'Мощный экзопротектор с усиленной формулой для комплексной защиты.',
             'Profhilo': 'Уникальный препарат для биоремоделирования кожи. Вводится по 5 точкам (БЭТ). Не дает папул, обеспечивает мгновенный лифтинг.',
             'Ejal40': 'Итальянский биоревитализант. Введение в 4 точки. Содержит ГК среднего молекулярного веса, стимулирует фибробласты.',
-            'Hyaron': 'Корейский биоревитализант на основе нестабилизированной ГК. Классика для базового увлажнения кожи (в упаковке 10 шприцев).',
+            'Hyaron': 'Корейский биоревитализант на основе нестабилизированной ГК. Классика для базового увлажнения кожи (10 шприцев).',
             'Kiara Reju': 'Корейский биоревитализант с PDRN, гиалуроновой кислотой и ниацинамидом. Дает мощное увлажнение и осветление.',
             'GemVous': 'Комплексный биоревитализант из Кореи. Отлично работает на гидратацию и улучшение цвета лица.',
             'Dermaheal HL': 'Терапевтический мезококтейль против выпадения волос. Питает фолликулы, стимулирует рост.',
@@ -538,21 +662,24 @@
             'Dermaheal SR': 'Базовый мезококтейль для ревитализации кожи и сужения пор.',
             'Dermaheal Dark': 'Мезококтейль для устранения темных кругов под глазами.',
             'Dermaheal EyeBag': 'Мезококтейль, разработанный для уменьшения грыж нижнего века и мешков под глазами.',
-            'Meso Wharton': 'Инновационный препарат с пептидом P199. Стимулирует деление собственных стволовых клеток кожи. Показан пациентам старше 40 лет.',
+            'Meso Wharton': 'Инновационный препарат с пептидом P199. Стимулирует деление стволовых клеток кожи. Для пациентов 40+.',
             'Meso Eye': 'Уникальный вазомодификатор для зоны век. Укрепляет сосуды, убирает мешки, грыжи и темные круги.',
-            'Meso Xanthin': 'Препарат с фукоксантином. Защищает ДНК клеток, идеален для лечения акне и розацеа (возраст 25-35 лет).',
+            'Meso Xanthin': 'Препарат с фукоксантином. Защищает ДНК клеток, идеален для лечения акне и розацеа (25-35 лет).',
             'Meso Sculpt': 'Липоредуктор для лица. "Перепрограммирует" жировые клетки, уменьшая в размерах. Убирает брыли и второй подбородок.',
             'Hanheal Exosome': 'Комплект с экзосомами. Микровезикулы передают клеткам сигналы к мощной регенерации.',
             'Fillmed': 'Французский мезококтейль (NCTF 135HA). ГК + 59 активных ингредиентов для "витаминного удара" по коже.',
-            'AestheFill': 'Препарат на основе полимолочной кислоты (ПЛК). Восстанавливает объемы лица мягко и постепенно (результат держится до 2 лет).',
-            'Polyfill': 'Инъекционный имплантат на основе полимолочной кислоты для глубокого коллагеностимулирующего действия.',
+            
+            /* ПЛК И КОЛЛАГЕН */
+            'AestheFill Euro': 'Препарат на основе полимолочной кислоты (ПЛК). Восстанавливает объемы лица (результат до 2 лет).',
+            'AestheFill Off': 'Официальный сертифицированный AestheFill.',
+            'Polyfill': 'Инъекционный имплантат на основе ПЛК для глубокого коллагеностимулирующего действия.',
             'Juvelook 50': 'Гибридный коллагеностимулятор (ПЛК + ГК). Идеально подходит для нежных зон (глаза, шея).',
             'Juvelook 200': 'Гибридный коллагеностимулятор большого объема (Lenisna) для восстановления объемов лица и работы по телу.',
             'Richesse PCL': 'Препарат на основе поликапролактона (PCL). Мощнейший стимулятор неоколлагенеза с пролонгированным сроком действия.',
             'Olidia': 'Коллагеностимулятор на основе микрочастиц PLLA (поли-L-молочная кислота).',
-            'Nithya': 'Инъекционный лошадиный коллаген I типа. Восстанавливает белковый каркас кожи, дает потрясающую плотность.',
+            'Nithya Collagen': 'Инъекционный лошадиный коллаген I типа. Восстанавливает белковый каркас кожи, дает потрясающую плотность.',
             'Nithya Stimulate': 'Препарат для усиленной стимуляции клеточного матрикса.',
-            'NEAUTIVIA': 'Коллагеновый стимулятор.',
+            'NEAUTIVIA': 'Коллагеновый стимулятор от Neauvia.',
             'Karisma': 'Инновационный биорестимулятор на основе рекомбинантного человеческого коллагена и ГК.',
             'Linerase': 'Гетерологичный коллаген I типа. Лечит атрофические рубцы и стрии.',
             'Neotiva Collagen': 'Корейский коллагеновый стимулятор для уплотнения тканей.',
@@ -562,6 +689,8 @@
             'Сферогель Light': 'Матриксный биорегенерант. Легкая плотность для работы с периорбитальной зоной.',
             'Сферогель Fine': 'Матриксный биорегенерант средней плотности.',
             'Сферогель Medium': 'Плотный биорегенерант. Создает идеальную среду для роста клеток и сосудов.',
+            
+            /* ФИЛЛЕРЫ ЕВРОПА */
             'Stylage Hydro': 'Французский мезо-филлер на основе ГК с маннитолом. Увлажняет кожу без риска сильных отеков.',
             'Stylage HydroMax': 'Мезо-филлер пролонгированного действия с сорбитолом.',
             'Stylage S': 'Самый мягкий филлер линейки. Идеален для коррекции поверхностных морщин, гусиных лапок.',
@@ -569,7 +698,7 @@
             'Stylage L': 'Плотный филлер для заполнения глубоких морщин и создания мягких контуров лица.',
             'Stylage XL': 'Мощный волюмайзер. Восстановление объема щек, скул и моделирование подбородка.',
             'Stylage Lips': 'Специализированная форма филлера для пластики губ.',
-            'Neauvia Lips': 'Швейцарско-итальянский филлер (PEG-сшивка). Обладает высокой эластичностью, не мигрирует ("плоские губы").',
+            'Neauvia Lips': 'Швейцарско-итальянский филлер. Обладает высокой эластичностью, не мигрирует ("плоские губы").',
             'Neauvia Intense': 'Универсальный филлер высокой плотности из органической линейки Neauvia.',
             'Neauvia Stimulate': 'Уникальный филлер (ГК + гидроксиапатит кальция). Дает объем и стимуляцию коллагена.',
             'Neauvia Hydro': 'Премиальный биоревитализант с гидроксиапатитом кальция.',
@@ -582,6 +711,8 @@
             'Belotero Contour': 'Филлер, специально созданный для выделения четкого контура губ.',
             'Belotero Shape': 'Филлер-компаньон к Contour, для добавления мягкого объема губам.',
             'Teosyal Redensity': 'Швейцарский филлер, специально разработанный для коррекции носослезной борозды.',
+            
+            /* ФИЛЛЕРЫ КОРЕЯ */
             'Sardenya Fine': 'Мягкий филлер. Идеально подходит для коррекции мелких и поверхностных морщин.',
             'Sardenya Deep': 'Филлер средней плотности. Применяется для увеличения губ, заполнения носогубных складок.',
             'Sardenya Shape': 'Плотный филлер. Предназначен для глубокой волюмизации (скулы, подбородок).',
@@ -595,7 +726,7 @@
             'Revolax Sub-Q': 'Плотный волюмайзер линейки Revolax для работы по надкостнице.',
             'Dermalax Deep': 'Универсальный корейский филлер с лидокаином.',
             'Dermalax Implant': 'Плотный филлер для глубоких слоев дермы и создания четких контуров лица.',
-            'Rejeunesse Deep': 'Универсальный филлер (с лидокаином). Отлично подходит для губ. Молекулы сферической формы (меньше отеков).',
+            'Rejeunesse Deep': 'Универсальный филлер (с лидокаином). Отлично подходит для губ. Меньше отеков.',
             'Rejeunesse Shape': 'Плотный филлер для волюметрии, скул и подбородка.',
             'Rejeunesse Sparkle': 'Био-филлер с гиалуроновой кислотой.',
             'Tesoro Deep': 'Корейский филлер средней плотности. Отличный баланс цены и качества.',
@@ -622,7 +753,9 @@
             'EPTQ 300': 'Универсальный филлер. Популярный выбор для губ.',
             'EPTQ 500': 'Сверхплотный филлер для работы с глубокими дефицитами объема.',
             'Sosum Soft': 'Мягкий филлер без лидокаина (часто используется для чувствительных пациентов).',
-            'Light Fit': 'Непрямой липолитик (экстракты растений). Убирает второй подбородок и комки Биша без отеков.',
+            
+            /* ЛИПОЛИТИКИ И ТЕЛО */
+            'Light Fit': 'Непрямой липолитик для лица. Безопасно убирает второй подбородок и комки Биша без отеков.',
             'Липолонг': 'Пролонгированный липолитический комплекс.',
             'LipoLab PPC': 'Прямой липолитик (фосфатидилхолин). Строго для тела (живот, бедра)!',
             'LipoLab V-Line': 'Непрямой липолитик для формирования идеального V-контура лица.',
@@ -632,7 +765,9 @@
             'Триада': 'Классический ферментный коктейль. Растворяет жир, убирает фиброз и подтягивает кожу.',
             'Липорайз': 'Популярный липолитический коктейль для борьбы с целлюлитом.',
             'Лонгидаза': 'Фермент (гиалуронидаза). Расщепляет гиалуроновую кислоту. Для лечения гиперкоррекции.',
-            'Tesoro Body': 'Плотный филлер большого объема (50-100 мл). Исключительно для контурной пластики тела.',
+            'Tesoro Body': 'Плотный филлер большого объема. Исключительно для контурной пластики тела.',
+            
+            /* ПИЛИНГИ И ПРОЧЕЕ */
             'BioRePeelCl3': 'Итальянский двухфазный пилинг. Работает без шелушения и периода реабилитации.',
             'PRX-T33': 'Легендарный дермальный стимулятор. Мгновенный лифтинг и очищение пор.',
             'Золушка': 'Капельница «Синдерелла» (глутатион, тиоктовая кислота, вит С). Мощный детокс и осветление кожи.',
@@ -692,6 +827,7 @@
         document.querySelectorAll('.add-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 if(e.target.classList.contains('info-icon')) return;
+
                 webApp.HapticFeedback.impactOccurred('light');
 
                 const card = this.closest('.item-card');

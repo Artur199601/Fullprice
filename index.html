@@ -10,7 +10,6 @@
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg-color); background-attachment: fixed; color: var(--text-main); margin: 0; padding: 15px; padding-bottom: 320px; -webkit-tap-highlight-color: transparent; overflow-x: hidden; max-width: 100vw; box-sizing: border-box; }
 
-
         #preloader { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--emerald-dark); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s; }
         #preloader.hidden { opacity: 0; visibility: hidden; }
         .loader-logo { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--gold); box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); object-fit: cover; animation: pulse-gold-loader 1.5s infinite alternate; }
@@ -58,7 +57,6 @@
         .add-btn:active { background: var(--gold); color: #fff; transform: scale(0.8); }
         .fly-item { position: fixed; width: auto; height: auto; background: var(--gold); color: var(--emerald-dark); padding: 6px 10px; border-radius: 10px; font-size: 12px; font-weight: 900; z-index: 1000; pointer-events: none; transition: all 0.6s cubic-bezier(0.2, 1, 0.4, 1.15); box-shadow: 0 0 15px rgba(212, 175, 55, 0.8); opacity: 1; }
 
-        /* НИЖНЯЯ ПАНЕЛЬ И ПРОГРЕСС-БАР */
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px; padding-bottom: calc(15px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; z-index: 100; border-top: 1px solid rgba(212, 175, 55, 0.2); }
         .delivery-widget { background: #fdfdfd; border-radius: 12px; padding: 10px; border: 1px solid rgba(39, 174, 96, 0.3); display: none; flex-direction: column; gap: 5px; }
         .delivery-widget.active { display: flex; }
@@ -83,7 +81,6 @@
         .btn-order::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent); transform: skewX(-20deg); animation: shimmer 3s infinite; }
         @keyframes shimmer { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
-        /* МОДАЛКИ ОБЩИЕ */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 58, 42, 0.85); backdrop-filter: blur(8px); z-index: 200; opacity: 0; visibility: hidden; transition: 0.3s; display: flex; align-items: flex-end; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-content { background: #fff; width: 100%; border-radius: 30px 30px 0 0; padding: 35px 20px; padding-bottom: 50px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column;}
@@ -96,7 +93,6 @@
         #infoTitle { font-size: 20px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 15px; line-height: 1.3;}
         #infoText { font-size: 14px; color: #444; line-height: 1.6; }
 
-        /* СТИЛИ КОРЗИНЫ С ПЛЮС И МИНУС */
         .cart-modal-title { font-size: 24px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 20px; border-bottom: 2px solid var(--gold-light); padding-bottom: 10px;}
         .cart-items-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; padding-right: 5px;}
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; background: #fdfdfd; padding: 12px; border-radius: 12px; border: 1px solid #eee; }
@@ -107,7 +103,6 @@
         .qty-btn:active { transform: scale(0.9); background: var(--gold); color: #fff;}
         .qty-val { font-size: 15px; font-weight: 800; color: var(--text-main); min-width: 20px; text-align: center;}
         
-        /* СТИЛИ ФОРМЫ ЗАКАЗА */
         .order-form { background: #f9f9f9; border-radius: 15px; padding: 15px; margin-bottom: 20px; border: 1px solid #eaeaea;}
         .order-form h4 { margin: 0 0 15px 0; font-size: 15px; color: var(--emerald-dark); text-transform: uppercase;}
         .form-group { margin-bottom: 15px; }
@@ -151,7 +146,7 @@
         <div class="trust-item">🚚 Отгрузка 24ч</div>
     </div>
 
-      <div class="nav-wrapper">
+    <div class="nav-wrapper">
         <div class="nav-scroll" id="nav-container">
             <a href="#info-delivery" class="nav-item">🚚 ДОСТАВКА И ОПЛАТА</a>
             <a href="#info-bonuses" class="nav-item">🎁 БОНУСЫ</a>
@@ -170,8 +165,43 @@
         </div>
     </div>
 
-
     <div id="catalog">
+        <div id="info-delivery" class="category" style="margin-top: 10px;">🚚 Условия доставки и оплаты</div>
+        <div class="item-card fade-in-up" style="display: block; padding: 20px;">
+            <h3 style="margin-top: 0; font-size: 14px; color: var(--emerald-dark);">🏙 ДОСТАВКА: МОСКВА И МО</h3>
+            <ul class="info-ul" style="margin-bottom: 20px;">
+                <li>🏎 <span style="color: #27ae60; font-weight: 800;">Курьерская доставка на следующий день.</span></li>
+                <li>В пределах МКАД — <strong>400 руб</strong></li>
+                <li>За МКАД (до 5 км) — <strong>800 руб</strong></li>
+                <li>⚠️ Самовывоза нет. Отгрузка строго курьерской службой.</li>
+            </ul>
+            
+            <h3 style="font-size: 14px; color: var(--emerald-dark);">📦 ДОСТАВКА: РЕГИОНЫ РФ И СНГ</h3>
+            <ul class="info-ul" style="margin-bottom: 20px;">
+                <li>✈️ <span style="color: #27ae60; font-weight: 800;">Отправка:</span> Строго на следующий день после оплаты.</li>
+                <li>📩 <span style="color: #27ae60; font-weight: 800;">Трек-номер:</span> Присылаем фото накладной вечером.</li>
+                <li>📮 <span style="color: #27ae60; font-weight: 800;">Службы:</span> СДЭК / Почта России.</li>
+            </ul>
+            
+            <h3 style="font-size: 14px; color: var(--emerald-dark);">💳 ОФОРМЛЕНИЕ И ОПЛАТА</h3>
+            <ul class="info-ul" style="margin-bottom: 0;">
+                <li>🔹 <span style="color: #27ae60; font-weight: 800;">Минимальный заказ:</span> от 2 упаковок или от 7 000 руб.</li>
+                <li>💸 Перевод на карту (Сбер / Тинькофф / Альфа)</li>
+                <li>💸 USDT (TRC-20) — <strong>скидка 2%</strong></li>
+            </ul>
+        </div>
+
+        <div id="info-bonuses" class="category">🎁 Программа Бонусов</div>
+        <div class="item-card fade-in-up" style="display: block; padding: 20px; margin-bottom: 25px;">
+            <h3 style="margin-top: 0; font-size: 14px; color: var(--emerald-dark);">Закрытый клуб 'Fillers_Beauty FAMILY'</h3>
+            <ul class="info-ul" style="margin-bottom: 0;">
+                <li>👯 <strong>ПРИВЕДИ КОЛЛЕГУ — СКИДКА 5%</strong> на следующий заказ.</li>
+                <li>📦 <strong>ФОТО-ОТЗЫВ — БЕСПЛАТНАЯ ДОСТАВКА</strong>. Пришлите фото распаковки менеджеру!</li>
+                <li>📸 <strong>ВИДЕО В СТОРИС — БОНУС 1000 РУБ</strong> скидки на заказ (от 15к).</li>
+                <li>👑 <strong>КЕШБЭК 3% И ОПТ ОТ 1 ШТ</strong>. Возвращается 3% баллами. От 100 000 руб выкупов — оптовая колонка навсегда!</li>
+            </ul>
+        </div>
+
         <div id="toxins" class="category">🧊 Ботулотоксины</div>
         
         <div class="subcategory">Botulax</div>
@@ -215,8 +245,6 @@
 
         <div class="subcategory">Другие Бренды</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Маспорт 500u <i class="info-icon" onclick="showInfo('Masport')">i</i></div><div class="item-desc">Франция / Турция</div></div><div class="price-cart-wrap"><div class="item-price">5 500 ₽</div><div class="add-btn">+</div></div></div>
-
-
         <div id="biorev" class="category">🧬 Биоревитализация</div>
 
         <div class="subcategory">Плацентарные препараты</div>
@@ -313,6 +341,7 @@
         <div class="subcategory">Richesse & Olidia</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Richessse PCL 200мг <i class="info-icon" onclick="showInfo('Richesse PCL')">i</i></div><div class="item-desc">PCL</div></div><div class="price-cart-wrap"><div class="item-price">7 800 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Olidia 364мг <i class="info-icon" onclick="showInfo('Olidia')">i</i></div><div class="item-desc">PLLA</div></div><div class="price-cart-wrap"><div class="item-price">9 500 ₽</div><div class="add-btn">+</div></div></div>
+        
         <div id="collagen" class="category">🧬 Коллаген</div>
         
         <div class="subcategory">Коллаген</div>
@@ -371,8 +400,6 @@
 
         <div class="subcategory">Teosyal</div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">Реденсити 2 <i class="info-icon" onclick="showInfo('Teosyal Redensity')">i</i></div><div class="item-desc">Teosyal Redensity 2</div></div><div class="price-cart-wrap"><div class="item-price">- ₽</div><div class="add-btn">+</div></div></div>
-
-
         <div id="korea" class="category">💎 Филлеры (Корея)</div>
         
         <div class="subcategory">Sardenya</div>
@@ -495,7 +522,8 @@
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">27G x 50mm <i class="info-icon" onclick="showInfo('Иглы / Канюли')">i</i></div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
         <div class="item-card fade-in-up"><div class="item-info"><div class="item-name">27G x 70mm <i class="info-icon" onclick="showInfo('Иглы / Канюли')">i</i></div><div class="item-opt">От 10 шт: 250 ₽</div></div><div class="price-cart-wrap"><div class="item-price">300 ₽</div><div class="add-btn">+</div></div></div>
 
-    </div> <div style="text-align: center; margin: 40px 0; font-weight: 800; color: var(--emerald-light); text-transform: uppercase; font-size: 12px;">
+    </div> 
+    <div style="text-align: center; margin: 40px 0; font-weight: 800; color: var(--emerald-light); text-transform: uppercase; font-size: 12px;">
         В прайсе более 300 позиций 👇
     </div>
 
@@ -528,52 +556,6 @@
             <div class="promo-card"><div class="promo-buy">🛍 Заказ 5 шт Novacutan или MesoEye</div><div class="promo-gift">🎁 ПОДАРОК: Филлер Sardenya Deep</div></div>
             <div class="promo-card"><div class="promo-buy">🛍 Заказ 4 шт Refinex (Япония)</div><div class="promo-gift">🎁 ПОДАРОК: 1 шт Refinex (Корея)</div></div>
             <div class="promo-card"><div class="promo-buy">🛍 Заказ 4 шт Stylage M (Bi-Soft)</div><div class="promo-gift">🎁 ПОДАРОК: Липолитик V-Line</div></div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="deliveryModal" onclick="closeModal(event)">
-        <div class="modal-content">
-            <button class="modal-close" onclick="forceClose('deliveryModal')">✕</button>
-            <div style="font-size: 24px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 20px; border-bottom: 2px solid var(--gold-light); padding-bottom: 10px;">🚚 Доставка и Оплата</div>
-            <div class="info-block-bottom" style="box-shadow: none; border: none; padding: 0;">
-                <h3>🏙 ДОСТАВКА: МОСКВА И МО</h3>
-                <ul class="info-ul">
-                    <li>🏎 <span class="highlight-text">Курьерская доставка на следующий день.</span></li>
-                    <li>В пределах МКАД — <strong>400 руб</strong></li>
-                    <li>За МКАД (до 5 км) — <strong>800 руб</strong></li>
-                    <li>⚠️ Самовывоза нет. Отгрузка строго курьерской службой.</li>
-                </ul>
-                <br>
-                <h3>📦 ДОСТАВКА: РЕГИОНЫ РФ И СНГ</h3>
-                <ul class="info-ul">
-                    <li>✈️ <span class="highlight-text">Отправка:</span> Строго на следующий день после оплаты.</li>
-                    <li>📩 <span class="highlight-text">Трек-номер:</span> Присылаем фото накладной вечером.</li>
-                    <li>📮 <span class="highlight-text">Службы:</span> СДЭК / Почта России.</li>
-                </ul>
-                <br>
-                <h3>💳 ОФОРМЛЕНИЕ И ОПЛАТА</h3>
-                <ul class="info-ul">
-                    <li>🔹 <span class="highlight-text">Минимальный заказ:</span> от 2 упаковок или от 7 000 руб.</li>
-                    <li>💸 Перевод на карту (Сбер / Тинькофф / Альфа)</li>
-                    <li>💸 USDT (TRC-20) — <strong>скидка 2%</strong></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="bonusModal" onclick="closeModal(event)">
-        <div class="modal-content">
-            <button class="modal-close" onclick="forceClose('bonusModal')">✕</button>
-            <div style="font-size: 24px; font-weight: 900; color: var(--emerald-dark); margin-bottom: 20px; border-bottom: 2px solid var(--gold-light); padding-bottom: 10px;">🎁 Программа Бонусов</div>
-            <div class="info-block-bottom" style="box-shadow: none; border: none; padding: 0;">
-                <h3>Закрытый клуб 'FILLER'S FAMILY'</h3>
-                <ul class="info-ul">
-                    <li>👯 <strong>ПРИВЕДИ КОЛЛЕГУ — СКИДКА 5%</strong> на следующий заказ.</li>
-                    <li>📦 <strong>ФОТО-ОТЗЫВ — БЕСПЛАТНАЯ ДОСТАВКА</strong>. Пришлите фото распаковки менеджеру!</li>
-                    <li>📸 <strong>ВИДЕО В СТОРИС — БОНУС 1000 РУБ</strong> скидки на заказ (от 15к).</li>
-                    <li>👑 <strong>КЕШБЭК 3% И ОПТ ОТ 1 ШТ</strong>. Возвращается 3% баллами. От 100 000 руб выкупов — оптовая колонка навсегда!</li>
-                </ul>
-            </div>
         </div>
     </div>
 
@@ -885,7 +867,6 @@
             setTimeout(() => { circle.style.left = `${cartRect.left + cartRect.width / 2}px`; circle.style.top = `${cartRect.top + 20}px`; circle.style.transform = 'scale(0.2)'; circle.style.opacity = '0.3'; }, 10);
             setTimeout(() => { circle.remove(); }, 600);
         }
-
         document.querySelectorAll('.add-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 if(e.target.classList.contains('info-icon')) return;
@@ -918,7 +899,7 @@
             });
         });
 
-        /* --- ЛОГИКА ФОРМЫ И КОРЗИНЫ С + и - --- */
+        /* --- ЛОГИКА ФОРМЫ И КОРЗИНЫ С ПЛЮС И МИНУС --- */
         function increaseQty(name) { webApp.HapticFeedback.impactOccurred('light'); if(cart[name]) cart[name].qty += 1; updateCartUI(); updateCartModalUI(); }
         function decreaseQty(name) {
             webApp.HapticFeedback.impactOccurred('light');
@@ -1054,7 +1035,6 @@
                 if (bonusInfoBtn) bonusInfoBtn.style.display = 'flex'; 
                 if (shareBtn) shareBtn.style.display = 'flex'; 
             }
-
             
             localStorage.setItem('fillers_cart', JSON.stringify(cart));
         }
@@ -1125,7 +1105,7 @@
                 }
             }
 
-                        webApp.HapticFeedback.notificationOccurred('success');
+            webApp.HapticFeedback.notificationOccurred('success');
             webApp.openTelegramLink(`https://t.me/Fillers_Beauty?text=${encodeURIComponent(orderText)}`);
         }
     </script>
